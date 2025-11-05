@@ -1,4 +1,3 @@
-
 # 🚀 HOTMESS Deployment Guide
 
 **Self-bootstrapping deployment for all environments**
@@ -62,6 +61,7 @@ GitHub Actions workflow is already included at `.github/workflows/deploy.yml` an
 - deploy-docker: builds/pushes Docker image when Docker secrets are present
 
 Key behaviors:
+
 - Deploy jobs are gated; they only run when required secrets exist in the repo settings.
 - PRs get a fast path build; main/production branches do full builds.
 
@@ -83,7 +83,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: '20', cache: 'npm' }
+        with: { node-version: "20", cache: "npm" }
       - run: npm ci
       - run: npm run health
       - run: npm run verify
@@ -96,7 +96,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: '20', cache: 'npm' }
+        with: { node-version: "20", cache: "npm" }
       - run: npm ci
       - run: npm run build:production
   deploy-vercel:
@@ -190,7 +190,7 @@ CMD ["npm", "run", "preview"]
 Create `docker-compose.yml`:
 
 ```yaml
-version: '3.8'
+version: "3.8"
 
 services:
   hotmess:
@@ -250,20 +250,20 @@ spec:
         app: hotmess
     spec:
       containers:
-      - name: hotmess
-        image: hotmess-enterprise:latest
-        ports:
-        - containerPort: 5173
-        envFrom:
-        - secretRef:
-            name: hotmess-secrets
-        resources:
-          requests:
-            memory: "256Mi"
-            cpu: "250m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
+        - name: hotmess
+          image: hotmess-enterprise:latest
+          ports:
+            - containerPort: 5173
+          envFrom:
+            - secretRef:
+                name: hotmess-secrets
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
 ---
 apiVersion: v1
 kind: Service
@@ -273,9 +273,9 @@ spec:
   selector:
     app: hotmess
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 5173
+    - protocol: TCP
+      port: 80
+      targetPort: 5173
   type: LoadBalancer
 ```
 
@@ -301,23 +301,23 @@ kubectl logs -f deployment/hotmess-enterprise
 
 ### Required for Production
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `VITE_SUPABASE_URL` | Supabase project URL | `https://abc123.supabase.co` |
-| `VITE_SUPABASE_ANON_KEY` | Supabase anonymous key | `eyJhbGciOiJIUzI1NiIs...` |
-| `SHOPIFY_DOMAIN` | Shopify store domain | `your-store.myshopify.com` |
-| `SHOPIFY_STOREFRONT_TOKEN` | Storefront API token | `shpss_abc123...` |
-| `LINK_SIGNING_SECRET` | HMAC signing secret | `64-char hex string` |
+| Variable                   | Description            | Example                      |
+| -------------------------- | ---------------------- | ---------------------------- |
+| `VITE_SUPABASE_URL`        | Supabase project URL   | `https://abc123.supabase.co` |
+| `VITE_SUPABASE_ANON_KEY`   | Supabase anonymous key | `eyJhbGciOiJIUzI1NiIs...`    |
+| `SHOPIFY_DOMAIN`           | Shopify store domain   | `your-store.myshopify.com`   |
+| `SHOPIFY_STOREFRONT_TOKEN` | Storefront API token   | `shpss_abc123...`            |
+| `LINK_SIGNING_SECRET`      | HMAC signing secret    | `64-char hex string`         |
 
 ### Optional Services
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `RADIOKING_BASE` | RadioKing API endpoint | `https://api.radioking.io` |
-| `RADIOKING_SLUG` | Radio station slug | `hotmess-radio` |
-| `AZURACAST_API_BASE` | AzuraCast API endpoint | `https://your-station.com` |
-| `TELEGRAM_BOT_TOKEN` | Telegram bot token | `123456:ABC-DEF...` |
-| `WEATHER_API_BASE` | Weather API endpoint | `https://api.open-meteo.com` |
+| Variable             | Description            | Default                      |
+| -------------------- | ---------------------- | ---------------------------- |
+| `RADIOKING_BASE`     | RadioKing API endpoint | `https://api.radioking.io`   |
+| `RADIOKING_SLUG`     | Radio station slug     | `hotmess-radio`              |
+| `AZURACAST_API_BASE` | AzuraCast API endpoint | `https://your-station.com`   |
+| `TELEGRAM_BOT_TOKEN` | Telegram bot token     | `123456:ABC-DEF...`          |
+| `WEATHER_API_BASE`   | Weather API endpoint   | `https://api.open-meteo.com` |
 
 ---
 
@@ -356,6 +356,7 @@ du -sh dist/
 ### Health Module
 
 A lightweight health module is available at `src/lib/health.ts`:
+
 - Validates presence of optional environment variables for Supabase and Shopify
 - Verifies radio stream configuration exists
 - Aggregates an overall status: ok | warn | error
@@ -363,15 +364,16 @@ A lightweight health module is available at `src/lib/health.ts`:
 Consume it in-app or via tooling as needed:
 
 ```ts
-import { healthCheck } from '@/lib/health'
+import { healthCheck } from "@/lib/health";
 
-const report = await healthCheck()
-console.log(report.status, report.services)
+const report = await healthCheck();
+console.log(report.status, report.services);
 ```
 
 ### Uptime Monitoring
 
 Use services like:
+
 - **Vercel Analytics** (if deployed on Vercel)
 - **Sentry** for error tracking
 - **UptimeRobot** for availability monitoring
@@ -469,6 +471,7 @@ npm run preview
 ### CDN Configuration
 
 Configure CDN caching for:
+
 - `/assets/*` - 1 year cache
 - `/src/assets/*` - 1 year cache
 - `index.html` - no cache
@@ -509,13 +512,15 @@ Create `vercel.json`:
 Add to `index.html`:
 
 ```html
-<meta http-equiv="Content-Security-Policy" 
-      content="default-src 'self'; 
+<meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self'; 
                script-src 'self' 'unsafe-inline'; 
                style-src 'self' 'unsafe-inline' fonts.googleapis.com;
                font-src 'self' fonts.gstatic.com;
                img-src 'self' data: https:;
-               connect-src 'self' https://api.open-meteo.com;">
+               connect-src 'self' https://api.open-meteo.com;"
+/>
 ```
 
 ### Environment Security
@@ -531,12 +536,14 @@ Add to `index.html`:
 ## 📞 Support
 
 **Deployment Issues:**
+
 - Check `npm run verify` output
 - Review build logs in CI/CD platform
 - Ensure all environment variables set
 - Verify Node.js version ≥ 20
 
 **Emergency Rollback:**
+
 ```bash
 vercel rollback
 # or

@@ -82,7 +82,9 @@ The HOTMESS bootstrapping system enables complete deployment from a single comma
 ### Core Bootstrap Scripts
 
 #### `npm run build:production`
+
 **Full-stack production build pipeline**
+
 - Environment validation
 - SQL migration checks
 - Build verification
@@ -110,10 +112,12 @@ npm run build:production -- --skip-sql --skip-verify --skip-health --skip-docker
 ```
 
 Outputs:
+
 - dist/ production bundle
 - build_report.json with step-by-step status, durations, and success flag
 
 **Output:**
+
 ```
 ╔════════════════════════════════════════════════════════╗
 ║    HOTMESS ENTERPRISE - PRODUCTION BUILD PIPELINE     ║
@@ -152,7 +156,9 @@ Outputs:
 ---
 
 #### `npm run launch`
+
 **Complete auto-bootstrap for local development**
+
 - Sets up environment
 - Installs dependencies
 - Seeds mock data
@@ -164,6 +170,7 @@ npm run launch
 ```
 
 **Output:**
+
 ```
 ██╗  ██╗ ██████╗ ████████╗███╗   ███╗███████╗███████╗███████╗
 ENTERPRISE AUTO-BUILD v1.0
@@ -189,7 +196,9 @@ ENTERPRISE AUTO-BUILD v1.0
 ---
 
 #### `npm run verify`
+
 **Comprehensive build verification**
+
 - Checks project structure
 - Validates required files
 - Verifies dependencies
@@ -201,10 +210,12 @@ npm run verify
 ```
 
 **Exit Codes:**
+
 - `0` - All checks passed or non-critical warnings
 - `1` - Critical failures detected
 
 **Use Cases:**
+
 - Pre-deployment validation
 - CI/CD pipeline checks
 - Troubleshooting build issues
@@ -213,7 +224,9 @@ npm run verify
 ---
 
 #### `npm run health`
+
 **Quick system health check**
+
 - File integrity
 - Dependency status
 - Build configuration
@@ -228,6 +241,7 @@ npm run health -- --json
 ```
 
 **Output:**
+
 ```
 🏥 HOTMESS Health Check
 
@@ -250,7 +264,9 @@ npm run health -- --json
 ---
 
 #### `npm run setup:env`
+
 **Generate environment configuration**
+
 - Copies `.env.example` to `.env.local`
 - Generates secure mock keys
 - Creates JWT tokens
@@ -261,6 +277,7 @@ npm run setup:env
 ```
 
 **Generated Keys:**
+
 - Supabase anon key (mock JWT)
 - Shopify storefront token (mock)
 - Telegram bot token (mock)
@@ -271,7 +288,9 @@ npm run setup:env
 ---
 
 #### `npm run db:mock`
+
 **Seed mock database**
+
 - Generates 3 affiliate profiles (Elite/Pro/Basic tiers)
 - Creates click records with UTM tracking
 - Produces conversion data with commissions
@@ -282,6 +301,7 @@ npm run db:mock
 ```
 
 **Generated Data:**
+
 - 3 affiliates with realistic stats
 - 50+ click records per affiliate
 - 5% conversion rate simulation
@@ -294,9 +314,11 @@ npm run db:mock
 ### Deployment Scripts
 
 #### `npm run deploy [platform]`
+
 **Universal deployment command**
 
 **Platforms:**
+
 - `vercel` - Deploy to Vercel (recommended)
 - `netlify` - Deploy to Netlify
 - `railway` - Deploy to Railway
@@ -318,6 +340,7 @@ npm run deploy kubernetes
 ```
 
 **Process:**
+
 1. Runs pre-deployment checks (`verify`)
 2. Builds production bundle (`build`)
 3. Platform-specific deployment
@@ -345,6 +368,7 @@ npm run docker:build && npm run docker:run
 ```
 
 **Docker Environment:**
+
 - Node 20 Alpine (minimal footprint)
 - Multi-stage build (builder + runner)
 - Health checks configured
@@ -356,10 +380,13 @@ npm run docker:build && npm run docker:run
 ### Development Scripts
 
 #### `npm run dev`
+
 **Start development server**
+
 ```bash
 npm run dev
 ```
+
 - Vite dev server with HMR
 - TypeScript type checking
 - Fast refresh enabled
@@ -368,10 +395,13 @@ npm run dev
 ---
 
 #### `npm run build`
+
 **Production build**
+
 ```bash
 npm run build
 ```
+
 - TypeScript compilation
 - Vite production bundle
 - Asset optimization
@@ -380,10 +410,13 @@ npm run build
 ---
 
 #### `npm run preview`
+
 **Preview production build**
+
 ```bash
 npm run preview
 ```
+
 - Serves `dist/` directory
 - Tests production bundle locally
 - Same port as dev (:5173)
@@ -391,10 +424,13 @@ npm run preview
 ---
 
 #### `npm run kill`
+
 **Kill dev server process**
+
 ```bash
 npm run kill
 ```
+
 - Frees port 5000 if blocked
 - Useful when server crashes
 - Cross-platform compatible
@@ -435,11 +471,13 @@ Infrastructure:
 ### GitHub Actions
 
 **Workflow Triggers:**
+
 - Push to `main` or `production` branches
 - Pull requests to `main`
 - Manual workflow dispatch
 
 **Jobs:**
+
 1. **Verify** - Run health checks and verification
 2. **Build** - Create production bundle
 3. **Deploy** - Deploy to Vercel (if main/production)
@@ -447,6 +485,7 @@ Infrastructure:
 5. **Test** - Validate deployment health
 
 **Required Secrets:**
+
 ```yaml
 VITE_SUPABASE_URL
 VITE_SUPABASE_ANON_KEY
@@ -545,23 +584,23 @@ kubectl scale deployment hotmess-enterprise --replicas=5
 
 ### Required for Production
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `VITE_SUPABASE_URL` | Supabase project URL | `https://abc.supabase.co` |
-| `VITE_SUPABASE_ANON_KEY` | Supabase anon key | `eyJhbGciOi...` |
-| `SHOPIFY_DOMAIN` | Shopify store domain | `store.myshopify.com` |
-| `SHOPIFY_STOREFRONT_TOKEN` | Storefront API token | `shpss_...` |
-| `LINK_SIGNING_SECRET` | HMAC signing secret | 64-char hex string |
+| Variable                   | Description          | Example                   |
+| -------------------------- | -------------------- | ------------------------- |
+| `VITE_SUPABASE_URL`        | Supabase project URL | `https://abc.supabase.co` |
+| `VITE_SUPABASE_ANON_KEY`   | Supabase anon key    | `eyJhbGciOi...`           |
+| `SHOPIFY_DOMAIN`           | Shopify store domain | `store.myshopify.com`     |
+| `SHOPIFY_STOREFRONT_TOKEN` | Storefront API token | `shpss_...`               |
+| `LINK_SIGNING_SECRET`      | HMAC signing secret  | 64-char hex string        |
 
 ### Optional Services
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `RADIOKING_BASE` | RadioKing API | `https://api.radioking.io` |
-| `RADIOKING_SLUG` | Station slug | `hotmess-radio` |
-| `AZURACAST_API_BASE` | AzuraCast API | Mock endpoint |
-| `TELEGRAM_BOT_TOKEN` | Telegram bot | Mock token |
-| `WEATHER_API_BASE` | Weather API | `https://api.open-meteo.com` |
+| Variable             | Description   | Default                      |
+| -------------------- | ------------- | ---------------------------- |
+| `RADIOKING_BASE`     | RadioKing API | `https://api.radioking.io`   |
+| `RADIOKING_SLUG`     | Station slug  | `hotmess-radio`              |
+| `AZURACAST_API_BASE` | AzuraCast API | Mock endpoint                |
+| `TELEGRAM_BOT_TOKEN` | Telegram bot  | Mock token                   |
+| `WEATHER_API_BASE`   | Weather API   | `https://api.open-meteo.com` |
 
 ---
 

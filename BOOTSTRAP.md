@@ -242,15 +242,15 @@
     │                       │          │                       │
     │                       │          │                       │
     ▼                       ▼          ▼                       ▼
-    
+
 [Vercel Flow]              [Netlify Flow]         [Docker Flow]              [K8s Flow]
-    
+
 1. Check CLI              1. Check CLI            1. Build image             1. Build image
 2. vercel --prod          2. netlify deploy       2. Stop old container      2. Apply manifests
 3. Upload dist/           3. Upload dist/         3. Start new container     3. Rolling update
 4. Edge deployment        4. CDN deployment       4. Health check            4. HPA scaling
 5. DNS configured         5. DNS configured       5. View logs               5. Service ready
-                                                  
+
 ✅ Live URL               ✅ Live URL             ✅ localhost:5173          ✅ LoadBalancer IP
 ```
 
@@ -274,20 +274,20 @@
     └─────────────────┘                    └──────────────────┘
             │                                       │
             ▼                                       ▼
-    
+
     Files Check:                          Dependencies Check:
     ✓ package.json                        ✓ node_modules/
     ✓ src/App.tsx                         ✓ react
     ✓ src/main.tsx                        ✓ react-dom
     ✓ src/index.css                       ✓ vite
     ✓ index.html                          ✓ @github/spark
-    ✓ vite.config.ts                      
+    ✓ vite.config.ts
     ✓ tsconfig.json                       Build Check:
                                           ✓ dev script
     Environment Check:                    ✓ build script
-    ✓ .env.local exists                   
-    or                                    
-    ✓ .env.example exists                 
+    ✓ .env.local exists
+    or
+    ✓ .env.example exists
             │                                       │
             └───────────────┬───────────────────────┘
                             ▼
@@ -330,13 +330,13 @@
 └──────────────┘      └──────────────┘      └─────────────┘
         │                     │                     │
         ▼                     ▼                     ▼
-        
+
 ✓ Environment file    ✓ Core pages          ⚠ README.md
 ✓ Package.json        ✓ Core components     ⚠ PRD.md
 ✓ Source directory    ✓ UI components       ⚠ Build dry-run
-✓ Node modules        
-✓ TypeScript config   
-✓ Vite config         
+✓ Node modules
+✓ TypeScript config
+✓ Vite config
         │                     │                     │
         └─────────────────────┴─────────────────────┘
                               │
@@ -382,23 +382,23 @@
     └─────────────────────┘             └──────────────────┘
                 │                                   │
                 ▼                                   ▼
-    
+
     rm -rf node_modules .env.local      npm install
     npm run launch                      npm run verify
                 │                                   │
                 ▼                                   ▼
         Full Rebuild                        Incremental Fix
-        
+
         • Clean slate                       • Restore deps
         • Fresh install                     • Verify integrity
         • New env config                    • Resume work
-        • Mock data reset                   
-        • Full verification                 
+        • Mock data reset
+        • Full verification
                 │                                   │
                 └───────────────┬───────────────────┘
                                 ▼
                     ✅ System Restored
-                    
+
                     🚀 Back Online
 ```
 
@@ -422,14 +422,14 @@
 └──────────────┘            └──────────────┘             └──────────────┘
         │                             │                             │
         ▼                             ▼                             ▼
-        
+
 • Checkout code             • Checkout code              • Deploy Vercel
 • Setup Node 20             • Setup Node 20              • Build Docker
 • npm ci                    • npm ci                     • Deploy K8s
 • npm run health            • npm run build              • Test deployment
-• npm run verify            • Upload dist/               
-• TypeScript check          
-• Lint check                
+• npm run verify            • Upload dist/
+• TypeScript check
+• Lint check
         │                             │                             │
         └─────────────────────────────┴─────────────────────────────┘
                                       │
@@ -458,7 +458,7 @@
     Local Dev             Cloud Deploy           Container Deploy
         │                       │                       │
         ▼                       ▼                       ▼
-        
+
 npm run launch      Which platform?              Which orchestrator?
                             │                             │
                     ┌───────┴───────┐           ┌────────┴────────┐
@@ -468,14 +468,14 @@ npm run launch      Which platform?              Which orchestrator?
                 (fastest)      (CDN focus)  (local test)    (production)
                     │               │           │                 │
                     ▼               ▼           ▼                 ▼
-                    
+
             npm run deploy vercel   npm run     npm run deploy k8s
             • Zero config           deploy      • High scale
             • Edge functions        netlify     • Auto-scaling
             • Auto SSL              • Forms     • Load balancing
             • Analytics             • Functions • Health checks
                                     • Split     • Rolling updates
-                                      testing   
+                                      testing
 ```
 
 ---
@@ -506,7 +506,7 @@ npm run launch      Which platform?              Which orchestrator?
                             │
                             ▼
                     Developer Continues
-                    
+
     On Save → Compile → Update → Test
               ← Instant Feedback Loop →
 ```
@@ -525,7 +525,7 @@ npm run launch      Which platform?              Which orchestrator?
         (useState)                      (useKV from @github/spark)
                 │                               │
                 ▼                               ▼
-                
+
         • Form inputs                   • User preferences
         • UI toggles                    • Affiliate data
         • Loading states                • Click tracking
@@ -539,10 +539,10 @@ npm run launch      Which platform?              Which orchestrator?
                 └───────────────┬───────────────┘
                                 ▼
                         Application Runtime
-                        
+
                         useKV API:
                         const [data, setData, deleteData] = useKV(key, default)
-                        
+
                         • Automatic sync
                         • Type-safe
                         • No manual storage
@@ -561,7 +561,7 @@ npm run launch      Which platform?              Which orchestrator?
         Local Development               Production Deployment
                 │                               │
                 ▼                               ▼
-                
+
         .env.local                      Platform Secrets
         • Mock Supabase                 ────────────────────
         • Mock Shopify                  GitHub Secrets:
@@ -573,7 +573,7 @@ npm run launch      Which platform?              Which orchestrator?
                 ▼                       • DOCKER_PASSWORD
                                                 │
         npm run setup:env                       ▼
-        Generates:                              
+        Generates:
         • Realistic JWTs (mock)         Vercel Environment:
         • Random tokens (mock)          • Encrypted at rest
         • Crypto secrets (real)         • Injected at build
@@ -590,26 +590,31 @@ npm run launch      Which platform?              Which orchestrator?
 ## Key Principles
 
 ### 1. **Zero Configuration**
+
 - One command to launch
 - Auto-detects missing setup
 - Self-heals when possible
 
 ### 2. **Progressive Enhancement**
+
 - Works offline (mock data)
 - Graceful degradation
 - Feature flags for optional services
 
 ### 3. **Infrastructure as Code**
+
 - Dockerfile included
 - K8s manifests ready
 - CI/CD configured
 
 ### 4. **Developer Experience**
+
 - Fast feedback loops (< 100ms HMR)
 - Clear error messages
 - Self-documenting scripts
 
 ### 5. **Production Ready**
+
 - Multi-stage builds
 - Health checks
 - Auto-scaling

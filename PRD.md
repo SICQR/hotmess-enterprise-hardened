@@ -7,6 +7,7 @@ A production-grade editorial-commerce-radio web ecosystem built for luxury, cult
 ### Radio Implementation Enhancement - COMPLETE ✅
 
 **ISSUE IDENTIFIED: Incomplete Radio Implementation**
+
 - **FOUND**: `/src/lib/radio.ts` was missing critical functions for production use
 - **MISSING FEATURES**:
   - ❌ No `tryPlayWithFailover()` for automatic stream failover
@@ -14,7 +15,6 @@ A production-grade editorial-commerce-radio web ecosystem built for luxury, cult
   - ❌ No timezone-aware utilities (shows only worked in local timezone)
   - ❌ No overnight show support (shows crossing midnight failed)
   - ❌ Broken artwork URLs using unreliable Unsplash endpoints
-  
 - **IMPLEMENTED**:
   - ✅ Complete timezone-aware scheduling system with `getZonedParts()`, `hmToMinutes()`, `isShowLiveAt()`
   - ✅ Overnight show support - shows like "AFTER HOURS" (22:00→02:00) now work correctly
@@ -22,23 +22,24 @@ A production-grade editorial-commerce-radio web ecosystem built for luxury, cult
   - ✅ Safe SVG artwork generation using data URIs instead of external URLs
   - ✅ `getCurrentAndNextShow()` for displaying upcoming shows in UI
   - ✅ Full timezone parameter support (default: Europe/London, works with any IANA timezone)
-  
 - **RESULT**: Production-ready radio system with robust error handling, global timezone support, and advanced scheduling features
 
 **What Changed:**
+
 ```typescript
 // OLD: Basic scheduling without timezone or overnight support
-export function getSchedule(): Show[]
+export function getSchedule(): Show[];
 
-// NEW: Timezone-aware with overnight show support  
-export function getSchedule(timeZone = "Europe/London"): Show[]
-export function getCurrentAndNextShow(timeZone = "Europe/London")
-export async function tryPlayWithFailover(audio, urls, timeoutMs)
+// NEW: Timezone-aware with overnight show support
+export function getSchedule(timeZone = "Europe/London"): Show[];
+export function getCurrentAndNextShow(timeZone = "Europe/London");
+export async function tryPlayWithFailover(audio, urls, timeoutMs);
 ```
 
 ### Complete Audit & Critical Fixes (Previous Session)
 
 **ISSUE IDENTIFIED: Missing CSS Imports Causing "Invisible" Design System**
+
 - **FOUND**: Custom brutalist styles in `/src/styles/` were not being imported
 - **IMPACT**: All custom classes (`.btn-brutalist`, `.h1`, `.gradient-hotmess`, etc.) were undefined
 - **FIXED**: Added missing CSS imports to `index.css`:
@@ -48,16 +49,19 @@ export async function tryPlayWithFailover(audio, urls, timeoutMs)
 - **RESULT**: Complete brutalist design system now properly loaded
 
 **Radio Stream Fix**
+
 - **FOUND**: Mock radio URLs (`https://stream.hotmess.live`) don't exist
 - **FIXED**: Updated to working SomaFM Groove Salad stream
 - **RESULT**: Radio player now plays actual audio
 
 **BrandShowcase Route Added**
+
 - **FOUND**: Complete design system showcase existed but was unreachable
 - **ADDED**: Route `/showcase` to display BrandShowcase component
 - **RESULT**: Design system documentation now accessible at `/showcase`
 
 **Complete File Inventory**
+
 - ✅ All 6 components present and functional
 - ✅ All 9 pages present (8 routed, 1 standalone)
 - ✅ All 9 lib files implementing business logic
@@ -69,6 +73,7 @@ export async function tryPlayWithFailover(audio, urls, timeoutMs)
 ### DEBUG Session - Spark Architecture Alignment (Previous Session)
 
 **Codebase Cleanup & Architecture Clarification** - COMPLETE
+
 - **CRITICAL FINDING**: Previous sessions incorrectly attempted to add backend infrastructure (SQL, Docker, K8s, Next.js) to a client-side-only Spark application
 - **REMOVED**: All invalid backend infrastructure documentation and references
 - **CONFIRMED**: Application correctly uses mock implementations for all data (Supabase, Shopify, webhooks are mocked)
@@ -79,6 +84,7 @@ export async function tryPlayWithFailover(audio, urls, timeoutMs)
 ### TypeScript Build Fix (Previous Session)
 
 **Build Error Resolution** - COMPLETE
+
 - Fixed TypeScript error in `/src/ErrorFallback.tsx`
 - Added proper type definitions for ErrorFallbackProps interface
 - Typed `error: Error` and `resetErrorBoundary: () => void` parameters
@@ -87,6 +93,7 @@ export async function tryPlayWithFailover(audio, urls, timeoutMs)
 ### Production Build Documentation (Previous Session)
 
 **Build Pipeline Documentation** - COMPLETE
+
 - Created comprehensive `/BUILD_GUIDE.md` explaining the production build process
 - Documents the three-phase build: verify → build → health
 - Includes troubleshooting, CI/CD integration, and deployment guidance
@@ -172,6 +179,7 @@ export async function tryPlayWithFailover(audio, urls, timeoutMs)
    - Ensured all Tailwind utilities resolve to correct brutalist palette
 
 **Experience Qualities**:
+
 1. **Brutally Confident** - Bold, unapologetic design that commands attention without explanation
 2. **Luxuriously Minimal** - High-end materials (typography, space, contrast) stripped to essentials
 3. **Functionally Direct** - Every interaction serves a purpose; no decorative flourishes
@@ -182,6 +190,7 @@ Multi-module platform integrating live radio streaming (mock), e-commerce storef
 ## Essential Features
 
 ### Age Gate (Men Only)
+
 - **Functionality**: Modal overlay requiring age verification (18+) and gender confirmation before site access
 - **Purpose**: Brand positioning as men's luxury lifestyle platform with legal compliance
 - **Trigger**: First visit or cleared session storage
@@ -189,6 +198,7 @@ Multi-module platform integrating live radio streaming (mock), e-commerce storef
 - **Success criteria**: Session persists across refresh, gate never re-appears until cleared
 
 ### Live Radio Player
+
 - **Functionality**: Persistent audio player with play/pause, volume, now-playing metadata, schedule display, timezone-aware scheduling, overnight show support, automatic stream failover
 - **Purpose**: Core brand experience - community radio as cultural anchor
 - **Trigger**: User navigates to /radio or clicks "Listen" CTA
@@ -196,6 +206,7 @@ Multi-module platform integrating live radio streaming (mock), e-commerce storef
 - **Success criteria**: Audio plays without interruption, metadata auto-refreshes, player persists across route changes, automatic failover to backup streams on connection failure, timezone-aware scheduling works globally, shows crossing midnight display correctly
 
 ### AI Concierge Widget
+
 - **Functionality**: Floating chat bubble (bottom-right) with intent classification and safe response generation
 - **Purpose**: Guided onboarding and contextual assistance without overwhelming UI
 - **Trigger**: Auto-appears after 5s on homepage or clickable launcher on all pages
@@ -203,6 +214,7 @@ Multi-module platform integrating live radio streaming (mock), e-commerce storef
 - **Success criteria**: Recognizes 6 intent types, responds within 1s, escalates safety concerns appropriately
 
 ### Shopify Storefront Integration
+
 - **Functionality**: Product grid with filtering, PDP with recommendations, UTM tracking for affiliate attribution
 - **Purpose**: Commerce layer for brand merchandise and affiliate conversions
 - **Trigger**: User navigates to /shop or clicks product from home
@@ -210,6 +222,7 @@ Multi-module platform integrating live radio streaming (mock), e-commerce storef
 - **Success criteria**: Mock products load under 1s, UTMs persist through navigation, affiliate IDs tracked
 
 ### QR/Shortlink Router (/r)
+
 - **Functionality**: Mock redirect service with basic validation and tracking simulation
 - **Purpose**: Physical-to-digital bridge demonstration for print, packaging, events
 - **Trigger**: User scans QR code or clicks shortlink (e.g., /r?p=shop)
@@ -217,6 +230,7 @@ Multi-module platform integrating live radio streaming (mock), e-commerce storef
 - **Success criteria**: Valid links redirect correctly, invalid signatures show error page
 
 ### Affiliate Dashboard (/earn)
+
 - **Functionality**: Personal referral link generator, mock leaderboard, earnings display (mock data)
 - **Purpose**: Demonstrate affiliate program concept through gamified interface
 - **Trigger**: User clicks "Earn" or navigates to /earn
@@ -224,6 +238,7 @@ Multi-module platform integrating live radio streaming (mock), e-commerce storef
 - **Success criteria**: Unique links generated per session, leaderboard displays mock data, tiers visually distinct
 
 ### Care Check-In (/care)
+
 - **Functionality**: Mental health mood tracker with mock crisis detection
 - **Purpose**: Differentiate brand as caring community, not just transactional
 - **Trigger**: User navigates to /care or concierge suggests during safety intent
@@ -231,6 +246,7 @@ Multi-module platform integrating live radio streaming (mock), e-commerce storef
 - **Success criteria**: Form submits successfully, scores <4 show crisis resources, data persists in KV storage
 
 ### Weather Strip
+
 - **Functionality**: Top-of-page banner showing current weather for user's city
 - **Purpose**: Contextual grounding, dynamic personalization without account creation
 - **Trigger**: Homepage load with geolocation permission
@@ -238,6 +254,7 @@ Multi-module platform integrating live radio streaming (mock), e-commerce storef
 - **Success criteria**: Displays within 2s, gracefully handles denied permissions, shows cached data on API failure
 
 ### Make.com Blueprints (/blueprints)
+
 - **Functionality**: Documentation and examples of webhook integration patterns (demonstration only)
 - **Purpose**: Show how automation could work with proper backend infrastructure
 - **Trigger**: User navigates to /blueprints
@@ -296,7 +313,7 @@ Animations should feel **mechanical and deliberate** - like industrial machinery
 
 ## Component Selection
 
-- **Components**: 
+- **Components**:
   - Dialog (Age Gate, Concierge expanded view)
   - Card (Product grid, affiliate stats, schedule blocks)
   - Button (Primary: Chrome Red fill, Secondary: Bone White outline, Ghost: text-only)
@@ -306,18 +323,15 @@ Animations should feel **mechanical and deliberate** - like industrial machinery
   - Tabs (Shop categories, radio schedule by day)
   - Toast (Form confirmations, playback errors via Sonner)
   - Separator (Brutalist tear dividers between sections)
-  
-- **Customizations**: 
+- **Customizations**:
   - BrutalistCard: Sharp corners, thick borders (3px), no shadows - pure contrast
   - MarqueeText: Infinite scroll for partner logos or live stats
   - TearDivider: SVG path animated tear effect between major sections
   - FloatingPlayer: Fixed bottom bar that persists across routes (global state)
-  
-- **States**: 
+- **States**:
   - Buttons: Default (solid), Hover (brightness +10%, transform scale 1.02), Active (brightness -10%), Disabled (opacity 40%, cursor not-allowed)
   - Inputs: Default (border Charcoal), Focus (border Chrome Red, ring 4px red/20%), Error (border Danger, ring 4px danger/20%), Success (border Gold)
-  
-- **Icon Selection**: 
+- **Icon Selection**:
   - Play/Pause: PlayCircle / PauseCircle (48px on main player)
   - Volume: SpeakerHigh / SpeakerSlash
   - Shop: ShoppingBag, Heart (wishlist)
@@ -325,14 +339,12 @@ Animations should feel **mechanical and deliberate** - like industrial machinery
   - Care: Heart, ShieldCheck
   - Earn: CurrencyDollar, TrendUp
   - Navigation: List (menu), X (close), CaretRight (links)
-  
-- **Spacing**: 
+- **Spacing**:
   - Base unit: 4px (Tailwind default)
   - Component padding: p-6 (24px) for cards, p-8 (32px) for page containers
   - Section gaps: gap-12 (48px) for vertical rhythm, gap-16 (64px) between major sections
   - Grid gaps: gap-6 (24px) for product grids, gap-4 (16px) for form fields
-  
-- **Mobile**: 
+- **Mobile**:
   - Breakpoint: 768px (Tailwind md:)
   - Mobile-first: Single column layouts, collapsible nav drawer, floating player reduced height (64px → 48px)
   - Product grid: 1 col mobile, 2 col tablet (md:), 3 col desktop (lg:), 4 col wide (xl:)

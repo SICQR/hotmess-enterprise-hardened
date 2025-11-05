@@ -20,11 +20,13 @@ npm run build           # Test production build
 ### 1. "Cannot find module" or Import Errors
 
 **Symptoms:**
+
 - Module not found errors
 - Import path errors
 - Type errors
 
 **Solution:**
+
 ```bash
 # Clean install
 rm -rf node_modules package-lock.json
@@ -41,10 +43,12 @@ npm run verify
 ### 2. Port 5173 Already in Use
 
 **Symptoms:**
+
 - `EADDRINUSE: address already in use :::5173`
 - Server fails to start
 
 **Solution:**
+
 ```bash
 # Kill process on port
 npm run kill
@@ -57,6 +61,7 @@ npm run dev
 ```
 
 **Alternative Ports:**
+
 ```bash
 # Use different port
 vite --port 3000
@@ -67,11 +72,13 @@ vite --port 3000
 ### 3. Environment Variables Not Working
 
 **Symptoms:**
+
 - `undefined` values in app
 - API calls failing
 - Features not working
 
 **Solution:**
+
 ```bash
 # Regenerate environment
 npm run setup:env
@@ -83,7 +90,8 @@ cat .env.local
 npm run dev
 ```
 
-**Important:** 
+**Important:**
+
 - Restart dev server after changing .env files
 - Use `VITE_` prefix for client-side variables
 - Never commit `.env.local` to git
@@ -93,11 +101,13 @@ npm run dev
 ### 4. TypeScript Errors
 
 **Symptoms:**
+
 - Red squiggly lines in editor
 - Type errors in terminal
 - Build fails with type errors
 
 **Solution:**
+
 ```bash
 # Type check
 npx tsc --noEmit
@@ -112,6 +122,7 @@ npx tsc --noEmit src/App.tsx
 ```
 
 **Check tsconfig.json:**
+
 ```json
 {
   "compilerOptions": {
@@ -129,11 +140,13 @@ npx tsc --noEmit src/App.tsx
 ### 5. Build Fails
 
 **Symptoms:**
+
 - `npm run build` crashes
 - Vite build errors
 - Out of memory errors
 
 **Solution:**
+
 ```bash
 # Increase Node memory (if OOM)
 export NODE_OPTIONS="--max-old-space-size=4096"
@@ -148,6 +161,7 @@ npm run verify
 ```
 
 **Check for:**
+
 - Circular dependencies
 - Large imports (bundle size)
 - Missing environment variables
@@ -157,11 +171,13 @@ npm run verify
 ### 6. Docker Build Fails
 
 **Symptoms:**
+
 - `docker build` errors
 - Layer caching issues
 - COPY command failures
 
 **Solution:**
+
 ```bash
 # Clear Docker cache
 docker builder prune
@@ -177,6 +193,7 @@ docker build -t hotmess-enterprise . --progress=plain
 ```
 
 **Common Issues:**
+
 - Missing `.dockerignore` (copies too many files)
 - Wrong Node version
 - Build context too large
@@ -186,11 +203,13 @@ docker build -t hotmess-enterprise . --progress=plain
 ### 7. Deployment Fails
 
 **Symptoms:**
+
 - Vercel/Netlify build errors
 - Deploy times out
 - Site returns 500 error
 
 **Solution:**
+
 ```bash
 # Test locally first
 npm run build
@@ -206,6 +225,7 @@ npm run preview
 ```
 
 **Checklist:**
+
 - ✓ Build command: `npm run build`
 - ✓ Output directory: `dist`
 - ✓ Node version: 20
@@ -217,11 +237,13 @@ npm run preview
 ### 8. Kubernetes Deployment Issues
 
 **Symptoms:**
+
 - Pods crashing (CrashLoopBackOff)
 - Service not accessible
 - ImagePullBackOff errors
 
 **Solution:**
+
 ```bash
 # Check pod status
 kubectl get pods -l app=hotmess
@@ -247,11 +269,13 @@ kubectl get service hotmess-service
 ### 9. Performance Issues
 
 **Symptoms:**
+
 - Slow page loads
 - Laggy interactions
 - High memory usage
 
 **Solution:**
+
 ```bash
 # Analyze bundle size
 npm run build
@@ -274,11 +298,13 @@ npx vite-bundle-visualizer
 ### 10. Hot Module Replacement (HMR) Not Working
 
 **Symptoms:**
+
 - Changes require full page reload
 - Fast refresh not working
 - Console shows HMR errors
 
 **Solution:**
+
 ```bash
 # Restart dev server
 npm run dev
@@ -300,11 +326,13 @@ npm run dev
 ### 11. CSS/Styling Issues
 
 **Symptoms:**
+
 - Styles not applying
 - Tailwind classes not working
 - CSS import errors
 
 **Solution:**
+
 ```bash
 # Verify Tailwind config
 cat tailwind.config.js
@@ -326,11 +354,13 @@ npm run dev
 ### 12. Git/Version Control Issues
 
 **Symptoms:**
+
 - Merge conflicts in package-lock.json
 - .env.local committed by mistake
 - Build fails after git pull
 
 **Solution:**
+
 ```bash
 # Fix package-lock.json conflicts
 rm package-lock.json
@@ -352,6 +382,7 @@ npm run dev
 ## Nuclear Options (Last Resort)
 
 ### Complete Rebuild
+
 ```bash
 # Full reset (loses local .env.local)
 rm -rf node_modules .env.local package-lock.json dist
@@ -359,6 +390,7 @@ npm run launch
 ```
 
 ### Fresh Clone
+
 ```bash
 # Start from scratch
 cd ..
@@ -373,24 +405,28 @@ npm run launch
 ## Diagnostic Commands
 
 ### System Health Check
+
 ```bash
 npm run health
 # Shows: files, dependencies, build config, environment
 ```
 
 ### Build Verification
+
 ```bash
 npm run verify
 # Checks: structure, pages, components, dependencies
 ```
 
 ### Full Build Test
+
 ```bash
 npm run build:production
 # Runs: validation → migration → verify → compile → bundle → health
 ```
 
 ### Manual Checks
+
 ```bash
 # Check Node version (should be 20+)
 node --version
@@ -413,6 +449,7 @@ vm_stat  # macOS
 ### Vercel
 
 **Issue:** Build fails with "Function size exceeded"
+
 ```bash
 # Solution: Optimize bundle
 npm run build
@@ -426,6 +463,7 @@ du -sh dist
 ```
 
 **Issue:** Environment variables not available
+
 ```bash
 # Must prefix with VITE_ for client-side
 # Set in Vercel dashboard: Settings → Environment Variables
@@ -435,6 +473,7 @@ du -sh dist
 ### Netlify
 
 **Issue:** "Build exceeded memory limit"
+
 ```bash
 # Add to netlify.toml:
 [build.environment]
@@ -442,6 +481,7 @@ du -sh dist
 ```
 
 **Issue:** Redirects not working
+
 ```bash
 # Check netlify.toml has:
 [[redirects]]
@@ -453,6 +493,7 @@ du -sh dist
 ### Docker
 
 **Issue:** Image size too large (>1GB)
+
 ```bash
 # Use .dockerignore
 # Use multi-stage builds (already configured)
@@ -463,6 +504,7 @@ docker images hotmess-enterprise
 ```
 
 **Issue:** Container crashes immediately
+
 ```bash
 # Check logs
 docker logs hotmess
@@ -475,14 +517,14 @@ docker run -it --entrypoint /bin/sh hotmess-enterprise
 
 ## Error Code Reference
 
-| Exit Code | Meaning | Solution |
-|-----------|---------|----------|
-| `0` | Success | N/A |
-| `1` | Critical failure | Check error messages, run `npm run verify` |
-| `EADDRINUSE` | Port in use | Run `npm run kill` |
-| `ENOENT` | File not found | Run `npm run verify`, check paths |
-| `ERR_MODULE_NOT_FOUND` | Missing dependency | Run `npm install` |
-| `ETXTBSY` | File locked | Close editors, restart terminal |
+| Exit Code              | Meaning            | Solution                                   |
+| ---------------------- | ------------------ | ------------------------------------------ |
+| `0`                    | Success            | N/A                                        |
+| `1`                    | Critical failure   | Check error messages, run `npm run verify` |
+| `EADDRINUSE`           | Port in use        | Run `npm run kill`                         |
+| `ENOENT`               | File not found     | Run `npm run verify`, check paths          |
+| `ERR_MODULE_NOT_FOUND` | Missing dependency | Run `npm install`                          |
+| `ETXTBSY`              | File locked        | Close editors, restart terminal            |
 
 ---
 
@@ -505,6 +547,7 @@ docker run -it --entrypoint /bin/sh hotmess-enterprise
 ### Information to Include
 
 When reporting issues, include:
+
 ```bash
 # System info
 node --version
@@ -581,17 +624,17 @@ NODE_DEBUG=* npm run dev
 
 ```javascript
 // Check environment variables
-console.log(import.meta.env)
+console.log(import.meta.env);
 
 // Check loaded modules
-console.log(Object.keys(window))
+console.log(Object.keys(window));
 
 // Performance monitoring
-performance.mark('start')
+performance.mark("start");
 // ... code ...
-performance.mark('end')
-performance.measure('duration', 'start', 'end')
-console.log(performance.getEntriesByType('measure'))
+performance.mark("end");
+performance.measure("duration", "start", "end");
+console.log(performance.getEntriesByType("measure"));
 ```
 
 ### React DevTools
@@ -624,6 +667,7 @@ console.log(performance.getEntriesByType('measure'))
 **Remember: When in doubt, `npm run launch` starts fresh!**
 
 For more information, see:
+
 - [README.md](./README.md) - Project overview
 - [BOOTSTRAP.md](./BOOTSTRAP.md) - System architecture
 - [scripts/README.md](./scripts/README.md) - Script documentation

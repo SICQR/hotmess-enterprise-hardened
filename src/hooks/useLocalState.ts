@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 /**
  * useLocalState is a small custom React hook that synchronizes a piece of state
@@ -8,9 +8,12 @@ import { useState, useEffect } from 'react';
  * the new value is serialized and saved. On initial load it attempts to
  * restore any previously saved value.
  */
-export function useLocalState<T>(key: string, defaultValue: T): [T, (value: T | ((val: T) => T)) => void] {
+export function useLocalState<T>(
+  key: string,
+  defaultValue: T,
+): [T, (value: T | ((val: T) => T)) => void] {
   const [value, setValue] = useState<T>(() => {
-    if (typeof window === 'undefined') return defaultValue;
+    if (typeof window === "undefined") return defaultValue;
     try {
       const stored = window.localStorage.getItem(key);
       return stored ? (JSON.parse(stored) as T) : defaultValue;
@@ -20,7 +23,7 @@ export function useLocalState<T>(key: string, defaultValue: T): [T, (value: T | 
   });
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined") return;
     try {
       window.localStorage.setItem(key, JSON.stringify(value));
     } catch {

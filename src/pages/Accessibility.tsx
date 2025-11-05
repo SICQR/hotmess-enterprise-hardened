@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Accessibility page communicates HOTMESS’ commitment to inclusive

@@ -3,7 +3,7 @@
   "generated": "2024",
   "brand": "HOTMESS Enterprise",
   "tagline": "Always too much, yet never enough.",
-  
+
   "icons": [
     {
       "name": "favicon",
@@ -48,7 +48,7 @@
       "purpose": "Single-color wordmark for print or inverted UI"
     }
   ],
-  
+
   "og_images": [
     {
       "name": "og-default",
@@ -79,7 +79,7 @@
       "purpose": "Earn page OG image with leaderboard mockup"
     }
   ],
-  
+
   "gradients": [
     {
       "name": "gradient-hotmess",
@@ -110,7 +110,13 @@
       "class": ".gradient-chrome",
       "type": "linear",
       "direction": "135deg",
-      "colors": ["hsl(0, 0%, 85%)", "hsl(0, 0%, 65%)", "hsl(0, 0%, 45%)", "hsl(0, 0%, 65%)", "hsl(0, 0%, 85%)"],
+      "colors": [
+        "hsl(0, 0%, 85%)",
+        "hsl(0, 0%, 65%)",
+        "hsl(0, 0%, 45%)",
+        "hsl(0, 0%, 65%)",
+        "hsl(0, 0%, 85%)"
+      ],
       "purpose": "Metallic UI elements, luxury accents"
     },
     {
@@ -122,7 +128,7 @@
       "purpose": "Subtle light backgrounds"
     }
   ],
-  
+
   "patterns": [
     {
       "name": "brutalist-grid",
@@ -146,7 +152,7 @@
       "purpose": "Subtle background pattern"
     }
   ],
-  
+
   "colors": {
     "primary": {
       "ink": "0 0% 5%",
@@ -164,7 +170,7 @@
       "danger": "0 75% 45%"
     }
   },
-  
+
   "fonts": [
     {
       "name": "Outfit",
@@ -188,7 +194,7 @@
       "fallback": "Outfit, Helvetica Neue, sans-serif"
     }
   ],
-  
+
   "animations": [
     {
       "name": "tear",
@@ -263,7 +269,7 @@
       "purpose": "Audio-reactive elements"
     }
   ],
-  
+
   "components": [
     {
       "name": "btn-brutalist",
@@ -314,7 +320,7 @@
       "purpose": "Vertical section dividers"
     }
   ],
-  
+
   "typography": [
     {
       "class": ".h1",
@@ -380,7 +386,7 @@
       "purpose": "Fine print"
     }
   ],
-  
+
   "accessibility": {
     "contrast_ratios": {
       "ink_on_paper": "19.6:1 (AAA)",
@@ -392,15 +398,9 @@
     "reduced_motion": "All animations respect prefers-reduced-motion",
     "screen_reader": "All decorative SVGs include title and desc tags"
   },
-  
+
   "files": {
-    "styles": [
-      "/src/styles/branding.css",
-      "/src/styles/animations.css"
-    ],
-    "documentation": [
-      "/docs/BRAND_GUIDE.md",
-      "/docs/ASSET_MANIFEST.json"
-    ]
+    "styles": ["/src/styles/branding.css", "/src/styles/animations.css"],
+    "documentation": ["/docs/BRAND_GUIDE.md", "/docs/ASSET_MANIFEST.json"]
   }
 }

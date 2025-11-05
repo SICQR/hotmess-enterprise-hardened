@@ -9,12 +9,15 @@ This document outlines all security and accessibility improvements implemented i
 ## 🔒 Security Enhancements
 
 ### 1. Content Security Policy (CSP)
+
 **File:** `index.html`
 
 Added comprehensive Content Security Policy to prevent XSS attacks and unauthorized resource loading:
 
 ```html
-<meta http-equiv="Content-Security-Policy" content="
+<meta
+  http-equiv="Content-Security-Policy"
+  content="
   default-src 'self';
   script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com;
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
@@ -22,16 +25,19 @@ Added comprehensive Content Security Policy to prevent XSS attacks and unauthori
   img-src 'self' data: https: blob:;
   connect-src 'self' https://api.open-meteo.com https://nominatim.openstreetmap.org https://*.supabase.co https://hook.make.com;
   media-src 'self' https://stream.hotmess.live https://*.hotmess.live;
-">
+"
+/>
 ```
 
 **What it protects against:**
+
 - Cross-Site Scripting (XSS) attacks
 - Unauthorized external script loading
 - Data exfiltration to untrusted domains
 - Clickjacking attacks
 
 ### 2. Rate Limiting System
+
 **File:** `src/lib/rate-limiter.ts`
 
 Implemented client-side rate limiting to prevent abuse:
@@ -40,27 +46,31 @@ Implemented client-side rate limiting to prevent abuse:
 export function checkRateLimit(
   key: string,
   maxRequests: number,
-  windowMs: number
-): boolean
+  windowMs: number,
+): boolean;
 ```
 
 **Features:**
+
 - Configurable request limits per time window
 - Per-feature rate limiting (webhooks, forms, API calls)
 - Memory-based tracking with automatic cleanup
 - Rate limit status monitoring
 
 **Applied to:**
+
 - Care check-in submissions (5 per minute)
 - Webhook sending (prevents DoS)
 - Form submissions across all pages
 
 ### 3. Input Validation & Sanitization
+
 **File:** `src/lib/validation.ts`
 
 Comprehensive input validation using Zod schemas:
 
 **Schemas:**
+
 - `careCheckinSchema` - Mood ratings and messages
 - `affiliateLinkSchema` - Shortlink parameters
 - `conciergeMessageSchema` - Chat messages
@@ -68,38 +78,43 @@ Comprehensive input validation using Zod schemas:
 - `webhookPayloadSchema` - Webhook data validation
 
 **Helper Functions:**
+
 - `sanitizeInput()` - Removes XSS vectors, limits length
 - `isValidUrl()` - Validates URLs before redirects
 - `isValidEmail()` - Email format validation
 
 **Example Usage:**
+
 ```typescript
 const validation = careCheckinSchema.safeParse({
   mood: mood[0],
-  message: message || undefined
-})
+  message: message || undefined,
+});
 
 if (!validation.success) {
-  toast.error('Invalid input. Please check your entries.')
-  return
+  toast.error("Invalid input. Please check your entries.");
+  return;
 }
 ```
 
 ### 4. Security Best Practices Implemented
 
 #### Input Sanitization
+
 - All user inputs sanitized before storage
 - HTML/script tags stripped
 - Maximum length enforcement (500-1000 chars)
 - URL validation before redirects
 
 #### Error Handling
+
 - No sensitive data in error messages
 - Generic error messages to users
 - Detailed errors only in console (dev mode)
 - No stack traces exposed to frontend
 
 #### Data Validation
+
 - Schema validation on all forms
 - Type safety with TypeScript
 - Runtime validation with Zod
@@ -112,12 +127,14 @@ if (!validation.success) {
 ### 1. ARIA Labels & Semantic HTML
 
 **Components Updated:**
+
 - `AgeGate.tsx` - Dialog roles and labels
 - `RadioPlayer.tsx` - Player controls and status
 - `ConciergeWidget.tsx` - Chat interface
 - `CarePage.tsx` - Form controls and alerts
 
 **ARIA Attributes Added:**
+
 - `aria-label` - Descriptive labels for buttons and controls
 - `aria-labelledby` / `aria-describedby` - Dialog relationships
 - `aria-live="polite"` - Dynamic content announcements
@@ -133,20 +150,22 @@ if (!validation.success) {
 
 Global keyboard shortcuts for navigation:
 
-| Shortcut | Action |
-|----------|--------|
+| Shortcut       | Action            |
+| -------------- | ----------------- |
 | `Cmd/Ctrl + R` | Navigate to Radio |
-| `Cmd/Ctrl + S` | Navigate to Shop |
-| `Cmd/Ctrl + C` | Navigate to Care |
-| `Cmd/Ctrl + E` | Navigate to Earn |
-| `Cmd/Ctrl + H` | Navigate to Home |
+| `Cmd/Ctrl + S` | Navigate to Shop  |
+| `Cmd/Ctrl + C` | Navigate to Care  |
+| `Cmd/Ctrl + E` | Navigate to Earn  |
+| `Cmd/Ctrl + H` | Navigate to Home  |
 
 **Implementation:**
+
 ```typescript
-export function useGlobalShortcuts(navigate: (route: string) => void)
+export function useGlobalShortcuts(navigate: (route: string) => void);
 ```
 
 **Features:**
+
 - Cross-platform support (Cmd on Mac, Ctrl on Windows/Linux)
 - Prevents default browser actions
 - Only active when appropriate
@@ -168,6 +187,7 @@ Added skip link for keyboard users:
 ```
 
 **Benefits:**
+
 - Screen reader users can bypass navigation
 - Keyboard users save keystrokes
 - Only visible when focused
@@ -176,6 +196,7 @@ Added skip link for keyboard users:
 ### 4. Form Accessibility
 
 **Care Page Improvements:**
+
 - Associated labels with inputs using `htmlFor` / `id`
 - Added `aria-label` to all form controls
 - Character counter for textarea (500 chars max)
@@ -183,12 +204,14 @@ Added skip link for keyboard users:
 - Crisis resources as `role="alert"`
 
 **Concierge Widget Improvements:**
+
 - Chat messages as `role="log"` with `aria-live="polite"`
 - Message input with proper labeling
 - Send button with descriptive `aria-label`
 - Quick action buttons in labeled group
 
 **Radio Player Improvements:**
+
 - Play/pause with `aria-pressed` state
 - Volume slider with `aria-label`
 - Connection status announced to screen readers
@@ -197,12 +220,14 @@ Added skip link for keyboard users:
 ### 5. Focus Management
 
 **Focus Indicators:**
+
 - Visible focus rings on all interactive elements
 - Skip link visible on focus
 - Custom focus styles using `outline-ring/50`
 - Tab order follows visual flow
 
 **Keyboard Traps Avoided:**
+
 - Dialogs can be closed with Escape
 - No infinite tab loops
 - Focus returns to trigger element on close
@@ -214,24 +239,28 @@ Added skip link for keyboard users:
 ### WCAG 2.1 Level AA Compliance
 
 ✅ **Perceivable**
+
 - All images have alt text
 - Color contrast ratios meet AA standards (4.5:1+)
 - No information conveyed by color alone
 - Text can be resized up to 200%
 
 ✅ **Operable**
+
 - All functionality available via keyboard
 - No keyboard traps
 - Skip navigation available
 - Sufficient time for all actions
 
 ✅ **Understandable**
+
 - Clear, consistent navigation
 - Form labels and instructions
 - Error messages are descriptive
 - Predictable behavior
 
 ✅ **Robust**
+
 - Valid HTML semantics
 - ARIA used correctly
 - Compatible with assistive technologies
@@ -244,12 +273,14 @@ Added skip link for keyboard users:
 ### Security Testing
 
 **Manual Tests:**
+
 1. Try submitting forms rapidly (should be rate-limited)
 2. Attempt XSS via form inputs (should be sanitized)
 3. Check CSP in browser DevTools (no violations)
 4. Verify error messages don't leak sensitive data
 
 **Automated Tests:**
+
 ```bash
 # Run security audit
 npm audit
@@ -264,12 +295,14 @@ npm audit fix
 ### Accessibility Testing
 
 **Manual Tests:**
+
 1. Navigate entire site using only keyboard (Tab, Shift+Tab, Enter, Escape)
 2. Test with screen reader (NVDA, JAWS, VoiceOver)
 3. Zoom to 200% and verify layout
 4. Test skip link functionality
 
 **Automated Tests:**
+
 ```bash
 # Install axe-core for accessibility testing
 npm install -D @axe-core/react
@@ -281,6 +314,7 @@ npm install -D @axe-core/react
 ```
 
 **Screen Reader Testing:**
+
 - **macOS:** VoiceOver (Cmd+F5)
 - **Windows:** NVDA (free) or JAWS
 - **Browser:** ChromeVox extension
@@ -322,11 +356,13 @@ npm install -D @axe-core/react
 ## 📝 Known Limitations
 
 ### Security
+
 1. **Client-side rate limiting** - Can be bypassed by clearing browser storage. Server-side rate limiting recommended for production.
 2. **CSP unsafe-inline** - Required for Vite dev mode and some runtime features. Should be tightened in production.
 3. **No CSRF protection** - Add CSRF tokens when real backend is connected.
 
 ### Accessibility
+
 1. **Radio stream interruptions** - Screen readers may not announce all buffer states
 2. **Third-party integrations** - Uber/DoorDash embeds may not be fully accessible
 3. **Complex animations** - No prefers-reduced-motion support yet (future enhancement)
@@ -336,12 +372,14 @@ npm install -D @axe-core/react
 ## 🚀 Next Steps
 
 ### Immediate (Sprint 3)
+
 1. Add server-side rate limiting via Supabase edge functions
 2. Implement CSRF protection for authenticated endpoints
 3. Add `prefers-reduced-motion` media query support
 4. Write automated accessibility tests
 
 ### Future Enhancements
+
 1. Add Content Security Policy reporting
 2. Implement security headers (X-Frame-Options, etc.)
 3. Add input fuzzing tests

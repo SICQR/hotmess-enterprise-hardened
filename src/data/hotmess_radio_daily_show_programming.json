@@ -15,14 +15,20 @@
     },
     "show_style": "High-energy club talk show. Messy, provocative and cheeky. Safe space for late risers and early freaks.",
     "daily_segments": [
-      {"time": "09:00", "segment": "Intro stinger + Welcome from Maxx"},
-      {"time": "09:10", "segment": "HOTMESS Weather for Nobody (AI VO)"},
-      {"time": "09:20", "segment": "Club gossip round-up (scripted or AI convo)"},
-      {"time": "09:45", "segment": "Track block: euphoric queer bangers"},
-      {"time": "10:05", "segment": "Voice Note Roulette – listener submission"},
-      {"time": "10:30", "segment": "Maxx Memo of the Day"},
-      {"time": "10:45", "segment": "Giveaway/scan game segment"},
-      {"time": "10:55", "segment": "Outro sting + weekend promo"}
+      { "time": "09:00", "segment": "Intro stinger + Welcome from Maxx" },
+      { "time": "09:10", "segment": "HOTMESS Weather for Nobody (AI VO)" },
+      {
+        "time": "09:20",
+        "segment": "Club gossip round-up (scripted or AI convo)"
+      },
+      { "time": "09:45", "segment": "Track block: euphoric queer bangers" },
+      {
+        "time": "10:05",
+        "segment": "Voice Note Roulette – listener submission"
+      },
+      { "time": "10:30", "segment": "Maxx Memo of the Day" },
+      { "time": "10:45", "segment": "Giveaway/scan game segment" },
+      { "time": "10:55", "segment": "Outro sting + weekend promo" }
     ]
   },
   "Dial-a-Daddy": {
@@ -38,11 +44,14 @@
       "15:50": "Dirty electro ballads and cheeky afternoon throb beats"
     },
     "daily_segments": [
-      {"time": "15:00", "segment": "Intro sting + Bruno sets the tone"},
-      {"time": "15:10", "segment": "Voice from the Void – AI reads dirty problem"},
-      {"time": "15:25", "segment": "Daddy Says – Advice drop"},
-      {"time": "15:35", "segment": "Giveaway + call-in reaction"},
-      {"time": "15:50", "segment": "One final messy track before outro"}
+      { "time": "15:00", "segment": "Intro sting + Bruno sets the tone" },
+      {
+        "time": "15:10",
+        "segment": "Voice from the Void – AI reads dirty problem"
+      },
+      { "time": "15:25", "segment": "Daddy Says – Advice drop" },
+      { "time": "15:35", "segment": "Giveaway + call-in reaction" },
+      { "time": "15:50", "segment": "One final messy track before outro" }
     ]
   },
   "Hand-in-Hand": {
@@ -60,13 +69,16 @@
     },
     "show_style": "Emotional and narrative core of the HOTMESS brand. A full-length Sunday show of music, conversation and community call-ins. Sex-positive and stigma-breaking. Safe but provocative.",
     "daily_segments": [
-      {"time": "14:00", "segment": "Check-in Trigger + intro voice note"},
-      {"time": "14:15", "segment": "Call-in #1 + curated track response"},
-      {"time": "14:45", "segment": "Product Talk – HNHMESS spotlight"},
-      {"time": "15:00", "segment": "Downtempo ambient segment"},
-      {"time": "16:00", "segment": "Call-in #2 – Support confession with overlay"},
-      {"time": "17:00", "segment": "Healing trance + outro story reflection"},
-      {"time": "17:50", "segment": "Closing message + branded outro sting"}
+      { "time": "14:00", "segment": "Check-in Trigger + intro voice note" },
+      { "time": "14:15", "segment": "Call-in #1 + curated track response" },
+      { "time": "14:45", "segment": "Product Talk – HNHMESS spotlight" },
+      { "time": "15:00", "segment": "Downtempo ambient segment" },
+      {
+        "time": "16:00",
+        "segment": "Call-in #2 – Support confession with overlay"
+      },
+      { "time": "17:00", "segment": "Healing trance + outro story reflection" },
+      { "time": "17:50", "segment": "Closing message + branded outro sting" }
     ]
   },
   "Drive Time Mess": {
@@ -82,12 +94,15 @@
       "18:00": "Weekend bangers and emotional thumpers"
     },
     "daily_segments": [
-      {"time": "17:00", "segment": "Welcome from Philip + intro sting"},
-      {"time": "17:10", "segment": "Roundtable mess topic of the day"},
-      {"time": "17:30", "segment": "Product Spotlight"},
-      {"time": "17:50", "segment": "Giveaway draw + shoutout"},
-      {"time": "18:20", "segment": "Telegram poll highlight + listener story"},
-      {"time": "18:55", "segment": "DJ teaser and outro sting"}
+      { "time": "17:00", "segment": "Welcome from Philip + intro sting" },
+      { "time": "17:10", "segment": "Roundtable mess topic of the day" },
+      { "time": "17:30", "segment": "Product Spotlight" },
+      { "time": "17:50", "segment": "Giveaway draw + shoutout" },
+      {
+        "time": "18:20",
+        "segment": "Telegram poll highlight + listener story"
+      },
+      { "time": "18:55", "segment": "DJ teaser and outro sting" }
     ]
   },
   "Guest DJ Takeovers": {
@@ -95,10 +110,16 @@
     "time": "7PM–11PM",
     "rotation": ["Paul King", "Nick Denton", "Tony English", "John Henning"],
     "format": [
-      {"time": "19:00", "segment": "Custom DJ Intro + branded VO (submitted or AI-enhanced)"},
-      {"time": "20:00", "segment": "Radio Brain sting or DJ callout"},
-      {"time": "Each Hour", "segment": "No interruptions. Just non-stop bangers. No Kylie. No camp."},
-      {"time": "23:00", "segment": "HOTMESS sting fadeout or DJ custom outro"}
+      {
+        "time": "19:00",
+        "segment": "Custom DJ Intro + branded VO (submitted or AI-enhanced)"
+      },
+      { "time": "20:00", "segment": "Radio Brain sting or DJ callout" },
+      {
+        "time": "Each Hour",
+        "segment": "No interruptions. Just non-stop bangers. No Kylie. No camp."
+      },
+      { "time": "23:00", "segment": "HOTMESS sting fadeout or DJ custom outro" }
     ],
     "music_triggers": {
       "19:00–23:00": "Non-stop hard house, techno, filthy club, queer rave energy",

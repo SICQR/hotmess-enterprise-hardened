@@ -32,7 +32,7 @@ function checkFiles(): { status: ServiceStatus; message: string } {
   ];
 
   const missing = requiredFiles.filter(
-    (file) => !fs.existsSync(path.join(ROOT_DIR, file))
+    (file) => !fs.existsSync(path.join(ROOT_DIR, file)),
   );
 
   if (missing.length === 0) {
@@ -62,7 +62,7 @@ function checkDependencies(): { status: ServiceStatus; message: string } {
 
   const essentialDeps = ["react", "react-dom", "vite"];
   const missing = essentialDeps.filter(
-    (dep) => !fs.existsSync(path.join(nmPath, dep))
+    (dep) => !fs.existsSync(path.join(nmPath, dep)),
   );
 
   if (missing.length === 0) {
@@ -125,9 +125,7 @@ function getOverallStatus(checks: HealthReport["checks"]): ServiceStatus {
   return "degraded";
 }
 
-function generateRecommendations(
-  checks: HealthReport["checks"]
-): string[] {
+function generateRecommendations(checks: HealthReport["checks"]): string[] {
   const recommendations: string[] = [];
 
   if (checks.files.status === "down") {
@@ -207,7 +205,7 @@ function displayReport(report: HealthReport) {
   const reset = "\x1b[0m";
 
   console.log(
-    `${statusColor[report.status]}${statusIcon[report.status]} Overall Status: ${report.status.toUpperCase()}${reset}\n`
+    `${statusColor[report.status]}${statusIcon[report.status]} Overall Status: ${report.status.toUpperCase()}${reset}\n`,
   );
 
   console.log(`🕒 Timestamp: ${report.timestamp}`);
@@ -220,7 +218,7 @@ function displayReport(report: HealthReport) {
     const icon = statusIcon[check.status];
     const color = statusColor[check.status];
     console.log(
-      `${color}${icon}${reset} ${name.charAt(0).toUpperCase() + name.slice(1)}: ${check.message}`
+      `${color}${icon}${reset} ${name.charAt(0).toUpperCase() + name.slice(1)}: ${check.message}`,
     );
   });
 
@@ -249,7 +247,8 @@ try {
     displayReport(report);
   }
 
-  const exitCode = report.status === "healthy" ? 0 : report.status === "degraded" ? 0 : 1;
+  const exitCode =
+    report.status === "healthy" ? 0 : report.status === "degraded" ? 0 : 1;
   process.exit(exitCode);
 } catch (error) {
   console.error("\n❌ Health check failed:", error);

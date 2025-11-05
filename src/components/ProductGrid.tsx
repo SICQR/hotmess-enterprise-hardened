@@ -1,12 +1,12 @@
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { ShoppingBag } from '@phosphor-icons/react'
-import { type Product } from '@/lib/shopify'
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ShoppingBag } from "@phosphor-icons/react";
+import { type Product } from "@/lib/shopify";
 
 interface ProductGridProps {
-  products: Product[]
-  onProductClick?: (product: Product) => void
+  products: Product[];
+  onProductClick?: (product: Product) => void;
 }
 
 export function ProductGrid({ products, onProductClick }: ProductGridProps) {
@@ -31,7 +31,10 @@ export function ProductGrid({ products, onProductClick }: ProductGridProps) {
                 {product.title}
               </h3>
               {!product.available && (
-                <Badge variant="outline" className="border-muted-foreground text-xs">
+                <Badge
+                  variant="outline"
+                  className="border-muted-foreground text-xs"
+                >
                   SOLD OUT
                 </Badge>
               )}
@@ -61,5 +64,5 @@ export function ProductGrid({ products, onProductClick }: ProductGridProps) {
         </Card>
       ))}
     </div>
-  )
+  );
 }

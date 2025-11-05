@@ -5,64 +5,64 @@
  */
 
 export interface DailyShow {
-  time: string
-  show: string
+  time: string;
+  show: string;
 }
 
 export interface DaySchedule {
-  day: string
-  lineup: DailyShow[]
+  day: string;
+  lineup: DailyShow[];
 }
 
 export const radioDailySchedule: DaySchedule[] = [
   {
-    day: 'Monday',
+    day: "Monday",
     lineup: [
-      { time: '08:00', show: 'Wake the Mess' },
-      { time: '12:00', show: 'Dial‑A‑Daddy' },
-      { time: '18:00', show: 'Wake the Mess (Reprise)' },
+      { time: "08:00", show: "Wake the Mess" },
+      { time: "12:00", show: "Dial‑A‑Daddy" },
+      { time: "18:00", show: "Wake the Mess (Reprise)" },
     ],
   },
   {
-    day: 'Tuesday',
+    day: "Tuesday",
     lineup: [
-      { time: '08:00', show: 'Wake the Mess' },
-      { time: '20:00', show: 'Dial‑A‑Daddy' },
+      { time: "08:00", show: "Wake the Mess" },
+      { time: "20:00", show: "Dial‑A‑Daddy" },
     ],
   },
   {
-    day: 'Wednesday',
+    day: "Wednesday",
     lineup: [
-      { time: '08:00', show: 'Wake the Mess' },
-      { time: '15:00', show: 'Dial‑A‑Daddy' },
+      { time: "08:00", show: "Wake the Mess" },
+      { time: "15:00", show: "Dial‑A‑Daddy" },
     ],
   },
   {
-    day: 'Thursday',
+    day: "Thursday",
     lineup: [
-      { time: '08:00', show: 'Wake the Mess' },
-      { time: '19:00', show: 'Dial‑A‑Daddy' },
+      { time: "08:00", show: "Wake the Mess" },
+      { time: "19:00", show: "Dial‑A‑Daddy" },
     ],
   },
   {
-    day: 'Friday',
+    day: "Friday",
     lineup: [
-      { time: '08:00', show: 'Wake the Mess' },
-      { time: '22:00', show: 'Dial‑A‑Daddy' },
+      { time: "08:00", show: "Wake the Mess" },
+      { time: "22:00", show: "Dial‑A‑Daddy" },
     ],
   },
   {
-    day: 'Saturday',
+    day: "Saturday",
     lineup: [
-      { time: '10:00', show: 'Wake the Mess (Weekend Edition)' },
-      { time: '20:00', show: 'Live DJ Set' },
+      { time: "10:00", show: "Wake the Mess (Weekend Edition)" },
+      { time: "20:00", show: "Live DJ Set" },
     ],
   },
   {
-    day: 'Sunday',
+    day: "Sunday",
     lineup: [
-      { time: '10:00', show: 'Hand N Hand' },
-      { time: '17:00', show: 'Chillout Mix' },
+      { time: "10:00", show: "Hand N Hand" },
+      { time: "17:00", show: "Chillout Mix" },
     ],
   },
-]
+];

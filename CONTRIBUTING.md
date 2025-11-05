@@ -101,6 +101,7 @@ export function NewPage({ onNavigate }: NewPageProps) {
 ```
 
 **Update App.tsx:**
+
 ```typescript
 import { NewPage } from '@/pages/NewPage'
 
@@ -113,11 +114,12 @@ case 'new':
 ```
 
 **Update verify_build.ts:**
+
 ```typescript
 const requiredPages = [
   "HomePage.tsx",
   "RadioPage.tsx",
-  "NewPage.tsx",  // Add here
+  "NewPage.tsx", // Add here
   // ...
 ];
 ```
@@ -153,16 +155,18 @@ export function MyComponent({ title, onAction }: MyComponentProps) {
 ### 3. Add a New Route
 
 **Simple Navigation (current approach):**
+
 ```typescript
 // In App.tsx
-const [route, setRoute] = useState<Route>('home')
+const [route, setRoute] = useState<Route>("home");
 
 function navigate(newRoute: string) {
-  setRoute(newRoute as Route)
+  setRoute(newRoute as Route);
 }
 ```
 
 **Using it in components:**
+
 ```typescript
 <Button onClick={() => onNavigate('new-page')}>
   Go to New Page
@@ -223,11 +227,11 @@ import { Input } from '@/components/ui/input'
 **Use Phosphor Icons:**
 
 ```tsx
-import { Play, Pause, Heart } from '@phosphor-icons/react'
+import { Play, Pause, Heart } from "@phosphor-icons/react";
 
 <Button>
   <Play /> Play Radio
-</Button>
+</Button>;
 ```
 
 ### Animation
@@ -235,7 +239,7 @@ import { Play, Pause, Heart } from '@phosphor-icons/react'
 **Use Framer Motion sparingly:**
 
 ```tsx
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 <motion.div
   initial={{ opacity: 0 }}
@@ -243,7 +247,7 @@ import { motion } from 'framer-motion'
   transition={{ duration: 0.8 }}
 >
   Content
-</motion.div>
+</motion.div>;
 ```
 
 ---
@@ -265,11 +269,15 @@ npm run db:mock     # Seed mock data
 
 ```typescript
 // scripts/verify_build.ts
-check("My new check", () => {
-  // Your validation logic
-  const isValid = someCondition();
-  return isValid || "Error message";
-}, false); // false = non-critical
+check(
+  "My new check",
+  () => {
+    // Your validation logic
+    const isValid = someCondition();
+    return isValid || "Error message";
+  },
+  false,
+); // false = non-critical
 ```
 
 **Add new mock data:**
@@ -338,13 +346,13 @@ type Props = {
 };
 
 // ❌ Avoid - Any types
-function doSomething(data: any) { }
+function doSomething(data: any) {}
 
 // ✅ Good - Destructured props
-function Component({ title, count }: Props) { }
+function Component({ title, count }: Props) {}
 
 // ❌ Avoid - Props object
-function Component(props: Props) { }
+function Component(props: Props) {}
 ```
 
 ### React
@@ -352,17 +360,17 @@ function Component(props: Props) { }
 ```tsx
 // ✅ Good - Functional components
 export function MyComponent({ title }: Props) {
-  return <div>{title}</div>
+  return <div>{title}</div>;
 }
 
 // ❌ Avoid - Class components
-export class MyComponent extends React.Component { }
+export class MyComponent extends React.Component {}
 
 // ✅ Good - Named exports
-export function MyComponent() { }
+export function MyComponent() {}
 
 // ❌ Avoid - Default exports (except App.tsx)
-export default function MyComponent() { }
+export default function MyComponent() {}
 ```
 
 ### CSS/Tailwind
@@ -422,22 +430,26 @@ chore: upgrade React to v19
 ### Pull Request Process
 
 1. **Create feature branch**
+
    ```bash
    git checkout -b feat/amazing-feature
    ```
 
 2. **Make changes and commit**
+
    ```bash
    git add .
    git commit -m "feat: add amazing feature"
    ```
 
 3. **Run verification**
+
    ```bash
    npm run verify
    ```
 
 4. **Push to GitHub**
+
    ```bash
    git push origin feat/amazing-feature
    ```
@@ -452,24 +464,29 @@ chore: upgrade React to v19
 
 ```markdown
 ## Description
+
 Brief description of changes
 
 ## Type of Change
+
 - [ ] Bug fix
 - [ ] New feature
 - [ ] Breaking change
 - [ ] Documentation update
 
 ## Testing
+
 - [ ] Verified build integrity (`npm run verify`)
 - [ ] Tested locally
 - [ ] Mobile responsive
 - [ ] No console errors
 
 ## Screenshots
+
 (if applicable)
 
 ## Checklist
+
 - [ ] Code follows style guidelines
 - [ ] Self-reviewed code
 - [ ] Updated documentation
@@ -483,23 +500,27 @@ Brief description of changes
 ### Common Issues
 
 **"Module not found" errors:**
+
 ```bash
 npm install
 npm run verify
 ```
 
 **TypeScript errors:**
+
 ```bash
 npx tsc --noEmit
 ```
 
 **Build fails:**
+
 ```bash
 npm run verify
 npm run build
 ```
 
 **Port already in use:**
+
 ```bash
 npm run kill
 # or
@@ -517,6 +538,7 @@ lsof -ti:5173 | xargs kill -9
 ## 📚 Resources
 
 ### Documentation
+
 - [React 19 Docs](https://react.dev)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs)
 - [Tailwind CSS](https://tailwindcss.com)
@@ -524,6 +546,7 @@ lsof -ti:5173 | xargs kill -9
 - [Framer Motion](https://www.framer.com/motion)
 
 ### Internal Docs
+
 - `README.md` - Project overview
 - `PRD.md` - Product requirements
 - `DEPLOYMENT.md` - Deployment guide
@@ -536,6 +559,7 @@ lsof -ti:5173 | xargs kill -9
 Looking for something to work on?
 
 ### Features
+
 - [ ] User authentication with Supabase
 - [ ] Real-time radio chat
 - [ ] Product wishlist
@@ -544,6 +568,7 @@ Looking for something to work on?
 - [ ] Offline mode improvements
 
 ### Improvements
+
 - [ ] Better mobile navigation
 - [ ] Loading states for async actions
 - [ ] Error boundaries for components
@@ -552,6 +577,7 @@ Looking for something to work on?
 - [ ] Test coverage
 
 ### Documentation
+
 - [ ] Video tutorials
 - [ ] API documentation
 - [ ] Component storybook

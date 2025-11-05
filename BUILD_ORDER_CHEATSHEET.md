@@ -22,6 +22,7 @@
 ## ❌ COMMON MISTAKES
 
 ### Mistake 1: Database in CI
+
 ```bash
 # ❌ WRONG
 psql -f sql/001_schema.sql
@@ -31,6 +32,7 @@ npm run db:mock  # Validates, doesn't execute
 ```
 
 ### Mistake 2: Building Docker in CI
+
 ```bash
 # ❌ WRONG (too slow for CI)
 docker build -t hotmess-enterprise .
@@ -40,6 +42,7 @@ docker build --dry-run -t hotmess-enterprise .
 ```
 
 ### Mistake 3: Applying K8s in CI
+
 ```bash
 # ❌ WRONG (modifies cluster)
 kubectl apply -f k8s/deployment.yaml
@@ -49,6 +52,7 @@ kubectl apply --dry-run=client -f k8s/
 ```
 
 ### Mistake 4: Wrong Build Command
+
 ```bash
 # ❌ WRONG (Next.js)
 pnpm lint && pnpm type-check && pnpm build
@@ -58,6 +62,7 @@ npm run build
 ```
 
 ### Mistake 5: Missing Dependencies
+
 ```bash
 # ❌ WRONG (build before install)
 npm run build  # FAILS - no node_modules
@@ -72,6 +77,7 @@ npm run build  # Then build
 ## 🎯 WHY THIS ORDER?
 
 ### Principle 1: Fail Fast
+
 ```
 Cheap → Expensive
 
@@ -83,6 +89,7 @@ Cheap → Expensive
 ```
 
 ### Principle 2: Dependencies Flow Down
+
 ```
 Each step needs the one before it:
 
@@ -90,6 +97,7 @@ Checkout → Node → Packages → Config → Build → Deploy
 ```
 
 ### Principle 3: Validate ≠ Execute
+
 ```
 CI/CD SHOULD:
 ✅ Validate Dockerfile syntax
@@ -107,22 +115,26 @@ CI/CD SHOULD NOT:
 ## 📋 Quick Commands
 
 ### Full Production Build
+
 ```bash
 npm run build:production
 ```
 
 ### Quick Build (No Validation)
+
 ```bash
 npm run build
 ```
 
 ### Check Build Health
+
 ```bash
 npm run verify  # Before build
 npm run health  # After build
 ```
 
 ### Manual Deploy
+
 ```bash
 npm run deploy         # Auto-detect
 npm run deploy vercel  # Specific platform
@@ -133,24 +145,28 @@ npm run deploy vercel  # Specific platform
 ## 🐛 Troubleshooting
 
 ### Build fails at step 4?
+
 ```bash
 cp .env.example .env.local
 npm run setup:env
 ```
 
 ### Build fails at step 5?
+
 ```bash
 npm install
 npm run verify
 ```
 
 ### Build fails at step 7?
+
 ```bash
 npx tsc --noEmit  # Check TypeScript
 npm run build -- --debug
 ```
 
 ### Build fails at step 8?
+
 ```bash
 ls -la dist/  # Verify dist exists
 npm run health

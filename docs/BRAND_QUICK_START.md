@@ -183,13 +183,14 @@ Use HSL color variables in your custom styles:
 
 ```css
 .custom-element {
-  background: hsl(var(--ink));       /* Dark background */
-  color: hsl(var(--paper));          /* Light text */
+  background: hsl(var(--ink)); /* Dark background */
+  color: hsl(var(--paper)); /* Light text */
   border: 3px solid hsl(var(--accent)); /* Red accent */
 }
 ```
 
 Available colors:
+
 - `--ink` - Primary dark (5% lightness)
 - `--paper` - Primary light (98% lightness)
 - `--accent` - Power red (0° 85% 55%)
@@ -213,6 +214,7 @@ Follow the 40px grid system with 8px spacing increments:
 ```
 
 Spacing scale (use Tailwind classes):
+
 - `p-2` = 8px
 - `p-4` = 16px
 - `p-6` = 24px
@@ -262,14 +264,15 @@ For specific pages, dynamically change the OG image:
 ```jsx
 // In page component
 useEffect(() => {
-  const ogImage = document.querySelector('meta[property="og:image"]')
+  const ogImage = document.querySelector('meta[property="og:image"]');
   if (ogImage) {
-    ogImage.setAttribute('content', '/og/og-radio.jpg')
+    ogImage.setAttribute("content", "/og/og-radio.jpg");
   }
-}, [])
+}, []);
 ```
 
 Available OG images:
+
 - `/og/og-default.jpg` - General branding
 - `/og/og-radio.jpg` - Radio with waveform
 - `/og/og-shop.jpg` - Shop with product grid
@@ -309,22 +312,16 @@ export function Hero() {
   return (
     <div className="relative gradient-hotmess text-paper h-screen flex flex-col justify-center items-center motion-tear">
       <div className="pattern-brutalist-grid absolute inset-0 opacity-10" />
-      
-      <h1 className="h1 text-center tracking-tight relative z-10">
-        HOTMESS
-      </h1>
-      
+
+      <h1 className="h1 text-center tracking-tight relative z-10">HOTMESS</h1>
+
       <div className="divider-gold w-64 my-6" />
-      
-      <p className="text-gold label">
-        ALWAYS TOO MUCH, YET NEVER ENOUGH
-      </p>
-      
-      <button className="btn-brutalist mt-12 motion-pulse">
-        ENTER
-      </button>
+
+      <p className="text-gold label">ALWAYS TOO MUCH, YET NEVER ENOUGH</p>
+
+      <button className="btn-brutalist mt-12 motion-pulse">ENTER</button>
     </div>
-  )
+  );
 }
 ```
 
@@ -337,17 +334,21 @@ export function Hero() {
 ```jsx
 <article className="card-brutalist-hover">
   <div className="aspect-square bg-charcoal mb-4 relative overflow-hidden">
-    <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+    <img
+      src={product.image}
+      alt={product.name}
+      className="w-full h-full object-cover"
+    />
     {product.isNew && (
       <div className="absolute top-4 right-4 bg-gold text-ink px-3 py-1 label">
         NEW
       </div>
     )}
   </div>
-  
+
   <h4 className="h4 text-paper mb-2">{product.name}</h4>
   <p className="body-small text-metal mb-4">{product.description}</p>
-  
+
   <div className="flex justify-between items-center">
     <span className="text-gold h3">${product.price}</span>
     <button className="btn-ghost">VIEW</button>
@@ -372,9 +373,9 @@ export function Hero() {
     <div
       key={i}
       className="w-1 bg-accent motion-audio-pulse"
-      style={{ 
+      style={{
         height: `${Math.random() * 100}%`,
-        animationDelay: `${i * 0.05}s` 
+        animationDelay: `${i * 0.05}s`,
       }}
     />
   ))}

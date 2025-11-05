@@ -1,18 +1,18 @@
-import { Button } from '@/components/ui/button'
-import { ArrowLeft } from '@phosphor-icons/react'
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "@phosphor-icons/react";
 
 interface LegalPageProps {
-  type: 'privacy' | 'terms' | 'cookies' | 'accessibility'
-  onNavigate: (route: string) => void
+  type: "privacy" | "terms" | "cookies" | "accessibility";
+  onNavigate: (route: string) => void;
 }
 
 export function LegalPage({ type, onNavigate }: LegalPageProps) {
   const titles = {
-    privacy: 'Privacy Policy',
-    terms: 'Terms of Service',
-    cookies: 'Cookie Policy',
-    accessibility: 'Accessibility Statement'
-  }
+    privacy: "Privacy Policy",
+    terms: "Terms of Service",
+    cookies: "Cookie Policy",
+    accessibility: "Accessibility Statement",
+  };
 
   const content = {
     privacy: `
@@ -71,15 +71,15 @@ export function LegalPage({ type, onNavigate }: LegalPageProps) {
       
       <h2>4. Feedback</h2>
       <p>If you encounter accessibility barriers, please contact us for assistance.</p>
-    `
-  }
+    `,
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <nav className="border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center gap-4">
           <Button
-            onClick={() => onNavigate('home')}
+            onClick={() => onNavigate("home")}
             variant="ghost"
             size="icon"
           >
@@ -100,18 +100,21 @@ export function LegalPage({ type, onNavigate }: LegalPageProps) {
             dangerouslySetInnerHTML={{ __html: content[type] }}
           />
         </div>
-        
+
         <div className="mt-12 p-6 bg-card border-2 border-border">
           <h3 className="text-xl font-bold mb-4">Questions or Concerns?</h3>
           <p className="text-muted-foreground">
             If you have questions about this {titles[type].toLowerCase()},
-            please contact us at{' '}
-            <a href="mailto:legal@hotmess.live" className="text-accent hover:underline">
+            please contact us at{" "}
+            <a
+              href="mailto:legal@hotmess.live"
+              className="text-accent hover:underline"
+            >
               legal@hotmess.live
             </a>
           </p>
         </div>
       </div>
     </div>
-  )
+  );
 }

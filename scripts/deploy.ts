@@ -20,12 +20,16 @@ function step(message: string) {
   console.log(`\n🚀 ${message}`);
 }
 
-function execute(command: string, description: string, silent = false): boolean {
+function execute(
+  command: string,
+  description: string,
+  silent = false,
+): boolean {
   try {
     console.log(`   → ${description}`);
-    execSync(command, { 
-      stdio: silent ? "pipe" : "inherit", 
-      cwd: ROOT_DIR 
+    execSync(command, {
+      stdio: silent ? "pipe" : "inherit",
+      cwd: ROOT_DIR,
     });
     return true;
   } catch (error) {
@@ -45,69 +49,69 @@ function checkCommand(command: string): boolean {
 
 function deployVercel() {
   step("Deploying to Vercel");
-  
+
   if (!checkCommand("vercel")) {
     console.log("   ⚠ Vercel CLI not found. Installing...");
     execute("npm install -g vercel", "Installing Vercel CLI", true);
   }
-  
+
   console.log("   → Running production deployment");
   execute("vercel --prod", "Deploying to Vercel");
-  
+
   console.log("\n✅ Deployed to Vercel!");
   console.log("   Visit your deployment URL above");
 }
 
 function deployNetlify() {
   step("Deploying to Netlify");
-  
+
   if (!checkCommand("netlify")) {
     console.log("   ⚠ Netlify CLI not found. Installing...");
     execute("npm install -g netlify-cli", "Installing Netlify CLI", true);
   }
-  
+
   console.log("   → Running production deployment");
   execute("netlify deploy --prod", "Deploying to Netlify");
-  
+
   console.log("\n✅ Deployed to Netlify!");
 }
 
 function deployRailway() {
   step("Deploying to Railway");
-  
+
   if (!checkCommand("railway")) {
     console.log("   ⚠ Railway CLI not found. Installing...");
     execute("npm install -g @railway/cli", "Installing Railway CLI", true);
   }
-  
+
   console.log("   → Running production deployment");
   execute("railway up", "Deploying to Railway");
-  
+
   console.log("\n✅ Deployed to Railway!");
 }
 
 function deployDocker() {
   step("Building and running Docker container");
-  
+
   if (!checkCommand("docker")) {
     console.error("   ✗ Docker not found. Please install Docker first.");
     console.log("   Visit: https://docs.docker.com/get-docker/");
     process.exit(1);
   }
-  
+
   console.log("   → Building Docker image");
   execute("docker build -t hotmess-enterprise .", "Building image");
-  
+
   console.log("   → Stopping existing container (if any)");
   execute("docker stop hotmess || true", "Stopping old container", true);
   execute("docker rm hotmess || true", "Removing old container", true);
-  
+
   console.log("   → Starting new container");
   execute(
     "docker run -d --name hotmess -p 5173:5173 --env-file .env.local hotmess-enterprise",
-    "Starting container"
+    "Starting container",
   );
-  
+
   console.log("\n✅ Docker container running!");
   console.log("   → Local: http://localhost:5173");
   console.log("   → View logs: docker logs -f hotmess");
@@ -116,29 +120,32 @@ function deployDocker() {
 
 function deployKubernetes() {
   step("Deploying to Kubernetes");
-  
+
   if (!checkCommand("kubectl")) {
     console.error("   ✗ kubectl not found. Please install kubectl first.");
     console.log("   Visit: https://kubernetes.io/docs/tasks/tools/");
     process.exit(1);
   }
-  
+
   const k8sDir = path.join(ROOT_DIR, "k8s");
-  
+
   if (!fs.existsSync(k8sDir)) {
     console.error("   ✗ k8s/ directory not found");
     process.exit(1);
   }
-  
+
   console.log("   → Building Docker image");
   execute("docker build -t hotmess-enterprise:latest .", "Building image");
-  
+
   console.log("   → Applying Kubernetes manifests");
   execute(`kubectl apply -f ${k8sDir}/deployment.yaml`, "Applying deployment");
-  
+
   console.log("   → Checking deployment status");
-  execute("kubectl rollout status deployment/hotmess-enterprise", "Checking rollout");
-  
+  execute(
+    "kubectl rollout status deployment/hotmess-enterprise",
+    "Checking rollout",
+  );
+
   console.log("\n✅ Deployed to Kubernetes!");
   console.log("   → Check pods: kubectl get pods");
   console.log("   → View logs: kubectl logs -l app=hotmess");
@@ -147,18 +154,18 @@ function deployKubernetes() {
 
 function preDeploymentChecks() {
   step("Running pre-deployment checks");
-  
+
   console.log("   → Verifying build integrity");
   if (!execute("npm run verify", "Build verification", true)) {
     console.log("   ⚠ Verification warnings present (continuing)");
   }
-  
+
   console.log("   → Building for production");
   if (!execute("npm run build", "Production build")) {
     console.error("\n❌ Build failed. Fix errors before deploying.");
     process.exit(1);
   }
-  
+
   console.log("   ✓ Pre-deployment checks passed");
 }
 
@@ -188,27 +195,33 @@ For first-time setup:
 
 async function main() {
   banner();
-  
+
   const args = process.argv.slice(2);
-  
+
   if (args.length === 0 || args.includes("--help") || args.includes("-h")) {
     showHelp();
     process.exit(0);
   }
-  
+
   const platform = args[0].toLowerCase() as Platform;
-  
-  const validPlatforms: Platform[] = ["vercel", "netlify", "railway", "docker", "kubernetes"];
-  
+
+  const validPlatforms: Platform[] = [
+    "vercel",
+    "netlify",
+    "railway",
+    "docker",
+    "kubernetes",
+  ];
+
   if (!validPlatforms.includes(platform)) {
     console.error(`\n❌ Invalid platform: ${platform}`);
     console.log(`\nValid platforms: ${validPlatforms.join(", ")}`);
     showHelp();
     process.exit(1);
   }
-  
+
   preDeploymentChecks();
-  
+
   switch (platform) {
     case "vercel":
       deployVercel();
@@ -226,7 +239,7 @@ async function main() {
       deployKubernetes();
       break;
   }
-  
+
   console.log("\n🎉 Deployment complete!\n");
 }
 

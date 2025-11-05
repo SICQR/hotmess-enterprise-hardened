@@ -33,14 +33,14 @@ HOTMESS Enterprise is a **client-side only** React application built on the Spar
 
 ```typescript
 // ✅ CORRECT: Use Spark KV for persistent data
-import { useKV } from '@github/spark/hooks'
-const [favorites, setFavorites] = useKV('user-favorites', [])
+import { useKV } from "@github/spark/hooks";
+const [favorites, setFavorites] = useKV("user-favorites", []);
 
 // ✅ CORRECT: Use sessionStorage for temporary data
-sessionStorage.setItem('age-verified', 'true')
+sessionStorage.setItem("age-verified", "true");
 
 // ✅ CORRECT: Use React state for UI state
-const [isOpen, setIsOpen] = useState(false)
+const [isOpen, setIsOpen] = useState(false);
 
 // ❌ WRONG: No database access
 // await supabase.from('users').select()
@@ -63,27 +63,27 @@ All external services are mocked in `/src/lib/`:
 
 ### Working Features ✅
 
-| Feature | Implementation | Data Source |
-|---------|---------------|-------------|
-| Age Gate | SessionStorage | Browser |
-| Radio Player | HTML5 Audio | Mock stream URLs |
-| AI Concierge | Client-side logic | Pattern matching |
-| Product Grid | Static data | Mock products |
-| Weather Strip | Open-Meteo API | Real API ✓ |
-| Care Check-in | Spark KV | Persists locally |
-| Affiliate Links | HMAC generation | Browser Crypto API |
-| Keyboard Shortcuts | Event listeners | Browser |
+| Feature            | Implementation    | Data Source        |
+| ------------------ | ----------------- | ------------------ |
+| Age Gate           | SessionStorage    | Browser            |
+| Radio Player       | HTML5 Audio       | Mock stream URLs   |
+| AI Concierge       | Client-side logic | Pattern matching   |
+| Product Grid       | Static data       | Mock products      |
+| Weather Strip      | Open-Meteo API    | Real API ✓         |
+| Care Check-in      | Spark KV          | Persists locally   |
+| Affiliate Links    | HMAC generation   | Browser Crypto API |
+| Keyboard Shortcuts | Event listeners   | Browser            |
 
 ### Mock Features (Demonstration Only) ⚠️
 
-| Feature | Status | Notes |
-|---------|--------|-------|
-| Live Radio Stream | Mock URLs | Needs real stream endpoint |
-| Now Playing | Random mock data | Could integrate real API |
-| Product Database | Static array | No inventory updates |
+| Feature            | Status           | Notes                       |
+| ------------------ | ---------------- | --------------------------- |
+| Live Radio Stream  | Mock URLs        | Needs real stream endpoint  |
+| Now Playing        | Random mock data | Could integrate real API    |
+| Product Database   | Static array     | No inventory updates        |
 | Affiliate Tracking | Mock leaderboard | No real conversion tracking |
-| Webhook Sending | Console logs | No real HTTP requests |
-| Check-in Analytics | Local KV only | No backend aggregation |
+| Webhook Sending    | Console logs     | No real HTTP requests       |
+| Check-in Analytics | Local KV only    | No backend aggregation      |
 
 ## API Integration
 
@@ -122,13 +122,14 @@ This app uses **client-side routing** via React state (not React Router):
 
 ```typescript
 // App.tsx
-const [route, setRoute] = useState<Route>('home')
+const [route, setRoute] = useState<Route>("home");
 
 // Navigate by changing state
-onNavigate('radio')  // → setRoute('radio')
+onNavigate("radio"); // → setRoute('radio')
 ```
 
 Available routes:
+
 - `home` - Landing page
 - `radio` - Radio player
 - `shop` - Product grid
@@ -165,15 +166,15 @@ import { useKV } from '@github/spark/hooks'
 function MyFeature() {
   // Persistent data (survives refresh)
   const [savedData, setSavedData] = useKV('my-feature-data', [])
-  
+
   // UI state (resets on refresh)
   const [isLoading, setIsLoading] = useState(false)
-  
+
   const handleSave = () => {
     // Always use functional update with useKV
     setSavedData(current => [...current, newItem])
   }
-  
+
   return (...)
 }
 ```
@@ -187,7 +188,7 @@ function MyFeature() {
 ❌ **Payment processing** - No server-side payment API  
 ❌ **File uploads** - No file storage service  
 ❌ **Email sending** - No email service  
-❌ **Database queries** - No SQL/NoSQL database  
+❌ **Database queries** - No SQL/NoSQL database
 
 ### Can Do Instead
 
@@ -196,7 +197,7 @@ function MyFeature() {
 ✅ **Payment simulation** - Mock checkout flow  
 ✅ **Base64 data URLs** - Embed small images/files  
 ✅ **Console logging** - Track events client-side  
-✅ **Local data storage** - Spark KV for persistence  
+✅ **Local data storage** - Spark KV for persistence
 
 ## Development Workflow
 
@@ -225,10 +226,10 @@ npm run preview
 
 ```typescript
 // Test that data survives refresh
-const [data, setData] = useKV('test-key', { count: 0 })
+const [data, setData] = useKV("test-key", { count: 0 });
 
 // Increment and refresh page
-setData(current => ({ count: current.count + 1 }))
+setData((current) => ({ count: current.count + 1 }));
 
 // Data should persist after refresh ✓
 ```
@@ -247,8 +248,9 @@ Note: These webhooks won't actually fire from a Spark app - they're for document
 ## Deployment
 
 Deployment is handled automatically by the Spark runtime. You don't need:
+
 - Docker containers
-- Kubernetes manifests  
+- Kubernetes manifests
 - CI/CD pipelines
 - Environment setup
 
@@ -262,41 +264,45 @@ Just build with `npm run build` and the Spark runtime handles the rest.
 ✅ **Input sanitization** with Zod schemas  
 ✅ **Rate limiting** (in-memory)  
 ✅ **Content Security Policy** in index.html  
-✅ **XSS protection** via React's escaping  
+✅ **XSS protection** via React's escaping
 
 ### What We Don't Have
 
 ⚠️ **Server-side validation** - All validation is client-side  
 ⚠️ **Secret storage** - No backend to store secrets  
 ⚠️ **DDoS protection** - No server to protect  
-⚠️ **Session management** - No auth server  
+⚠️ **Session management** - No auth server
 
 ## Getting Help
 
 ### Common Issues
 
 **Issue**: "Data doesn't persist"
+
 - **Solution**: Use `useKV` instead of `useState` for persistent data
 
 **Issue**: "Webhook isn't sending"
+
 - **Solution**: Webhooks are mocked - check browser console for logs
 
 **Issue**: "Radio won't play"
+
 - **Solution**: Update `FALLBACK_STREAMS` in `/src/lib/radio.ts` with real stream URLs
 
 **Issue**: "Build fails"
+
 - **Solution**: Check TypeScript errors with `npm run build`
 
 ### Debugging
 
 ```typescript
 // Enable verbose logging
-console.log('[DEBUG] State:', state)
-console.log('[DEBUG] KV data:', await spark.kv.get('key'))
+console.log("[DEBUG] State:", state);
+console.log("[DEBUG] KV data:", await spark.kv.get("key"));
 
 // Check Spark KV contents
-const allKeys = await spark.kv.keys()
-console.log('[DEBUG] All KV keys:', allKeys)
+const allKeys = await spark.kv.keys();
+console.log("[DEBUG] All KV keys:", allKeys);
 ```
 
 ## Conclusion
@@ -304,6 +310,7 @@ console.log('[DEBUG] All KV keys:', allKeys)
 HOTMESS Enterprise is a **fully functional client-side application** that demonstrates complex UI/UX patterns using only browser-based technologies. While it includes references to backend services, these are all **mocked for demonstration** purposes.
 
 For production use with real data:
+
 1. Replace mock services with real APIs
 2. Implement proper backend infrastructure
 3. Add server-side validation and security

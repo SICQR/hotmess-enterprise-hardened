@@ -69,19 +69,19 @@ function generateMockData() {
       slug: "brutalist-babe",
       email: "babe@brutalism.net",
       tier: "basic",
-      commission_rate: 0.10,
+      commission_rate: 0.1,
       total_clicks: 892,
       total_conversions: 34,
-      total_earned: 1678.90,
+      total_earned: 1678.9,
       created_at: "2024-03-10T09:15:00Z",
     },
   ];
 
   const products = [
-    { id: "prod_001", name: "CHAOS TOTE", price: 89.00 },
-    { id: "prod_002", name: "BRUTALIST HOODIE", price: 145.00 },
-    { id: "prod_003", name: "ANXIETY ZINE", price: 34.00 },
-    { id: "prod_004", name: "HOTMESS VINYL", price: 56.00 },
+    { id: "prod_001", name: "CHAOS TOTE", price: 89.0 },
+    { id: "prod_002", name: "BRUTALIST HOODIE", price: 145.0 },
+    { id: "prod_003", name: "ANXIETY ZINE", price: 34.0 },
+    { id: "prod_004", name: "HOTMESS VINYL", price: 56.0 },
   ];
 
   const clicks: Click[] = [];
@@ -97,7 +97,9 @@ function generateMockData() {
         id: clickId,
         affiliate_id: affiliate.id,
         product_id: product.id,
-        clicked_at: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+        clicked_at: new Date(
+          Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000,
+        ).toISOString(),
         converted,
         ip_hash: `hash_${Math.random().toString(36).substring(7)}`,
         user_agent: "Mozilla/5.0 (compatible; HOTMESS/1.0)",
@@ -111,8 +113,12 @@ function generateMockData() {
           product_id: product.id,
           order_value: product.price,
           commission_earned: product.price * affiliate.commission_rate,
-          converted_at: new Date(Date.now() - Math.random() * 20 * 24 * 60 * 60 * 1000).toISOString(),
-          status: ["pending", "confirmed", "paid"][Math.floor(Math.random() * 3)] as any,
+          converted_at: new Date(
+            Date.now() - Math.random() * 20 * 24 * 60 * 60 * 1000,
+          ).toISOString(),
+          status: ["pending", "confirmed", "paid"][
+            Math.floor(Math.random() * 3)
+          ] as any,
         });
       }
     }
@@ -126,25 +132,31 @@ function generateMockData() {
 
   affiliates.forEach((aff) => {
     console.log(`\n  ${aff.name} (@${aff.slug})`);
-    console.log(`  Tier: ${aff.tier.toUpperCase()} | Commission: ${(aff.commission_rate * 100).toFixed(0)}%`);
-    console.log(`  Stats: ${aff.total_clicks} clicks → ${aff.total_conversions} conversions`);
+    console.log(
+      `  Tier: ${aff.tier.toUpperCase()} | Commission: ${(aff.commission_rate * 100).toFixed(0)}%`,
+    );
+    console.log(
+      `  Stats: ${aff.total_clicks} clicks → ${aff.total_conversions} conversions`,
+    );
     console.log(`  Earned: $${aff.total_earned.toFixed(2)}`);
   });
 
   console.log("\n✓ Mock database seeding complete!");
-  console.log("💾 Data stored in memory (using spark.kv for persistence in app)");
+  console.log(
+    "💾 Data stored in memory (using spark.kv for persistence in app)",
+  );
 
   return { affiliates, clicks, conversions, products };
 }
 
 try {
   const mockData = generateMockData();
-  
+
   console.log("\n🔗 Integration Notes:");
   console.log("   - Use spark.kv.set('affiliates', data) in your app");
   console.log("   - Dashboard components can query this mock data");
   console.log("   - Replace with real Supabase queries in production");
-  
+
   process.exit(0);
 } catch (error) {
   console.error("\n❌ Seeding failed:", error);
