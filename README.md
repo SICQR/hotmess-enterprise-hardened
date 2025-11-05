@@ -8,15 +8,15 @@
 
 ## 📚 Documentation
 
-| Guide | Description |
-|-------|-------------|
-| **[QUICKSTART.md](./QUICKSTART.md)** | 🚀 Get started in 30 seconds |
-| **[BOOTSTRAP.md](./BOOTSTRAP.md)** | 🏗️ System architecture & flow diagrams |
-| **[TROUBLESHOOTING.md](./TROUBLESHOOTING.md)** | 🔧 Common issues & solutions |
-| **[CHEATSHEET.md](./CHEATSHEET.md)** | ⚡ Quick command reference |
-| **[scripts/README.md](./scripts/README.md)** | 🔥 Self-bootstrapping system docs |
-| **[DEPLOYMENT.md](./DEPLOYMENT.md)** | 🌍 Deployment guides |
-| **[PRD.md](./PRD.md)** | 📋 Product requirements |
+| Guide                                          | Description                            |
+| ---------------------------------------------- | -------------------------------------- |
+| **[QUICKSTART.md](./QUICKSTART.md)**           | 🚀 Get started in 30 seconds           |
+| **[BOOTSTRAP.md](./BOOTSTRAP.md)**             | 🏗️ System architecture & flow diagrams |
+| **[TROUBLESHOOTING.md](./TROUBLESHOOTING.md)** | 🔧 Common issues & solutions           |
+| **[CHEATSHEET.md](./CHEATSHEET.md)**           | ⚡ Quick command reference             |
+| **[scripts/README.md](./scripts/README.md)**   | 🔥 Self-bootstrapping system docs      |
+| **[DEPLOYMENT.md](./DEPLOYMENT.md)**           | 🌍 Deployment guides                   |
+| **[PRD.md](./PRD.md)**                         | 📋 Product requirements                |
 
 ---
 
@@ -25,7 +25,7 @@
 HOTMESS Enterprise is a full-stack web application built for the modern man. It combines:
 
 - **Live Radio Streaming** - 24/7 underground music from worldwide DJs
-- **E-Commerce Storefront** - Brutalist luxury apparel and accessories  
+- **E-Commerce Storefront** - Brutalist luxury apparel and accessories
 - **AI Concierge** - Intelligent assistant for onboarding and support
 - **Affiliate Program** - Gamified referral system with tiered rewards
 - **Mental Health Support** - Care check-ins and crisis resources
@@ -66,6 +66,7 @@ hotmess-enterprise/
 ## 🚀 Tech Stack
 
 ### Frontend
+
 - **React 19** + **TypeScript** - UI framework
 - **Vite** - Build tool & dev server
 - **Tailwind CSS 4** - Utility-first styling
@@ -74,18 +75,21 @@ hotmess-enterprise/
 - **Phosphor Icons** - Icon system
 
 ### Backend & Integrations (Mocked)
+
 - **Supabase** - Auth, database, edge functions
 - **Shopify Storefront API** - Product catalog
 - **RadioKing / Azuracast** - Radio streaming
 - **Open-Meteo API** - Weather data (live)
 
 ### Deployment
+
 - **Vercel** - Hosting & edge functions
 - **PWA** - Offline support & install prompts
 
 ## 📦 Setup
 
 ### Prerequisites
+
 - Node.js 20+
 - npm or pnpm
 
@@ -98,6 +102,7 @@ npm run launch
 ```
 
 This automatically:
+
 1. ✓ Sets up environment variables (.env.local)
 2. ✓ Installs all dependencies
 3. ✓ Seeds mock database with test data
@@ -121,20 +126,20 @@ npm run dev
 
 ### Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run launch` | **Complete auto-bootstrap (recommended)** |
-| `npm run dev` | Start Vite development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-| `npm run verify` | Run build verification checks |
-| `npm run health` | Quick system health check |
-| `npm run setup:env` | Generate .env.local with mock keys |
-| `npm run db:mock` | Seed mock database with test data |
+| Command                     | Description                                 |
+| --------------------------- | ------------------------------------------- |
+| `npm run launch`            | **Complete auto-bootstrap (recommended)**   |
+| `npm run dev`               | Start Vite development server               |
+| `npm run build`             | Build for production                        |
+| `npm run preview`           | Preview production build                    |
+| `npm run verify`            | Run build verification checks               |
+| `npm run health`            | Quick system health check                   |
+| `npm run setup:env`         | Generate .env.local with mock keys          |
+| `npm run db:mock`           | Seed mock database with test data           |
 | `npm run deploy [platform]` | Deploy to vercel/netlify/railway/docker/k8s |
-| `npm run docker:build` | Build Docker image |
-| `npm run docker:run` | Run Docker container |
-| `npm run lint` | Run ESLint |
+| `npm run docker:build`      | Build Docker image                          |
+| `npm run docker:run`        | Run Docker container                        |
+| `npm run lint`              | Run ESLint                                  |
 
 > Note: The scripts `build:production`, `db:mock`, and all `docker:*` commands are optional for local experiments and may not run in restricted environments. They are not required for the normal dev/build/preview flow.
 
@@ -147,6 +152,7 @@ npm run verify
 ```
 
 This validates:
+
 - ✓ Environment files exist
 - ✓ All pages implemented
 - ✓ Core components present
@@ -215,6 +221,7 @@ npm run verify
 ```
 
 If critical files are missing, it will:
+
 - ✗ List missing modules
 - ✗ Provide recovery suggestions
 - ✗ Exit with error code 1
@@ -230,6 +237,7 @@ If critical files are missing, it will:
 ### Future: Autonomous Regeneration (v1.1+)
 
 Planned features:
+
 - Auto-regenerate missing modules via Spark API
 - Cloud deployment automation
 - Health monitoring endpoints
@@ -242,10 +250,9 @@ For detailed technical documentation, see `scripts/README.md`.
 ### Color Palette (60/30/10 Brutalist Luxury)
 
 ```css
---ink: oklch(0.08 0.01 270)       /* Background - 60% */
---paper: oklch(0.98 0.005 75)     /* Text - 30% */
---accent: oklch(0.55 0.22 25)     /* Chrome Red - 10% */
---charcoal: oklch(0.25 0.01 270)  /* Borders & muted */
+--ink: oklch(0.08 0.01 270) /* Background - 60% */ --paper: oklch(0.98 0.005 75)
+  /* Text - 30% */ --accent: oklch(0.55 0.22 25) /* Chrome Red - 10% */
+  --charcoal: oklch(0.25 0.01 270) /* Borders & muted */;
 ```
 
 ### Typography
@@ -263,6 +270,7 @@ For detailed technical documentation, see `scripts/README.md`.
 ## 🧩 Key Features
 
 ### Splash → Age Gate → Scroll-Hero Flow
+
 - **Animated Splash Screen** with skip button and 10-min cache
 - **Cookie-based Age Verification** (18+, 1-year persistence)
 - **Scroll-Collapsing Hero** with opacity/scale fade on scroll
@@ -270,30 +278,35 @@ For detailed technical documentation, see `scripts/README.md`.
 - See [docs/SPLASH_HERO_UX.md](docs/SPLASH_HERO_UX.md) for details
 
 ### Live Radio Player
+
 - Mock streaming with real UI
 - Now-playing metadata (auto-refresh 15s)
 - Schedule grid with live indicators
 - Persistent player across routes
 
 ### AI Concierge
+
 - Intent classification (rides, eats, radio, shop, earn, safety)
 - Preset quick actions
 - Safety escalation for crisis detection
 - No external LLM dependency (rule-based)
 
 ### Affiliate System
+
 - Unique HMAC-signed referral links
 - 4-tier system (Iron → Bronze → Silver → Gold)
 - Leaderboard with real-time mock rankings
 - Commission tracking (10% - 20%)
 
 ### QR Router (`/r`)
+
 - HMAC signature verification
 - Scan event tracking to Supabase
 - Fraud prevention
 - Graceful error handling
 
 ### Care Check-In
+
 - 1-10 mood slider
 - Crisis resource display (score <4)
 - National hotline integration
@@ -301,18 +314,18 @@ For detailed technical documentation, see `scripts/README.md`.
 
 ## 📱 Routes
 
-| Path | Description |
-|------|-------------|
-| `/` | Homepage with hero, CTAs, and features |
-| `/radio` | Live player + schedule |
-| `/shop` | Product grid + PDP modal |
-| `/care` | Mental health check-in form |
-| `/earn` | Affiliate dashboard + leaderboard |
-| `/r?p=<path>&sig=<hmac>` | Shortlink router |
-| `/privacy` | Privacy policy |
-| `/terms` | Terms of service |
-| `/cookies` | Cookie policy |
-| `/accessibility` | Accessibility statement |
+| Path                     | Description                            |
+| ------------------------ | -------------------------------------- |
+| `/`                      | Homepage with hero, CTAs, and features |
+| `/radio`                 | Live player + schedule                 |
+| `/shop`                  | Product grid + PDP modal               |
+| `/care`                  | Mental health check-in form            |
+| `/earn`                  | Affiliate dashboard + leaderboard      |
+| `/r?p=<path>&sig=<hmac>` | Shortlink router                       |
+| `/privacy`               | Privacy policy                         |
+| `/terms`                 | Terms of service                       |
+| `/cookies`               | Cookie policy                          |
+| `/accessibility`         | Accessibility statement                |
 
 ## 🚢 Deployment
 
@@ -340,6 +353,7 @@ npm run deploy kubernetes
 ### Platform-Specific Guides
 
 #### Vercel (Recommended)
+
 ```bash
 # First time: login
 vercel login
@@ -351,6 +365,7 @@ npm run deploy vercel
 **Environment Variables**: Set in Vercel Dashboard → Settings → Environment Variables
 
 #### Netlify
+
 ```bash
 # First time: login
 netlify login
@@ -362,6 +377,7 @@ npm run deploy netlify
 **Environment Variables**: Configure in Netlify UI → Site Settings → Build & Deploy → Environment
 
 #### Docker
+
 ```bash
 # Build and run locally
 npm run deploy docker
@@ -376,6 +392,7 @@ npm run docker:stop
 **Environment Variables**: Create `.env.production` file or use `--env-file` flag
 
 #### Kubernetes
+
 ```bash
 # Create secrets (first time)
 kubectl create secret generic hotmess-secrets \
@@ -394,6 +411,7 @@ kubectl get pods -l app=hotmess
 ### CI/CD
 
 GitHub Actions workflow included at `.github/workflows/deploy.yml`:
+
 - ✓ Automatic verification on PR
 - ✓ Build on push to main
 - ✓ Deploy to Vercel on production branch
@@ -402,23 +420,25 @@ GitHub Actions workflow included at `.github/workflows/deploy.yml`:
 
 **Required Secrets** (GitHub → Settings → Secrets and variables → Actions):
 
-| Secret | Used by | Notes |
-|--------|---------|-------|
-| `VERCEL_TOKEN` | Deploy to Vercel | Personal/team token from Vercel |
-| `VERCEL_ORG_ID` | Deploy to Vercel | Your Vercel org ID |
-| `VERCEL_PROJECT_ID` | Deploy to Vercel | The Vercel project ID |
-| `VITE_SUPABASE_URL` | Build (env) | Supabase project URL (optional if not used) |
-| `VITE_SUPABASE_ANON_KEY` | Build (env) | Supabase anon key (optional if not used) |
-| `SHOPIFY_DOMAIN` | Build (env) | your-store.myshopify.com (optional if not used) |
-| `SHOPIFY_STOREFRONT_TOKEN` | Build (env) | Storefront API token (optional if not used) |
-| `DOCKER_USERNAME` | Docker image push | Optional; only for docker publish job |
-| `DOCKER_PASSWORD` | Docker image push | Optional; only for docker publish job |
+| Secret                     | Used by           | Notes                                           |
+| -------------------------- | ----------------- | ----------------------------------------------- |
+| `VERCEL_TOKEN`             | Deploy to Vercel  | Personal/team token from Vercel                 |
+| `VERCEL_ORG_ID`            | Deploy to Vercel  | Your Vercel org ID                              |
+| `VERCEL_PROJECT_ID`        | Deploy to Vercel  | The Vercel project ID                           |
+| `VITE_SUPABASE_URL`        | Build (env)       | Supabase project URL (optional if not used)     |
+| `VITE_SUPABASE_ANON_KEY`   | Build (env)       | Supabase anon key (optional if not used)        |
+| `SHOPIFY_DOMAIN`           | Build (env)       | your-store.myshopify.com (optional if not used) |
+| `SHOPIFY_STOREFRONT_TOKEN` | Build (env)       | Storefront API token (optional if not used)     |
+| `DOCKER_USERNAME`          | Docker image push | Optional; only for docker publish job           |
+| `DOCKER_PASSWORD`          | Docker image push | Optional; only for docker publish job           |
 
 Notes:
+
 - The build can use mock values for local dev, but production deployments should set real values in the platform (e.g., Vercel Project → Settings → Environment Variables).
 - The deploy workflow skips Docker/Vercel steps automatically when the corresponding secrets are not present.
 
 For detailed deployment documentation, see:
+
 - **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Complete deployment guides
 - **[QUICKSTART.md](./QUICKSTART.md)** - Quick start guide
 - **[scripts/README.md](./scripts/README.md)** - Self-bootstrapping system docs
@@ -426,12 +446,14 @@ For detailed deployment documentation, see:
 ## 📊 Performance
 
 ### Lighthouse Scores (Target)
+
 - **Performance**: ≥90
 - **Accessibility**: ≥90
 - **Best Practices**: ≥90
 - **SEO**: ≥90
 
 ### Optimizations
+
 - Code splitting by route
 - Image lazy loading
 - Font preloading (Outfit)
@@ -446,6 +468,7 @@ For detailed deployment documentation, see:
 5. Open a Pull Request
 
 ### Code Style
+
 - TypeScript strict mode
 - ESLint + Prettier
 - No comments unless absolutely necessary

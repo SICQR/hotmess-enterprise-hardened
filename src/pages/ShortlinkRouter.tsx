@@ -1,43 +1,45 @@
-import { useEffect, useState } from 'react'
-import { verifyHMAC, getDestination } from '@/lib/hmac'
-import { trackScan } from '@/lib/analytics'
-import { sendWebhook } from '@/lib/webhooks'
-import { Card } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { XCircle, CheckCircle } from '@phosphor-icons/react'
+import { useEffect, useState } from "react";
+import { verifyHMAC, getDestination } from "@/lib/hmac";
+import { trackScan } from "@/lib/analytics";
+import { sendWebhook } from "@/lib/webhooks";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { XCircle, CheckCircle } from "@phosphor-icons/react";
 
 export function ShortlinkRouter() {
-  const [status, setStatus] = useState<'verifying' | 'valid' | 'invalid'>('verifying')
-  const [destination, setDestination] = useState<string>('')
+  const [status, setStatus] = useState<"verifying" | "valid" | "invalid">(
+    "verifying",
+  );
+  const [destination, setDestination] = useState<string>("");
 
   useEffect(() => {
-    handleRedirect()
-  }, [])
+    handleRedirect();
+  }, []);
 
   async function handleRedirect() {
-    const params = new URLSearchParams(window.location.search)
-    const path = params.get('p')
-    const sig = params.get('sig')
-    const affId = params.get('aff')
+    const params = new URLSearchParams(window.location.search);
+    const path = params.get("p");
+    const sig = params.get("sig");
+    const affId = params.get("aff");
 
     if (!path || !sig) {
-      setStatus('invalid')
-      return
+      setStatus("invalid");
+      return;
     }
 
-    const payload = `${path}${affId ? `?aff=${affId}` : ''}`
-    const isValid = await verifyHMAC(payload, sig)
+    const payload = `${path}${affId ? `?aff=${affId}` : ""}`;
+    const isValid = await verifyHMAC(payload, sig);
 
     if (!isValid) {
-      setStatus('invalid')
-      return
+      setStatus("invalid");
+      return;
     }
 
-    const dest = getDestination(path)
-    
+    const dest = getDestination(path);
+
     if (!dest) {
-      setStatus('invalid')
-      return
+      setStatus("invalid");
+      return;
     }
 
     await trackScan({
@@ -45,33 +47,41 @@ export function ShortlinkRouter() {
       destination: dest.url,
       timestamp: new Date().toISOString(),
       userAgent: navigator.userAgent,
-      affiliateId: affId || undefined
-    })
-
-    await sendWebhook('scan.created', {
-      shortlink: path,
-      destination: dest.url,
-      type: dest.type
-    }, {
       affiliateId: affId || undefined,
-      source: 'shortlink_router'
-    })
+    });
 
-    setDestination(dest.url)
-    setStatus('valid')
+    await sendWebhook(
+      "scan.created",
+      {
+        shortlink: path,
+        destination: dest.url,
+        type: dest.type,
+      },
+      {
+        affiliateId: affId || undefined,
+        source: "shortlink_router",
+      },
+    );
 
-    if (dest.type === 'shop' || dest.type === 'radio' || dest.type === 'external') {
+    setDestination(dest.url);
+    setStatus("valid");
+
+    if (
+      dest.type === "shop" ||
+      dest.type === "radio" ||
+      dest.type === "external"
+    ) {
       setTimeout(() => {
-        window.location.href = dest.url
-      }, 1500)
+        window.location.href = dest.url;
+      }, 1500);
     } else {
       setTimeout(() => {
-        window.location.href = dest.url
-      }, 2000)
+        window.location.href = dest.url;
+      }, 2000);
     }
   }
 
-  if (status === 'verifying') {
+  if (status === "verifying") {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <Card className="p-12 max-w-md text-center border-2 border-border">
@@ -82,21 +92,25 @@ export function ShortlinkRouter() {
           <p className="text-muted-foreground">Please wait...</p>
         </Card>
       </div>
-    )
+    );
   }
 
-  if (status === 'invalid') {
+  if (status === "invalid") {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <Card className="p-12 max-w-md text-center border-2 border-destructive">
-          <XCircle size={64} weight="duotone" className="text-destructive mx-auto mb-6" />
+          <XCircle
+            size={64}
+            weight="duotone"
+            className="text-destructive mx-auto mb-6"
+          />
           <h2 className="text-2xl font-bold mb-4">INVALID LINK</h2>
           <p className="text-muted-foreground mb-8">
-            This link is invalid or has expired.
-            Please contact the person who shared it with you.
+            This link is invalid or has expired. Please contact the person who
+            shared it with you.
           </p>
           <Button
-            onClick={() => window.location.href = '/'}
+            onClick={() => (window.location.href = "/")}
             variant="outline"
             className="border-2"
           >
@@ -104,24 +118,24 @@ export function ShortlinkRouter() {
           </Button>
         </Card>
       </div>
-    )
+    );
   }
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center">
       <Card className="p-12 max-w-md text-center border-2 border-accent">
-        <CheckCircle size={64} weight="duotone" className="text-accent mx-auto mb-6" />
+        <CheckCircle
+          size={64}
+          weight="duotone"
+          className="text-accent mx-auto mb-6"
+        />
         <h2 className="text-2xl font-bold mb-4">VERIFIED</h2>
-        <p className="text-muted-foreground mb-2">
-          Redirecting you to
-        </p>
-        <p className="text-lg font-mono text-accent mb-8">
-          {destination}
-        </p>
+        <p className="text-muted-foreground mb-2">Redirecting you to</p>
+        <p className="text-lg font-mono text-accent mb-8">{destination}</p>
         <div className="animate-pulse">
           <div className="w-12 h-12 border-4 border-accent border-t-transparent rounded-full animate-spin mx-auto" />
         </div>
       </Card>
     </div>
-  )
+  );
 }

@@ -44,8 +44,6 @@
   ],
   "totalDurationMs": 24852,
   "timestamp": "2025-10-14T13:43:11.818Z",
-  "args": [
-    "--fast"
-  ],
+  "args": ["--fast"],
   "fast": true
 }

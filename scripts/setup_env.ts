@@ -13,12 +13,16 @@ function generateMockKey(prefix: string): string {
 }
 
 function generateJWT(): string {
-  const header = Buffer.from(JSON.stringify({ alg: "HS256", typ: "JWT" })).toString("base64");
-  const payload = Buffer.from(JSON.stringify({ 
-    role: "anon", 
-    iss: "mock-supabase",
-    iat: Math.floor(Date.now() / 1000)
-  })).toString("base64");
+  const header = Buffer.from(
+    JSON.stringify({ alg: "HS256", typ: "JWT" }),
+  ).toString("base64");
+  const payload = Buffer.from(
+    JSON.stringify({
+      role: "anon",
+      iss: "mock-supabase",
+      iat: Math.floor(Date.now() / 1000),
+    }),
+  ).toString("base64");
   const signature = crypto.randomBytes(32).toString("base64");
   return `${header}.${payload}.${signature}`;
 }
@@ -37,7 +41,9 @@ function setupEnvironment() {
     "mock-anon-key-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9": generateJWT(),
     "mock-storefront-token-abc123": generateMockKey("storefront"),
     "mock-telegram-token-123456:ABC-DEF": `${Math.floor(Math.random() * 1000000000)}:${generateMockKey("BOT")}`,
-    "mock-link-secret-for-hmac-verification": crypto.randomBytes(32).toString("hex"),
+    "mock-link-secret-for-hmac-verification": crypto
+      .randomBytes(32)
+      .toString("hex"),
   };
 
   for (const [oldValue, newValue] of Object.entries(replacements)) {
@@ -55,7 +61,7 @@ function setupEnvironment() {
   console.log("   - Telegram Bot (mock)");
   console.log("   - Link Signing Secret (generated)");
   console.log("   - Weather API (real endpoint, no key needed)");
-  
+
   console.log("\n⚠️  For production deployment:");
   console.log("   Replace mock values with real API credentials");
 }

@@ -35,12 +35,12 @@ function execute(command: string, description: string) {
 
 async function main() {
   step("Step 1: Environment Setup");
-  
+
   if (!fs.existsSync(path.join(ROOT_DIR, ".env.local"))) {
     console.log("   → No .env.local found, copying from .env.example");
     fs.copyFileSync(
       path.join(ROOT_DIR, ".env.example"),
-      path.join(ROOT_DIR, ".env.local")
+      path.join(ROOT_DIR, ".env.local"),
     );
     console.log("   ✓ Created .env.local");
   } else {
@@ -78,7 +78,7 @@ async function main() {
 ║  Network: Check terminal output                        ║
 ╚════════════════════════════════════════════════════════╝
 `);
-  
+
   execute("npm run dev", "Starting Vite dev server");
 }
 

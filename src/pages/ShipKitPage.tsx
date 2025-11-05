@@ -1,33 +1,47 @@
-import { useState } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
-import { ScrollArea } from '@/components/ui/scroll-area'
-import { Copy, Check, Code, Database, Globe, FileCode, Package } from '@phosphor-icons/react'
-import { toast } from 'sonner'
+import { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Copy,
+  Check,
+  Code,
+  Database,
+  Globe,
+  FileCode,
+  Package,
+} from "@phosphor-icons/react";
+import { toast } from "sonner";
 
 interface ShipKitPageProps {
-  onNavigate: (route: string) => void
+  onNavigate: (route: string) => void;
 }
 
 export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
-  const [copiedId, setCopiedId] = useState<string | null>(null)
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const copyToClipboard = (text: string, id: string) => {
-    navigator.clipboard.writeText(text)
-    setCopiedId(id)
-    toast.success('Copied to clipboard')
-    setTimeout(() => setCopiedId(null), 2000)
-  }
+    navigator.clipboard.writeText(text);
+    setCopiedId(id);
+    toast.success("Copied to clipboard");
+    setTimeout(() => setCopiedId(null), 2000);
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="brutalist-border border-b p-6 md:p-8">
         <div className="max-w-7xl mx-auto">
           <button
-            onClick={() => onNavigate('home')}
+            onClick={() => onNavigate("home")}
             className="text-muted-foreground hover:text-foreground mb-4 uppercase text-sm font-medium"
           >
             ← Back to Home
@@ -38,7 +52,8 @@ export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
                 ☠️ SHIP KIT v13.5
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl">
-                Blueprints, SQL, naming maps, and Next.js scaffold. Zero fluff. Copy, paste, deploy.
+                Blueprints, SQL, naming maps, and Next.js scaffold. Zero fluff.
+                Copy, paste, deploy.
               </p>
             </div>
             <Badge variant="outline" className="text-accent border-accent">
@@ -51,23 +66,38 @@ export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
       <main className="max-w-7xl mx-auto p-6 md:p-8 pb-24">
         <Tabs defaultValue="make" className="w-full">
           <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 gap-2 h-auto bg-card p-2">
-            <TabsTrigger value="make" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+            <TabsTrigger
+              value="make"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
               <Globe className="mr-2" size={16} />
               Make.com
             </TabsTrigger>
-            <TabsTrigger value="sql" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+            <TabsTrigger
+              value="sql"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
               <Database className="mr-2" size={16} />
               SQL
             </TabsTrigger>
-            <TabsTrigger value="naming" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+            <TabsTrigger
+              value="naming"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
               <FileCode className="mr-2" size={16} />
               Naming
             </TabsTrigger>
-            <TabsTrigger value="nextjs" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+            <TabsTrigger
+              value="nextjs"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
               <Code className="mr-2" size={16} />
               Next.js
             </TabsTrigger>
-            <TabsTrigger value="checklist" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+            <TabsTrigger
+              value="checklist"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
               <Package className="mr-2" size={16} />
               Checklist
             </TabsTrigger>
@@ -83,7 +113,9 @@ export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
             >
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-bold mb-2 text-sm uppercase tracking-wide">Input JSON (example):</h4>
+                  <h4 className="font-bold mb-2 text-sm uppercase tracking-wide">
+                    Input JSON (example):
+                  </h4>
                   <CodeBlock
                     id="qr-input"
                     code={`{
@@ -99,21 +131,57 @@ export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
                   />
                 </div>
                 <div>
-                  <h4 className="font-bold mb-2 text-sm uppercase tracking-wide">Scenario Steps:</h4>
+                  <h4 className="font-bold mb-2 text-sm uppercase tracking-wide">
+                    Scenario Steps:
+                  </h4>
                   <ol className="list-decimal list-inside space-y-2 text-sm">
-                    <li><strong>Webhook</strong> (Custom webhook <code className="bg-muted px-1">qr.scan</code>)</li>
-                    <li><strong>HTTP</strong>: <code className="bg-muted px-1">POST https://YOUR_DOMAIN/api/v1/scan</code> (pass body). Expect <code className="bg-muted px-1">&#123;pointsAwarded, roomUrl, userId&#125;</code></li>
-                    <li><strong>Router</strong>: If <code className="bg-muted px-1">pointsAwarded &gt; 0</code> → A, else → B
+                    <li>
+                      <strong>Webhook</strong> (Custom webhook{" "}
+                      <code className="bg-muted px-1">qr.scan</code>)
+                    </li>
+                    <li>
+                      <strong>HTTP</strong>:{" "}
+                      <code className="bg-muted px-1">
+                        POST https://YOUR_DOMAIN/api/v1/scan
+                      </code>{" "}
+                      (pass body). Expect{" "}
+                      <code className="bg-muted px-1">
+                        &#123;pointsAwarded, roomUrl, userId&#125;
+                      </code>
+                    </li>
+                    <li>
+                      <strong>Router</strong>: If{" "}
+                      <code className="bg-muted px-1">
+                        pointsAwarded &gt; 0
+                      </code>{" "}
+                      → A, else → B
                       <ul className="list-disc list-inside ml-6 mt-1">
-                        <li><strong>A) Telegram</strong>: Send message "+&#123;pointsAwarded&#125; at &#123;beaconId&#125;. Room: &#123;roomUrl&#125;"</li>
-                        <li><strong>B) Do nothing</strong> (duplicate/reject)</li>
+                        <li>
+                          <strong>A) Telegram</strong>: Send message
+                          "+&#123;pointsAwarded&#125; at &#123;beaconId&#125;.
+                          Room: &#123;roomUrl&#125;"
+                        </li>
+                        <li>
+                          <strong>B) Do nothing</strong> (duplicate/reject)
+                        </li>
                       </ul>
                     </li>
-                    <li><strong>Google Sheets</strong> (optional): Append row <code className="bg-muted px-1">&#123;timestamp, beaconId, userId, pointsAwarded, utm&#125;</code></li>
-                    <li><strong>Error handler</strong>: If 4xx, sleep 2s → retry x3; if 5xx, push to Dead Letter Sheet</li>
+                    <li>
+                      <strong>Google Sheets</strong> (optional): Append row{" "}
+                      <code className="bg-muted px-1">
+                        &#123;timestamp, beaconId, userId, pointsAwarded,
+                        utm&#125;
+                      </code>
+                    </li>
+                    <li>
+                      <strong>Error handler</strong>: If 4xx, sleep 2s → retry
+                      x3; if 5xx, push to Dead Letter Sheet
+                    </li>
                   </ol>
                   <p className="text-sm text-muted-foreground mt-3">
-                    <strong>Security:</strong> Signature header <code className="bg-muted px-1">X-HM-Signature</code> (HMAC SHA256)
+                    <strong>Security:</strong> Signature header{" "}
+                    <code className="bg-muted px-1">X-HM-Signature</code> (HMAC
+                    SHA256)
                   </p>
                 </div>
               </div>
@@ -127,15 +195,44 @@ export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
               onCopy={copyToClipboard}
             >
               <ol className="list-decimal list-inside space-y-2 text-sm">
-                <li><strong>Webhook</strong> (song.changed) → parse <code className="bg-muted px-1">&#123;showSlug, isPromoBlock&#125;</code></li>
-                <li><strong>IF</strong> <code className="bg-muted px-1">isPromoBlock == true</code>:
+                <li>
+                  <strong>Webhook</strong> (song.changed) → parse{" "}
+                  <code className="bg-muted px-1">
+                    &#123;showSlug, isPromoBlock&#125;
+                  </code>
+                </li>
+                <li>
+                  <strong>IF</strong>{" "}
+                  <code className="bg-muted px-1">isPromoBlock == true</code>:
                   <ul className="list-disc list-inside ml-6 mt-1">
-                    <li><strong>Shopify Admin</strong>: Create price rule code <code className="bg-muted px-1">HM-&#123;showSlug&#125;-&#123;YYYYMMDDHHmm&#125;</code> duration 30m, collections tagged <code className="bg-muted px-1">promo:&#123;showSlug&#125;</code></li>
-                    <li><strong>HTTP</strong>: <code className="bg-muted px-1">POST https://YOUR_DOMAIN/api/v1/banners</code> <code className="bg-muted px-1">&#123;title, cta, expiresAt&#125;</code></li>
-                    <li><strong>Telegram</strong>: Broadcast "30 min code &#123;CODE&#125; for &#123;showSlug&#125;"</li>
+                    <li>
+                      <strong>Shopify Admin</strong>: Create price rule code{" "}
+                      <code className="bg-muted px-1">
+                        HM-&#123;showSlug&#125;-&#123;YYYYMMDDHHmm&#125;
+                      </code>{" "}
+                      duration 30m, collections tagged{" "}
+                      <code className="bg-muted px-1">
+                        promo:&#123;showSlug&#125;
+                      </code>
+                    </li>
+                    <li>
+                      <strong>HTTP</strong>:{" "}
+                      <code className="bg-muted px-1">
+                        POST https://YOUR_DOMAIN/api/v1/banners
+                      </code>{" "}
+                      <code className="bg-muted px-1">
+                        &#123;title, cta, expiresAt&#125;
+                      </code>
+                    </li>
+                    <li>
+                      <strong>Telegram</strong>: Broadcast "30 min code
+                      &#123;CODE&#125; for &#123;showSlug&#125;"
+                    </li>
                   </ul>
                 </li>
-                <li><strong>ELSE</strong>: End</li>
+                <li>
+                  <strong>ELSE</strong>: End
+                </li>
               </ol>
             </MakeBlueprint>
 
@@ -147,11 +244,36 @@ export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
               onCopy={copyToClipboard}
             >
               <ol className="list-decimal list-inside space-y-2 text-sm">
-                <li><strong>Webhook</strong> (<code className="bg-muted px-1">invoice.payment_failed</code>)</li>
-                <li><strong>HTTP</strong>: <code className="bg-muted px-1">POST https://YOUR_DOMAIN/api/v1/dunning/start</code> <code className="bg-muted px-1">&#123;userId, invoiceId&#125;</code></li>
-                <li><strong>Delay</strong>: 24h; <strong>Check</strong> <code className="bg-muted px-1">GET /api/v1/dunning/status?invoiceId=</code></li>
-                <li>If unpaid → <strong>Telegram/Email</strong>: send hibernate or 20% save offer</li>
-                <li>If user accepts via link → Stripe hosted update session → <strong>HTTP</strong>: <code className="bg-muted px-1">POST /api/v1/entitlements/sync</code></li>
+                <li>
+                  <strong>Webhook</strong> (
+                  <code className="bg-muted px-1">invoice.payment_failed</code>)
+                </li>
+                <li>
+                  <strong>HTTP</strong>:{" "}
+                  <code className="bg-muted px-1">
+                    POST https://YOUR_DOMAIN/api/v1/dunning/start
+                  </code>{" "}
+                  <code className="bg-muted px-1">
+                    &#123;userId, invoiceId&#125;
+                  </code>
+                </li>
+                <li>
+                  <strong>Delay</strong>: 24h; <strong>Check</strong>{" "}
+                  <code className="bg-muted px-1">
+                    GET /api/v1/dunning/status?invoiceId=
+                  </code>
+                </li>
+                <li>
+                  If unpaid → <strong>Telegram/Email</strong>: send hibernate or
+                  20% save offer
+                </li>
+                <li>
+                  If user accepts via link → Stripe hosted update session →{" "}
+                  <strong>HTTP</strong>:{" "}
+                  <code className="bg-muted px-1">
+                    POST /api/v1/entitlements/sync
+                  </code>
+                </li>
               </ol>
             </MakeBlueprint>
 
@@ -163,11 +285,30 @@ export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
               onCopy={copyToClipboard}
             >
               <ol className="list-decimal list-inside space-y-2 text-sm">
-                <li><strong>Webhook</strong> (form response)</li>
-                <li><strong>HTTP</strong>: <code className="bg-muted px-1">POST https://YOUR_DOMAIN/api/v1/affiliates</code> → returns <code className="bg-muted px-1">&#123;code, portalUrl&#125;</code></li>
-                <li><strong>Telegram</strong>: DM kit (media: QR PNG, UTM links)</li>
-                <li><strong>Google Sheets</strong>: Append application data + <code className="bg-muted px-1">&#123;code&#125;</code></li>
-                <li><strong>Stripe</strong>: Create Connect account link (if seller opted) and email it</li>
+                <li>
+                  <strong>Webhook</strong> (form response)
+                </li>
+                <li>
+                  <strong>HTTP</strong>:{" "}
+                  <code className="bg-muted px-1">
+                    POST https://YOUR_DOMAIN/api/v1/affiliates
+                  </code>{" "}
+                  → returns{" "}
+                  <code className="bg-muted px-1">
+                    &#123;code, portalUrl&#125;
+                  </code>
+                </li>
+                <li>
+                  <strong>Telegram</strong>: DM kit (media: QR PNG, UTM links)
+                </li>
+                <li>
+                  <strong>Google Sheets</strong>: Append application data +{" "}
+                  <code className="bg-muted px-1">&#123;code&#125;</code>
+                </li>
+                <li>
+                  <strong>Stripe</strong>: Create Connect account link (if
+                  seller opted) and email it
+                </li>
               </ol>
             </MakeBlueprint>
 
@@ -179,11 +320,34 @@ export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
               onCopy={copyToClipboard}
             >
               <ol className="list-decimal list-inside space-y-2 text-sm">
-                <li><strong>Webhook</strong> → <code className="bg-muted px-1">&#123;sessionId&#125;</code></li>
-                <li><strong>HTTP</strong>: <code className="bg-muted px-1">GET /api/v1/care/rota/next</code> → returns <code className="bg-muted px-1">&#123;modId, contact&#125;</code></li>
-                <li><strong>Telegram</strong>: DM mod with deep link to relay room</li>
-                <li><strong>Delay</strong> 5m → <strong>Check</strong> <code className="bg-muted px-1">GET /api/v1/care/sessions/:id</code> for <code className="bg-muted px-1">responded==true</code></li>
-                <li>If false → <strong>Escalate</strong>: secondary mod + hotline pack message to user</li>
+                <li>
+                  <strong>Webhook</strong> →{" "}
+                  <code className="bg-muted px-1">&#123;sessionId&#125;</code>
+                </li>
+                <li>
+                  <strong>HTTP</strong>:{" "}
+                  <code className="bg-muted px-1">
+                    GET /api/v1/care/rota/next
+                  </code>{" "}
+                  → returns{" "}
+                  <code className="bg-muted px-1">
+                    &#123;modId, contact&#125;
+                  </code>
+                </li>
+                <li>
+                  <strong>Telegram</strong>: DM mod with deep link to relay room
+                </li>
+                <li>
+                  <strong>Delay</strong> 5m → <strong>Check</strong>{" "}
+                  <code className="bg-muted px-1">
+                    GET /api/v1/care/sessions/:id
+                  </code>{" "}
+                  for <code className="bg-muted px-1">responded==true</code>
+                </li>
+                <li>
+                  If false → <strong>Escalate</strong>: secondary mod + hotline
+                  pack message to user
+                </li>
               </ol>
             </MakeBlueprint>
           </TabsContent>
@@ -196,7 +360,8 @@ export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
                   PostgreSQL Initial Migration (V1_0001)
                 </CardTitle>
                 <CardDescription>
-                  Run under a single transaction. Includes indexes, FKs, and common constraints.
+                  Run under a single transaction. Includes indexes, FKs, and
+                  common constraints.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -229,26 +394,53 @@ export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b border-border">
-                        <th className="text-left p-3 font-bold uppercase">Object</th>
-                        <th className="text-left p-3 font-bold uppercase">Env Key</th>
-                        <th className="text-left p-3 font-bold uppercase">Name</th>
-                        <th className="text-left p-3 font-bold uppercase">Description</th>
+                        <th className="text-left p-3 font-bold uppercase">
+                          Object
+                        </th>
+                        <th className="text-left p-3 font-bold uppercase">
+                          Env Key
+                        </th>
+                        <th className="text-left p-3 font-bold uppercase">
+                          Name
+                        </th>
+                        <th className="text-left p-3 font-bold uppercase">
+                          Description
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
                       {NAMING_MAP.map((row, i) => (
-                        <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
-                          <td className="p-3"><code className="bg-muted px-2 py-1 text-xs">{row.object}</code></td>
-                          <td className="p-3"><code className="bg-muted px-2 py-1 text-xs">{row.envKey}</code></td>
+                        <tr
+                          key={i}
+                          className="border-b border-border/50 hover:bg-muted/20"
+                        >
+                          <td className="p-3">
+                            <code className="bg-muted px-2 py-1 text-xs">
+                              {row.object}
+                            </code>
+                          </td>
+                          <td className="p-3">
+                            <code className="bg-muted px-2 py-1 text-xs">
+                              {row.envKey}
+                            </code>
+                          </td>
                           <td className="p-3 font-medium">{row.name}</td>
-                          <td className="p-3 text-muted-foreground">{row.description}</td>
+                          <td className="p-3 text-muted-foreground">
+                            {row.description}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
                 <p className="text-sm text-muted-foreground mt-4">
-                  <strong>Note:</strong> Replace <code className="bg-muted px-1">&#123;ENV&#125;</code> with <code className="bg-muted px-1">PROD|STAGE</code>; <code className="bg-muted px-1">&#123;showSlug&#125;</code> from schedule; <code className="bg-muted px-1">&#123;stamp&#125;</code> = <code className="bg-muted px-1">YYYYMMDDHHmm</code>.
+                  <strong>Note:</strong> Replace{" "}
+                  <code className="bg-muted px-1">&#123;ENV&#125;</code> with{" "}
+                  <code className="bg-muted px-1">PROD|STAGE</code>;{" "}
+                  <code className="bg-muted px-1">&#123;showSlug&#125;</code>{" "}
+                  from schedule;{" "}
+                  <code className="bg-muted px-1">&#123;stamp&#125;</code> ={" "}
+                  <code className="bg-muted px-1">YYYYMMDDHHmm</code>.
                 </p>
               </CardContent>
             </Card>
@@ -267,7 +459,9 @@ export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div>
-                  <h3 className="font-bold uppercase text-sm mb-3">File Structure</h3>
+                  <h3 className="font-bold uppercase text-sm mb-3">
+                    File Structure
+                  </h3>
                   <CodeBlock
                     id="file-tree"
                     code={FILE_TREE}
@@ -354,14 +548,37 @@ export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
 
             <Card className="bg-card border-border">
               <CardHeader>
-                <CardTitle className="uppercase tracking-wide text-sm">How to Boot (Dev)</CardTitle>
+                <CardTitle className="uppercase tracking-wide text-sm">
+                  How to Boot (Dev)
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <ol className="list-decimal list-inside space-y-2 text-sm">
-                  <li><code className="bg-muted px-2 py-1">pnpm i</code> or <code className="bg-muted px-2 py-1">npm i</code></li>
-                  <li>Copy <code className="bg-muted px-2 py-1">.env.example</code> → <code className="bg-muted px-2 py-1">.env.local</code> and fill</li>
-                  <li><code className="bg-muted px-2 py-1">npm run dev</code></li>
-                  <li>Open <code className="bg-muted px-2 py-1">/</code> → PlayerBar visible; <code className="bg-muted px-2 py-1">/api/radio/now-playing</code> JSON; <code className="bg-muted px-2 py-1">/api/webhooks/stripe</code> accepts signed payload</li>
+                  <li>
+                    <code className="bg-muted px-2 py-1">pnpm i</code> or{" "}
+                    <code className="bg-muted px-2 py-1">npm i</code>
+                  </li>
+                  <li>
+                    Copy{" "}
+                    <code className="bg-muted px-2 py-1">.env.example</code> →{" "}
+                    <code className="bg-muted px-2 py-1">.env.local</code> and
+                    fill
+                  </li>
+                  <li>
+                    <code className="bg-muted px-2 py-1">npm run dev</code>
+                  </li>
+                  <li>
+                    Open <code className="bg-muted px-2 py-1">/</code> →
+                    PlayerBar visible;{" "}
+                    <code className="bg-muted px-2 py-1">
+                      /api/radio/now-playing
+                    </code>{" "}
+                    JSON;{" "}
+                    <code className="bg-muted px-2 py-1">
+                      /api/webhooks/stripe
+                    </code>{" "}
+                    accepts signed payload
+                  </li>
                 </ol>
               </CardContent>
             </Card>
@@ -381,7 +598,10 @@ export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
               <CardContent>
                 <div className="space-y-3">
                   {CHECKLIST_ITEMS.map((item, i) => (
-                    <div key={i} className="flex items-start gap-3 p-3 border border-border/50 hover:bg-muted/20">
+                    <div
+                      key={i}
+                      className="flex items-start gap-3 p-3 border border-border/50 hover:bg-muted/20"
+                    >
                       <input type="checkbox" className="mt-1" />
                       <span className="text-sm">{item}</span>
                     </div>
@@ -392,20 +612,30 @@ export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
 
             <Card className="bg-card border-border mt-6">
               <CardHeader>
-                <CardTitle className="uppercase tracking-wide text-sm">Taglines & Copy Snippets</CardTitle>
+                <CardTitle className="uppercase tracking-wide text-sm">
+                  Taglines & Copy Snippets
+                </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
                   <h4 className="font-bold text-sm mb-1">Homepage Hero</h4>
-                  <p className="text-muted-foreground italic">Built from breakdown, held together by bass.</p>
+                  <p className="text-muted-foreground italic">
+                    Built from breakdown, held together by bass.
+                  </p>
                 </div>
                 <div>
                   <h4 className="font-bold text-sm mb-1">Care CTA</h4>
-                  <p className="text-muted-foreground italic">Soft center. Hard boundaries. Come in, breathe.</p>
+                  <p className="text-muted-foreground italic">
+                    Soft center. Hard boundaries. Come in, breathe.
+                  </p>
                 </div>
                 <div>
-                  <h4 className="font-bold text-sm mb-1">Promo Banner (Radio Block)</h4>
-                  <p className="text-muted-foreground italic">30 minutes. Code on the altar. Take your blessing.</p>
+                  <h4 className="font-bold text-sm mb-1">
+                    Promo Banner (Radio Block)
+                  </h4>
+                  <p className="text-muted-foreground italic">
+                    30 minutes. Code on the altar. Take your blessing.
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -413,7 +643,7 @@ export function ShipKitPage({ onNavigate }: ShipKitPageProps) {
         </Tabs>
       </main>
     </div>
-  )
+  );
 }
 
 function MakeBlueprint({
@@ -422,35 +652,43 @@ function MakeBlueprint({
   trigger,
   children,
   copiedId,
-  onCopy
+  onCopy,
 }: {
-  id: string
-  title: string
-  trigger: string
-  children: React.ReactNode
-  copiedId: string | null
-  onCopy: (text: string, id: string) => void
+  id: string;
+  title: string;
+  trigger: string;
+  children: React.ReactNode;
+  copiedId: string | null;
+  onCopy: (text: string, id: string) => void;
 }) {
   return (
     <Card className="bg-card border-border">
       <CardHeader>
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1">
-            <CardTitle className="text-lg font-bold uppercase tracking-wide mb-2">{title}</CardTitle>
-            <CardDescription className="font-mono text-xs">{trigger}</CardDescription>
+            <CardTitle className="text-lg font-bold uppercase tracking-wide mb-2">
+              {title}
+            </CardTitle>
+            <CardDescription className="font-mono text-xs">
+              {trigger}
+            </CardDescription>
           </div>
           <Button
             size="sm"
             variant="outline"
             onClick={() => onCopy(trigger, `trigger-${id}`)}
           >
-            {copiedId === `trigger-${id}` ? <Check size={16} /> : <Copy size={16} />}
+            {copiedId === `trigger-${id}` ? (
+              <Check size={16} />
+            ) : (
+              <Copy size={16} />
+            )}
           </Button>
         </div>
       </CardHeader>
       <CardContent>{children}</CardContent>
     </Card>
-  )
+  );
 }
 
 function CodeBlock({
@@ -458,13 +696,13 @@ function CodeBlock({
   code,
   copiedId,
   onCopy,
-  language = 'json'
+  language = "json",
 }: {
-  id: string
-  code: string
-  copiedId: string | null
-  onCopy: (text: string, id: string) => void
-  language?: string
+  id: string;
+  code: string;
+  copiedId: string | null;
+  onCopy: (text: string, id: string) => void;
+  language?: string;
 }) {
   return (
     <div className="relative">
@@ -480,7 +718,7 @@ function CodeBlock({
         {code}
       </pre>
     </div>
-  )
+  );
 }
 
 function NextJsFile({
@@ -489,14 +727,14 @@ function NextJsFile({
   code,
   id,
   copiedId,
-  onCopy
+  onCopy,
 }: {
-  title: string
-  description: string
-  code: string
-  id: string
-  copiedId: string | null
-  onCopy: (text: string, id: string) => void
+  title: string;
+  description: string;
+  code: string;
+  id: string;
+  copiedId: string | null;
+  onCopy: (text: string, id: string) => void;
 }) {
   return (
     <div>
@@ -504,9 +742,15 @@ function NextJsFile({
         <h3 className="font-bold text-sm uppercase tracking-wide">{title}</h3>
         <p className="text-xs text-muted-foreground">{description}</p>
       </div>
-      <CodeBlock id={id} code={code} copiedId={copiedId} onCopy={onCopy} language="typescript" />
+      <CodeBlock
+        id={id}
+        code={code}
+        copiedId={copiedId}
+        onCopy={onCopy}
+        language="typescript"
+      />
     </div>
-  )
+  );
 }
 
 const SQL_MIGRATION = `BEGIN;
@@ -704,19 +948,64 @@ CREATE TABLE audit_logs (
 );
 CREATE INDEX idx_audit_action ON audit_logs(action);
 
-COMMIT;`
+COMMIT;`;
 
 const NAMING_MAP = [
-  { object: 'stripe_product', envKey: 'hm_prod_member_plus', name: 'HM {ENV} Member+', description: 'Membership access tier' },
-  { object: 'stripe_price', envKey: 'hm_price_member_plus_m', name: 'HM {ENV} Member+ Monthly', description: 'GBP monthly recurring' },
-  { object: 'stripe_price', envKey: 'hm_price_member_plus_y', name: 'HM {ENV} Member+ Yearly', description: 'GBP annual recurring' },
-  { object: 'stripe_product', envKey: 'hm_prod_xxx_addon', name: 'HM {ENV} XXX Add-On', description: 'Adult content access' },
-  { object: 'stripe_price', envKey: 'hm_price_xxx_addon_m', name: 'HM {ENV} XXX Add-On Monthly', description: 'GBP monthly recurring' },
-  { object: 'stripe_connect', envKey: 'hm_connect_standard', name: 'HM {ENV} Seller Payouts', description: 'Stripe Connect Standard' },
-  { object: 'shopify_collection', envKey: 'promo:{showSlug}', name: 'Promo – {showSlug}', description: 'Auto-discounted during blocks' },
-  { object: 'shopify_metafield', envKey: 'hm.promote_with_show', name: 'Promote With Show', description: 'Slug for promo attachment' },
-  { object: 'shopify_discount', envKey: 'HM-{showSlug}-{stamp}', name: 'Timed Show Discount', description: '30m promo windows' },
-]
+  {
+    object: "stripe_product",
+    envKey: "hm_prod_member_plus",
+    name: "HM {ENV} Member+",
+    description: "Membership access tier",
+  },
+  {
+    object: "stripe_price",
+    envKey: "hm_price_member_plus_m",
+    name: "HM {ENV} Member+ Monthly",
+    description: "GBP monthly recurring",
+  },
+  {
+    object: "stripe_price",
+    envKey: "hm_price_member_plus_y",
+    name: "HM {ENV} Member+ Yearly",
+    description: "GBP annual recurring",
+  },
+  {
+    object: "stripe_product",
+    envKey: "hm_prod_xxx_addon",
+    name: "HM {ENV} XXX Add-On",
+    description: "Adult content access",
+  },
+  {
+    object: "stripe_price",
+    envKey: "hm_price_xxx_addon_m",
+    name: "HM {ENV} XXX Add-On Monthly",
+    description: "GBP monthly recurring",
+  },
+  {
+    object: "stripe_connect",
+    envKey: "hm_connect_standard",
+    name: "HM {ENV} Seller Payouts",
+    description: "Stripe Connect Standard",
+  },
+  {
+    object: "shopify_collection",
+    envKey: "promo:{showSlug}",
+    name: "Promo – {showSlug}",
+    description: "Auto-discounted during blocks",
+  },
+  {
+    object: "shopify_metafield",
+    envKey: "hm.promote_with_show",
+    name: "Promote With Show",
+    description: "Slug for promo attachment",
+  },
+  {
+    object: "shopify_discount",
+    envKey: "HM-{showSlug}-{stamp}",
+    name: "Timed Show Discount",
+    description: "30m promo windows",
+  },
+];
 
 const FILE_TREE = `hotmess/
   .env.example
@@ -742,7 +1031,7 @@ const FILE_TREE = `hotmess/
       stripe.ts
       featureFlags.ts
     middleware.ts
-    styles/globals.css`
+    styles/globals.css`;
 
 const ENV_EXAMPLE = `NEXT_PUBLIC_SITE_URL=http://localhost:3000
 AZURA_BASE_URL=...
@@ -754,7 +1043,7 @@ STRIPE_SECRET_KEY=...
 STRIPE_WEBHOOK_SECRET=...
 POSTHOG_KEY=...
 DATABASE_URL=postgres://...
-JWT_SECRET=super-secret`
+JWT_SECRET=super-secret`;
 
 const PACKAGE_JSON = `{
   "name": "hotmess",
@@ -777,7 +1066,7 @@ const PACKAGE_JSON = `{
     "hls.js": "^1.5.7",
     "tailwindcss": "^3.4.10"
   }
-}`
+}`;
 
 const AZURA_TS = `export type NowPlaying = {
   track: { title: string; artist?: string; art?: string };
@@ -803,7 +1092,7 @@ export async function fetchNowPlaying(): Promise<NowPlaying> {
       : new Date().toISOString(),
     merch: []
   };
-}`
+}`;
 
 const PLAYER_BAR_TSX = `'use client';
 import { useEffect, useRef, useState } from 'react';
@@ -875,7 +1164,7 @@ export default function PlayerBar() {
       <audio ref={audioRef} autoPlay={false} />
     </div>
   );
-}`
+}`;
 
 const NOW_PLAYING_ROUTE = `import { NextResponse } from 'next/server';
 import { fetchNowPlaying } from '@/lib/azura';
@@ -889,7 +1178,7 @@ export async function GET() {
       'Cache-Control': 's-maxage=1, stale-while-revalidate=9' 
     } 
   });
-}`
+}`;
 
 const STRIPE_WEBHOOK = `import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
@@ -922,7 +1211,7 @@ export async function POST(req: NextRequest) {
   }
   
   return NextResponse.json({ received: true });
-}`
+}`;
 
 const QR_SCAN_ROUTE = `import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
@@ -953,7 +1242,7 @@ export async function POST(req: NextRequest) {
     roomUrl: '/rooms/abc', 
     userId: body.userId 
   });
-}`
+}`;
 
 const MIDDLEWARE_TS = `import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
@@ -974,14 +1263,14 @@ export function middleware(req: NextRequest) {
 
 export const config = { 
   matcher: ['/xxx/:path*'] 
-};`
+};`;
 
 const CHECKLIST_ITEMS = [
-  'Radio start ≤3s on consented autoplay; backup swap works; toast on fallback.',
-  '/api/radio/now-playing returns mapped Azura data with ≤1s drift.',
-  'Stripe webhook verifies and enqueues jobs.',
-  'Shopify discount created during promo block and removed after 30m.',
-  'Beacon scan awards points once/device/user; rejects replays.',
-  'GDPR export job stubs exist; delete pathway lands in queue.',
-  'XXX route gated by middleware cookie/state.',
-]
+  "Radio start ≤3s on consented autoplay; backup swap works; toast on fallback.",
+  "/api/radio/now-playing returns mapped Azura data with ≤1s drift.",
+  "Stripe webhook verifies and enqueues jobs.",
+  "Shopify discount created during promo block and removed after 30m.",
+  "Beacon scan awards points once/device/user; rejects replays.",
+  "GDPR export job stubs exist; delete pathway lands in queue.",
+  "XXX route gated by middleware cookie/state.",
+];

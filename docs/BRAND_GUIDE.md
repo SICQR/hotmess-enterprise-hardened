@@ -28,6 +28,7 @@ HOTMESS Enterprise is a men's-only, 18+, brutalist-luxury digital brand that ope
 ### 2.1 Logos & Marks
 
 #### Primary Wordmark
+
 **Location**: `/public/icons/logo-wordmark.svg`
 
 - Monument Extended typeface (fallback: Arial Black)
@@ -37,6 +38,7 @@ HOTMESS Enterprise is a men's-only, 18+, brutalist-luxury digital brand that ope
 - Usage: Hero sections, primary branding, OG images
 
 #### Icon Mark (Monogram)
+
 **Location**: `/public/icons/favicon.svg`
 
 - Fractured H inside circle
@@ -45,6 +47,7 @@ HOTMESS Enterprise is a men's-only, 18+, brutalist-luxury digital brand that ope
 - Usage: Favicons, app icons, social avatars
 
 #### Monotone Version
+
 **Location**: `/public/icons/logo-monotone.svg`
 
 - Single color (black or white)
@@ -58,15 +61,15 @@ All colors use **HSL notation only**. Apply 60/30/10 principle (60% dominant, 30
 
 ```css
 :root {
-  --ink: 0 0% 5%;        /* Primary dark */
-  --paper: 0 0% 98%;     /* Primary light */
-  --accent: 0 85% 55%;   /* Power red */
-  --danger: 0 75% 45%;   /* Warning red */
-  --gold: 45 90% 55%;    /* Heat gold */
-  --metal: 0 0% 45%;     /* Chrome gray */
-  --bone: 40 15% 92%;    /* Off-white */
-  --charcoal: 0 0% 25%;  /* Mid-dark */
-  --chrome: 0 0% 65%;    /* Mid-light */
+  --ink: 0 0% 5%; /* Primary dark */
+  --paper: 0 0% 98%; /* Primary light */
+  --accent: 0 85% 55%; /* Power red */
+  --danger: 0 75% 45%; /* Warning red */
+  --gold: 45 90% 55%; /* Heat gold */
+  --metal: 0 0% 45%; /* Chrome gray */
+  --bone: 40 15% 92%; /* Off-white */
+  --charcoal: 0 0% 25%; /* Mid-dark */
+  --chrome: 0 0% 65%; /* Mid-light */
 }
 ```
 
@@ -92,68 +95,81 @@ All colors use **HSL notation only**. Apply 60/30/10 principle (60% dominant, 30
 
 All text-on-background combinations meet **WCAG AA contrast ratios**:
 
-| Background | Foreground | Ratio | Status |
-|------------|------------|-------|--------|
-| `--ink` (5%) | `--paper` (98%) | 19.6:1 | ✓ AAA |
-| `--accent` (55%) | `--ink` (5%) | 6.8:1 | ✓ AA |
-| `--accent` (55%) | `--paper` (98%) | 2.9:1 | Large text only |
-| `--gold` (55%) | `--ink` (5%) | 9.2:1 | ✓ AAA |
-| `--charcoal` (25%) | `--paper` (98%) | 8.4:1 | ✓ AAA |
+| Background         | Foreground      | Ratio  | Status          |
+| ------------------ | --------------- | ------ | --------------- |
+| `--ink` (5%)       | `--paper` (98%) | 19.6:1 | ✓ AAA           |
+| `--accent` (55%)   | `--ink` (5%)    | 6.8:1  | ✓ AA            |
+| `--accent` (55%)   | `--paper` (98%) | 2.9:1  | Large text only |
+| `--gold` (55%)     | `--ink` (5%)    | 9.2:1  | ✓ AAA           |
+| `--charcoal` (25%) | `--paper` (98%) | 8.4:1  | ✓ AAA           |
 
 ### 2.3 Gradients
 
 All gradients defined in `/src/styles/branding.css`.
 
 #### Hotmess Gradient (Primary)
+
 ```css
 .gradient-hotmess {
-  background: linear-gradient(135deg,
+  background: linear-gradient(
+    135deg,
     hsl(0, 0%, 15%) 0%,
     hsl(0, 85%, 55%) 35%,
-    hsl(0, 0%, 5%) 90%);
+    hsl(0, 0%, 5%) 90%
+  );
 }
 ```
+
 **Usage**: Hero backgrounds, CTAs, feature highlights
 
 #### Gold Gradient
+
 ```css
 .gradient-gold {
-  background: linear-gradient(90deg,
-    hsl(45, 90%, 55%) 0%,
-    hsl(0, 0%, 5%) 90%);
+  background: linear-gradient(90deg, hsl(45, 90%, 55%) 0%, hsl(0, 0%, 5%) 90%);
 }
 ```
+
 **Usage**: Premium features, affiliate rewards, shop highlights
 
 #### Radial Gradient
+
 ```css
 .gradient-radial {
-  background: radial-gradient(circle at center,
+  background: radial-gradient(
+    circle at center,
     hsl(0, 90%, 60%) 0%,
-    hsl(0, 0%, 5%) 80%);
+    hsl(0, 0%, 5%) 80%
+  );
 }
 ```
+
 **Usage**: Spotlight effects, audio-reactive zones
 
 #### Chrome Gradient
+
 ```css
 .gradient-chrome {
-  background: linear-gradient(135deg,
+  background: linear-gradient(
+    135deg,
     hsl(0, 0%, 85%) 0%,
     hsl(0, 0%, 65%) 25%,
     hsl(0, 0%, 45%) 50%,
     hsl(0, 0%, 65%) 75%,
-    hsl(0, 0%, 85%) 100%);
+    hsl(0, 0%, 85%) 100%
+  );
 }
 ```
+
 **Usage**: Metallic UI elements, luxury accents
 
 ### 2.4 Patterns
 
 #### Brutalist Grid
+
 ```css
 .pattern-brutalist-grid {
-  background-image: 
+  background-image:
     linear-gradient(hsl(0, 0%, 25%) 1px, transparent 1px),
     linear-gradient(90deg, hsl(0, 0%, 25%) 1px, transparent 1px);
   background-size: 40px 40px;
@@ -161,6 +177,7 @@ All gradients defined in `/src/styles/branding.css`.
 ```
 
 #### Diagonal Lines
+
 ```css
 .pattern-diagonal-lines {
   background-image: repeating-linear-gradient(
@@ -174,6 +191,7 @@ All gradients defined in `/src/styles/branding.css`.
 ```
 
 #### Dots
+
 ```css
 .pattern-dots {
   background-image: radial-gradient(
@@ -196,17 +214,17 @@ All gradients defined in `/src/styles/branding.css`.
 
 All typography classes defined in `/src/styles/branding.css`.
 
-| Class | Size | Weight | Transform | Usage |
-|-------|------|--------|-----------|-------|
-| `.h1` | clamp(3rem, 8vw, 8rem) | 900 | Uppercase | Page heroes |
-| `.h2` | clamp(2rem, 4vw, 4rem) | 800 | Uppercase | Section headers |
-| `.h3` | clamp(1.5rem, 3vw, 3rem) | 700 | Uppercase | Subsection headers |
-| `.h4` | clamp(1.25rem, 2vw, 2rem) | 700 | Uppercase | Card titles |
-| `.body` | 1rem | 400 | None | Body copy |
-| `.body-large` | 1.125rem | 400 | None | Intro paragraphs |
-| `.body-small` | 0.875rem | 400 | None | Captions |
-| `.label` | 0.75rem | 600 | Uppercase | Form labels |
-| `.caption` | 0.6875rem | 500 | None | Fine print |
+| Class         | Size                      | Weight | Transform | Usage              |
+| ------------- | ------------------------- | ------ | --------- | ------------------ |
+| `.h1`         | clamp(3rem, 8vw, 8rem)    | 900    | Uppercase | Page heroes        |
+| `.h2`         | clamp(2rem, 4vw, 4rem)    | 800    | Uppercase | Section headers    |
+| `.h3`         | clamp(1.5rem, 3vw, 3rem)  | 700    | Uppercase | Subsection headers |
+| `.h4`         | clamp(1.25rem, 2vw, 2rem) | 700    | Uppercase | Card titles        |
+| `.body`       | 1rem                      | 400    | None      | Body copy          |
+| `.body-large` | 1.125rem                  | 400    | None      | Intro paragraphs   |
+| `.body-small` | 0.875rem                  | 400    | None      | Captions           |
+| `.label`      | 0.75rem                   | 600    | Uppercase | Form labels        |
+| `.caption`    | 0.6875rem                 | 500    | None      | Fine print         |
 
 #### Special Typography
 
@@ -228,31 +246,37 @@ All typography classes defined in `/src/styles/branding.css`.
 **Grid System**: 12-column grid, 40px gutters, rigid alignment  
 **Spacing**: Multiples of 8px (8, 16, 24, 32, 40, 48, 64, 80, 96)  
 **Borders**: 3px standard, 6px emphasis, always solid  
-**Corners**: 0px radius (sharp edges only)  
+**Corners**: 0px radius (sharp edges only)
 
 ### 3.2 Component Styles
 
 #### Buttons
 
 **Primary (Brutalist)**
+
 ```html
 <button class="btn-brutalist">ENTER</button>
 ```
+
 - 3px border, red accent
 - Hover: fill red, shadow gold
 - Active: translate shadow
 
 **Secondary (Gold)**
+
 ```html
 <button class="btn-gold">SHOP NOW</button>
 ```
+
 - Gold fill
 - Hover: outline only, red shadow
 
 **Tertiary (Ghost)**
+
 ```html
 <button class="btn-ghost">LEARN MORE</button>
 ```
+
 - Outline only, subtle hover
 
 #### Cards
@@ -262,6 +286,7 @@ All typography classes defined in `/src/styles/branding.css`.
   <!-- Content -->
 </div>
 ```
+
 - 3px paper border
 - Hover: 8px red shadow, translate up-left
 
@@ -297,15 +322,15 @@ All calls-to-action follow this pattern:
 
 All animations defined in `/src/styles/animations.css`.
 
-| Animation | Duration | Use Case |
-|-----------|----------|----------|
-| `tear` | 1s | Hero reveals, page transitions |
-| `pulse-glow` | 2s infinite | Live indicators, CTAs |
-| `slide-up` | 0.6s | Modal entries, content reveals |
-| `fade-in` | 0.4s | Subtle content load |
-| `glitch` | 0.3s | Error states, disruption |
-| `audio-pulse` | 0.6s infinite | Audio-reactive elements |
-| `marquee` | 20s infinite | Scrolling text, tickers |
+| Animation     | Duration      | Use Case                       |
+| ------------- | ------------- | ------------------------------ |
+| `tear`        | 1s            | Hero reveals, page transitions |
+| `pulse-glow`  | 2s infinite   | Live indicators, CTAs          |
+| `slide-up`    | 0.6s          | Modal entries, content reveals |
+| `fade-in`     | 0.4s          | Subtle content load            |
+| `glitch`      | 0.3s          | Error states, disruption       |
+| `audio-pulse` | 0.6s infinite | Audio-reactive elements        |
+| `marquee`     | 20s infinite  | Scrolling text, tickers        |
 
 #### Usage Examples
 
@@ -314,9 +339,7 @@ All animations defined in `/src/styles/animations.css`.
   <!-- Reveals from top to bottom -->
 </div>
 
-<button class="motion-pulse">
-  LIVE NOW
-</button>
+<button class="motion-pulse">LIVE NOW</button>
 
 <div class="motion-slide-up motion-fade-in">
   <!-- Combined entrance -->
@@ -330,7 +353,9 @@ When radio is playing, elements can respond to audio levels:
 ```css
 .audio-reactive {
   transform: scale(var(--audio-level, 1));
-  filter: drop-shadow(0 0 calc(var(--audio-level, 1) * 2rem) hsl(var(--accent)));
+  filter: drop-shadow(
+    0 0 calc(var(--audio-level, 1) * 2rem) hsl(var(--accent))
+  );
 }
 ```
 
@@ -424,9 +449,13 @@ Icons reference:
 ### 6.1 Hero Section
 
 ```html
-<div class="relative gradient-hotmess text-paper h-screen flex flex-col justify-center items-center motion-tear">
+<div
+  class="relative gradient-hotmess text-paper h-screen flex flex-col justify-center items-center motion-tear"
+>
   <h1 class="h1 text-center tracking-tight">HOTMESS</h1>
-  <p class="text-gold mt-4 uppercase label">Always too much, yet never enough</p>
+  <p class="text-gold mt-4 uppercase label">
+    Always too much, yet never enough
+  </p>
   <button class="btn-brutalist mt-8 motion-pulse">ENTER</button>
 </div>
 ```
@@ -471,7 +500,11 @@ Icons reference:
 ```html
 <article class="card-brutalist-hover">
   <div class="aspect-square bg-charcoal mb-4 relative overflow-hidden">
-    <img src="/product.jpg" alt="Product name" class="w-full h-full object-cover" />
+    <img
+      src="/product.jpg"
+      alt="Product name"
+      class="w-full h-full object-cover"
+    />
     <div class="absolute top-4 right-4 bg-gold text-ink px-3 py-1 label">
       NEW
     </div>
@@ -492,6 +525,7 @@ Icons reference:
 Complete list of generated assets:
 
 ### Icons
+
 - `/public/icons/favicon.svg`
 - `/public/icons/mask-icon.svg`
 - `/public/icons/apple-touch-icon.png`
@@ -500,16 +534,19 @@ Complete list of generated assets:
 - `/public/icons/logo-monotone.svg`
 
 ### Open Graph
+
 - `/public/og/og-default.jpg`
 - `/public/og/og-radio.jpg`
 - `/public/og/og-shop.jpg`
 - `/public/og/og-earn.jpg`
 
 ### Styles
+
 - `/src/styles/branding.css` - All brand tokens, colors, typography, components
 - `/src/styles/animations.css` - All motion and animation classes
 
 ### Documentation
+
 - `/docs/BRAND_GUIDE.md` (this file)
 - `/docs/ASSET_MANIFEST.json`
 
@@ -518,22 +555,24 @@ Complete list of generated assets:
 ## 8. Usage Guidelines
 
 ### DO
+
 ✓ Use uppercase for headlines and CTAs  
 ✓ Maintain 3px borders on all UI elements  
 ✓ Apply gradients sparingly (10% of layout)  
 ✓ Use sharp corners (0 radius)  
 ✓ Respect 40px grid system  
 ✓ Test all color combinations for contrast  
-✓ Keep animations under 800ms  
+✓ Keep animations under 800ms
 
 ### DON'T
+
 ✗ Use rounded corners  
 ✗ Apply drop shadows (use solid shadows instead)  
 ✗ Mix serif fonts with the brand  
 ✗ Use gradients as primary backgrounds  
 ✗ Animate purely for decoration  
 ✗ Ignore keyboard/screen reader accessibility  
-✗ Use colors outside the defined palette  
+✗ Use colors outside the defined palette
 
 ---
 
@@ -542,7 +581,7 @@ Complete list of generated assets:
 **Brand System**: HOTMESS Enterprise Design Team  
 **Implementation**: React + Tailwind + shadcn/ui  
 **Version**: 1.0.0  
-**Last Updated**: 2024  
+**Last Updated**: 2024
 
 For questions or contributions, see main project documentation.
 

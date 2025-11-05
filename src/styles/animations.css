@@ -1,39 +1,41 @@
 @keyframes tear {
-  0% { 
+  0% {
     clip-path: inset(0 0 100% 0);
     opacity: 0;
   }
-  100% { 
+  100% {
     clip-path: inset(0 0 0 0);
     opacity: 1;
   }
 }
 
 @keyframes tear-horizontal {
-  0% { 
+  0% {
     clip-path: inset(0 100% 0 0);
     opacity: 0;
   }
-  100% { 
+  100% {
     clip-path: inset(0 0 0 0);
     opacity: 1;
   }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { 
+  0%,
+  100% {
     filter: drop-shadow(0 0 1rem oklch(0.55 0.22 25));
   }
-  50% { 
+  50% {
     filter: drop-shadow(0 0 2rem oklch(0.55 0.22 25));
   }
 }
 
 @keyframes pulse-glow-gold {
-  0%, 100% { 
+  0%,
+  100% {
     filter: drop-shadow(0 0 1rem oklch(0.75 0.15 85));
   }
-  50% { 
+  50% {
     filter: drop-shadow(0 0 2rem oklch(0.75 0.15 85));
   }
 }
@@ -123,9 +125,23 @@
 }
 
 @keyframes brutalist-shake {
-  0%, 100% { transform: translateX(0); }
-  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
-  20%, 40%, 60%, 80% { transform: translateX(4px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-4px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(4px);
+  }
 }
 
 @keyframes glitch {
@@ -159,7 +175,8 @@
 }
 
 @keyframes audio-pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scaleY(0.5);
   }
   50% {
@@ -177,7 +194,8 @@
 }
 
 @keyframes flash-red {
-  0%, 100% {
+  0%,
+  100% {
     background-color: transparent;
   }
   50% {
@@ -186,7 +204,8 @@
 }
 
 @keyframes flash-gold {
-  0%, 100% {
+  0%,
+  100% {
     background-color: transparent;
   }
   50% {

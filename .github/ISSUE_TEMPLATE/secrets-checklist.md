@@ -3,7 +3,7 @@ name: Configure Deployment Secrets
 about: Checklist to set up required secrets for CI/CD and deployments
 title: "chore: configure deployment secrets"
 labels: chore, ci, docs
-assignees: ''
+assignees: ""
 ---
 
 Complete this checklist to enable deployments and optional Docker publishing.
@@ -34,5 +34,6 @@ Complete this checklist to enable deployments and optional Docker publishing.
 - [ ] `deploy-docker` job is skipped or runs based on presence of Docker secrets
 
 Notes:
+
 - PRs use a fast build path and never deploy.
 - Main/production branches run full builds; deploys are gated by secrets.

@@ -4,13 +4,16 @@
  * appropriate (e.g. to notify admins of check‑ins or affiliate signups).
  */
 
-export async function sendTelegramMessage(chatId: string, text: string): Promise<void> {
-  const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN
-  if (!token) throw new Error('Telegram bot token is missing')
-  const url = `https://api.telegram.org/bot${token}/sendMessage`
+export async function sendTelegramMessage(
+  chatId: string,
+  text: string,
+): Promise<void> {
+  const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+  if (!token) throw new Error("Telegram bot token is missing");
+  const url = `https://api.telegram.org/bot${token}/sendMessage`;
   await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ chat_id: chatId, text }),
-  })
+  });
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 /**
  * Rooms page delivers a Telegram‑feel chat interface within HOTMESS. While
@@ -12,16 +12,16 @@ export default function Rooms() {
   // includes a sender and content. In production messages would be
   // fetched via Supabase or a websocket feed.
   const [messages, setMessages] = useState([
-    { sender: 'HNH Bot', text: '👋 Welcome to the Mess Room. Stay hydrated.' },
-    { sender: 'User123', text: 'Anyone grabbing the SUPER drop tonight?' },
-    { sender: 'DJ_Nic', text: 'Don’t miss my set at midnight. Drops inbound.' },
-  ])
-  const [input, setInput] = useState('')
+    { sender: "HNH Bot", text: "👋 Welcome to the Mess Room. Stay hydrated." },
+    { sender: "User123", text: "Anyone grabbing the SUPER drop tonight?" },
+    { sender: "DJ_Nic", text: "Don’t miss my set at midnight. Drops inbound." },
+  ]);
+  const [input, setInput] = useState("");
 
   function handleSend() {
-    if (!input.trim()) return
-    setMessages(prev => [...prev, { sender: 'You', text: input.trim() }])
-    setInput('')
+    if (!input.trim()) return;
+    setMessages((prev) => [...prev, { sender: "You", text: input.trim() }]);
+    setInput("");
   }
   return (
     <div className="px-4 py-12 max-w-5xl mx-auto flex flex-col h-[calc(100vh-200px)]">
@@ -29,14 +29,16 @@ export default function Rooms() {
       <p className="mb-4 opacity-80">
         Feels like Telegram, governed by Telegram rules. Live chat sits inside
         HOTMESS with bot‑dropped QR codes, late‑night drops and product
-        shoutouts. Hydration reminders slip into the margins. Not therapy –
-        just brotherhood and presence.
+        shoutouts. Hydration reminders slip into the margins. Not therapy – just
+        brotherhood and presence.
       </p>
       {/* Chat history */}
       <div className="flex-1 overflow-y-auto bg-[#1a1a1a] rounded p-4 space-y-2 mb-4">
         {messages.map((msg, idx) => (
           <div key={idx} className="flex flex-col">
-            <span className="text-xs opacity-60 mb-1 font-semibold">{msg.sender}</span>
+            <span className="text-xs opacity-60 mb-1 font-semibold">
+              {msg.sender}
+            </span>
             <p className="bg-[#2c0000] inline-block max-w-xs px-3 py-2 rounded-lg text-sm">
               {msg.text}
             </p>
@@ -50,9 +52,9 @@ export default function Rooms() {
           className="flex-1 p-3 rounded bg-[#1a1a1a] text-white"
           placeholder="Type your message…"
           value={input}
-          onChange={e => setInput(e.target.value)}
-          onKeyDown={e => {
-            if (e.key === 'Enter') handleSend()
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleSend();
           }}
         />
         <button
@@ -72,19 +74,25 @@ export default function Rooms() {
         </p>
         <div className="flex flex-wrap gap-4">
           <button
-            onClick={() => alert('Scan page will parse your QR and award points!')} 
+            onClick={() =>
+              alert("Scan page will parse your QR and award points!")
+            }
             className="bg-red-700 hover:bg-red-800 text-white px-6 py-3 rounded font-bold"
           >
             Scan + Earn
           </button>
           <button
-            onClick={() => alert('Head to the Shop and flex your status!')} 
+            onClick={() => alert("Head to the Shop and flex your status!")}
             className="bg-red-700 hover:bg-red-800 text-white px-6 py-3 rounded font-bold"
           >
             Shop Now
           </button>
           <button
-            onClick={() => alert('Need to decompress? Visit Care for hydration and grounding tips.')} 
+            onClick={() =>
+              alert(
+                "Need to decompress? Visit Care for hydration and grounding tips.",
+              )
+            }
             className="bg-red-700 hover:bg-red-800 text-white px-6 py-3 rounded font-bold"
           >
             Care & Aftercare
@@ -92,5 +100,5 @@ export default function Rooms() {
         </div>
       </div>
     </div>
-  )
+  );
 }

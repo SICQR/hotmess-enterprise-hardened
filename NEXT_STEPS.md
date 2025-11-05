@@ -27,18 +27,21 @@ Next: stand up automated tests and wire real APIs where applicable.
 ### 1. Security Hardening - COMPLETE ✓
 
 #### ✅ A. Content Security Policy Added
+
 - Added comprehensive CSP meta tag to `index.html`
 - Whitelisted trusted domains (Google Fonts, Open-Meteo, Supabase, Make.com)
 - Prevents XSS attacks and unauthorized resource loading
 - Restricts script execution to trusted sources
 
 #### ✅ B. Rate Limiting System Created
+
 - Created `src/lib/rate-limiter.ts` with client-side rate limiting
 - Functions: `checkRateLimit()`, `clearRateLimit()`, `getRateLimitStatus()`
 - Integrated into CarePage (5 submissions per minute)
 - Prevents form spam and DoS attacks
 
 #### ✅ C. Input Validation & Sanitization
+
 - Created `src/lib/validation.ts` with Zod schemas
 - Schemas for all forms: care check-in, affiliate links, concierge, age gate, webhooks
 - Helper functions: `sanitizeInput()`, `isValidUrl()`, `isValidEmail()`
@@ -47,24 +50,28 @@ Next: stand up automated tests and wire real APIs where applicable.
 ### 2. Accessibility Improvements - COMPLETE ✓
 
 #### ✅ A. ARIA Labels Added
+
 - **AgeGate.tsx**: Dialog roles, labelledby/describedby attributes
 - **RadioPlayer.tsx**: Button labels, live regions, slider accessibility
 - **ConciergeWidget.tsx**: Chat log role, message labels, form semantics
 - **CarePage.tsx**: Form labels, slider values, crisis alert regions
 
 #### ✅ B. Keyboard Navigation Implemented
+
 - Created `src/hooks/use-keyboard-shortcuts.ts`
 - Global shortcuts: Cmd/Ctrl + R/S/C/E/H for navigation
 - Integrated into App.tsx via `useGlobalShortcuts()`
 - Cross-platform support (Mac/Windows/Linux)
 
 #### ✅ C. Skip to Content Link Added
+
 - Added skip link in `src/App.tsx`
 - Visible on focus for keyboard users
 - Jumps directly to main content
 - Meets WCAG 2.1 Level A requirement
 
 #### ✅ D. Enhanced Form Accessibility
+
 - Associated all labels with inputs (htmlFor/id)
 - Added aria-labels to all controls
 - Character counters on textareas
@@ -74,6 +81,7 @@ Next: stand up automated tests and wire real APIs where applicable.
 ### 3. Documentation - COMPLETE ✓
 
 #### ✅ Created SECURITY_ACCESSIBILITY.md
+
 - Comprehensive documentation of all security improvements
 - Accessibility compliance checklist (WCAG 2.1 AA)
 - Testing recommendations (manual + automated)
@@ -89,24 +97,29 @@ Next: stand up automated tests and wire real APIs where applicable.
 **Goal:** Enable HOTMESS to trigger automated workflows via Make.com for common operations.
 
 #### ✅ A. Webhook System Created
+
 - Created `src/lib/webhooks.ts` with full webhook infrastructure
 - Implemented HMAC signature generation for security
 - Support for 6 webhook events
 - Environment variable configuration
 
 #### ✅ B. Webhooks Integrated into Features
+
 - ShortlinkRouter sends `scan.created` webhook
 - CarePage sends `checkin.submitted` webhook
 - Ready for future integrations (conversions, products, shows)
 
 #### ✅ C. Blueprint Documentation Page Created
+
 - New `/blueprints` route with comprehensive UI
 - 5 pre-built Make.com scenarios
 - Download blueprint JSON functionality
 - Test webhook connection feature
 
 #### ✅ D. Blueprint JSON Files Ready
+
 Blueprint structure documented for:
+
 1. `affiliate-conversion-tracker.json`
 2. `care-checkin-escalation.json`
 3. `product-sync-pipeline.json`
@@ -114,16 +127,20 @@ Blueprint structure documented for:
 5. `referral-payout-calculator.json`
 
 #### ✅ E. Environment Variables Added
+
 Updated `.env.example` with:
+
 - 6 Make.com webhook URLs
 - Webhook signature secret
 - Clear documentation
 
 #### ✅ F. Navigation Updated
+
 - Added "Blueprints" link to footer navigation
 - Accessible from homepage
 
 #### ✅ G. Documentation Complete
+
 - Created `/integrations/make-blueprints/README.md`
 - Security guidelines (HMAC verification)
 - Troubleshooting guide
@@ -149,17 +166,17 @@ npm install -D vitest @testing-library/react @testing-library/jest-dom @testing-
 **File:** `vitest.config.ts`
 
 ```typescript
-import { defineConfig } from 'vitest/config'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vitest/config";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
   test: {
-    environment: 'jsdom',
-    setupFiles: ['./src/test/setup.ts'],
-    globals: true
-  }
-})
+    environment: "jsdom",
+    setupFiles: ["./src/test/setup.ts"],
+    globals: true,
+  },
+});
 ```
 
 #### C. Write Critical Tests
@@ -210,6 +227,7 @@ Key routes: `home`, `radio`, `shop`, `earn`, `care`, `blueprints`, `showcase`, `
 #### D. Real API Integration
 
 **Supabase Connection:**
+
 1. Create Supabase project
 2. Run migration scripts (create tables)
 3. Configure RLS policies
@@ -217,6 +235,7 @@ Key routes: `home`, `radio`, `shop`, `earn`, `care`, `blueprints`, `showcase`, `
 5. Test all CRUD operations
 
 **Shopify Integration:**
+
 1. Create Shopify Partner account
 2. Generate Storefront API token
 3. Update `src/lib/shopify.ts` with GraphQL queries
@@ -224,6 +243,7 @@ Key routes: `home`, `radio`, `shop`, `earn`, `care`, `blueprints`, `showcase`, `
 5. Verify UTM tracking
 
 **Radio Stream Connection:**
+
 1. Configure RadioKing or Azuracast
 2. Update stream URLs in `src/lib/radio.ts`
 3. Test metadata fetching
@@ -259,6 +279,7 @@ Add privacy-friendly analytics.
 #### C. Uptime Monitoring
 
 Set up:
+
 - UptimeRobot (free tier)
 - Vercel Analytics
 - Custom health endpoint
@@ -297,24 +318,28 @@ Set up:
 ## 📋 Task Breakdown by Role
 
 ### Frontend Developer
+
 1. ✅ Make.com blueprint page
 2. ✅ Webhook integration in components
 3. ✅ Accessibility improvements
 4. ✅ Keyboard shortcuts
 
 ### Backend Developer
+
 1. ✅ Webhook system implementation
 2. ✅ Rate limiting
 3. ✅ Supabase integration
 4. ✅ Real API connections
 
 ### DevOps Engineer
+
 1. ✅ CSP headers configuration
 2. ✅ Sentry setup
 3. ✅ Uptime monitoring
 4. ✅ CI/CD enhancements
 
 ### QA Engineer
+
 1. ✅ Write automated tests
 2. ✅ Manual accessibility testing
 3. ✅ Cross-browser testing
@@ -325,6 +350,7 @@ Set up:
 ## 🎯 Sprint Planning
 
 ### Sprint 1 (Current) - Make.com Integration - COMPLETE ✓
+
 - [x] Webhook system implementation
 - [x] Blueprint JSON files
 - [x] Blueprints page
@@ -334,6 +360,7 @@ Set up:
 **Completed:** January 2025
 
 ### Sprint 2 (Next) - Security & Accessibility - COMPLETE ✓
+
 - [x] CSP headers
 - [x] Rate limiting
 - [x] Input validation
@@ -344,6 +371,7 @@ Set up:
 **Completed:** January 2025
 
 ### Sprint 3 (Next) - Testing & Real APIs
+
 - [ ] Test infrastructure
 - [ ] Critical path tests
 - [ ] Supabase connection
@@ -353,6 +381,7 @@ Set up:
 **Estimated:** 5-7 days
 
 ### Sprint 4 - Monitoring & Launch Prep
+
 - [ ] Sentry integration
 - [ ] Analytics setup
 - [ ] Uptime monitoring
@@ -366,6 +395,7 @@ Set up:
 ## 📊 Success Metrics
 
 ### Technical Metrics
+
 - [ ] Test coverage >70%
 - [ ] Lighthouse score >90
 - [ ] Zero critical security vulnerabilities
@@ -373,6 +403,7 @@ Set up:
 - [ ] Zero console errors
 
 ### Business Metrics
+
 - [ ] Age gate conversion >95%
 - [ ] Radio engagement >5min average
 - [ ] Shop conversion >2%
@@ -384,15 +415,18 @@ Set up:
 ## 🚨 Blockers & Risks
 
 ### Current Blockers
+
 - None identified
 
 ### Potential Risks
+
 1. **Supabase RLS policies** - May take time to configure correctly
 2. **Shopify API rate limits** - Need to implement caching
 3. **Radio stream reliability** - Fallback system critical
 4. **Make.com webhook delays** - Need retry logic
 
 ### Mitigation Strategies
+
 - Mock all external dependencies during development
 - Implement comprehensive error handling
 - Add retry logic with exponential backoff

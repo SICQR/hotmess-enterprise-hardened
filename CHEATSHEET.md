@@ -63,7 +63,7 @@ npm run db:mock          # Seed mock affiliate database
 ```bash
 # Cloud platforms
 npm run deploy vercel    # Deploy to Vercel
-npm run deploy netlify   # Deploy to Netlify  
+npm run deploy netlify   # Deploy to Netlify
 npm run deploy railway   # Deploy to Railway
 
 # Containers
@@ -195,6 +195,7 @@ npm run dev
 ## 🔑 Environment Variables
 
 ### Local Development (.env.local)
+
 ```bash
 npm run setup:env        # Auto-generates mock values
 ```
@@ -202,17 +203,20 @@ npm run setup:env        # Auto-generates mock values
 ### Production (Platform Secrets)
 
 **Vercel:**
+
 ```bash
 vercel env add VITE_SUPABASE_URL
 vercel env add VITE_SUPABASE_ANON_KEY
 ```
 
 **Netlify:**
+
 ```bash
 netlify env:set VITE_SUPABASE_URL "https://..."
 ```
 
 **Required Variables:**
+
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`
 - `SHOPIFY_DOMAIN`
@@ -266,11 +270,13 @@ npm install
 **Workflow:** `.github/workflows/deploy.yml`
 
 **Triggers:**
+
 - Push to `main` or `production`
 - Pull request to `main`
 - Manual dispatch
 
 **Jobs:**
+
 1. Verify (health + verify + typecheck + lint)
 2. Build (compile + bundle)
 3. Deploy (Vercel + Docker)
@@ -311,16 +317,19 @@ scripts/README.md       # Script documentation
 ## 🎯 Common Tasks
 
 ### Add New Page
+
 1. Create: `src/pages/MyPage.tsx`
 2. Add route in: `src/App.tsx`
 3. Update navigation components
 
 ### Add New Component
+
 1. Create: `src/components/MyComponent.tsx`
 2. Import where needed
 3. Use TypeScript for props
 
 ### Add New Dependency
+
 ```bash
 npm install <package>
 # Restart dev server
@@ -328,6 +337,7 @@ npm run dev
 ```
 
 ### Update Environment Variable
+
 ```bash
 # Edit .env.local
 # Restart dev server (required!)
@@ -335,6 +345,7 @@ npm run dev
 ```
 
 ### Deploy Changes
+
 ```bash
 git add .
 git commit -m "description"
@@ -432,14 +443,14 @@ DEBUG=vite:* npm run dev
 
 ## 📚 Learn More
 
-| Resource | Link |
-|----------|------|
-| Full Docs | [README.md](./README.md) |
-| Quick Start | [QUICKSTART.md](./QUICKSTART.md) |
-| Architecture | [BOOTSTRAP.md](./BOOTSTRAP.md) |
+| Resource        | Link                                       |
+| --------------- | ------------------------------------------ |
+| Full Docs       | [README.md](./README.md)                   |
+| Quick Start     | [QUICKSTART.md](./QUICKSTART.md)           |
+| Architecture    | [BOOTSTRAP.md](./BOOTSTRAP.md)             |
 | Troubleshooting | [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) |
-| Scripts | [scripts/README.md](./scripts/README.md) |
-| Deployment | [DEPLOYMENT.md](./DEPLOYMENT.md) |
+| Scripts         | [scripts/README.md](./scripts/README.md)   |
+| Deployment      | [DEPLOYMENT.md](./DEPLOYMENT.md)           |
 
 ---
 

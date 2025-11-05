@@ -22,41 +22,41 @@ spec:
         tier: frontend
     spec:
       containers:
-      - name: hotmess
-        image: hotmess-enterprise:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 5173
-          name: http
-          protocol: TCP
-        envFrom:
-        - secretRef:
-            name: hotmess-secrets
-        - configMapRef:
-            name: hotmess-config
-        resources:
-          requests:
-            memory: "256Mi"
-            cpu: "250m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 5173
-          initialDelaySeconds: 30
-          periodSeconds: 10
-          timeoutSeconds: 5
-          failureThreshold: 3
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 5173
-          initialDelaySeconds: 10
-          periodSeconds: 5
-          timeoutSeconds: 3
-          failureThreshold: 3
+        - name: hotmess
+          image: hotmess-enterprise:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5173
+              name: http
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: hotmess-secrets
+            - configMapRef:
+                name: hotmess-config
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5173
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 5173
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
 ---
 apiVersion: v1
 kind: Service
@@ -69,10 +69,10 @@ spec:
   selector:
     app: hotmess
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 5173
-    name: http
+    - protocol: TCP
+      port: 80
+      targetPort: 5173
+      name: http
   sessionAffinity: ClientIP
 ---
 apiVersion: v1
@@ -97,15 +97,15 @@ spec:
   minReplicas: 3
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
-  - type: Resource
-    resource:
-      name: memory
-      target:
-        type: Utilization
-        averageUtilization: 80
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80

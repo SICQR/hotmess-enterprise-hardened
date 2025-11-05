@@ -56,9 +56,15 @@ export default [
     rules: {
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
-      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
       // Calibrated TS rules (mostly warnings)
-      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
       "@typescript-eslint/no-floating-promises": "warn",
       "@typescript-eslint/no-misused-promises": "warn",
       "@typescript-eslint/require-await": "off",
@@ -93,14 +99,22 @@ export default [
     },
     rules: {
       ...(c.rules ?? {}),
-      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
       "@typescript-eslint/no-explicit-any": "warn",
     },
   })),
 
   // 5) Node environment for config and scripts
   {
-    files: ["vite.config.ts", "tailwind.config.js", "eslint.config.js", "scripts/**/*.{ts,js}"],
+    files: [
+      "vite.config.ts",
+      "tailwind.config.js",
+      "eslint.config.js",
+      "scripts/**/*.{ts,js}",
+    ],
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",

@@ -7,6 +7,7 @@ The previous build attempts tried to add **backend infrastructure** (SQL databas
 ## What is a Spark Application?
 
 Spark applications are:
+
 - **Client-side only** React applications running on Vite
 - **No backend servers** - all code runs in the browser
 - **No databases** - persistence uses Spark KV storage API (browser-based)
@@ -16,6 +17,7 @@ Spark applications are:
 ## Previous Incorrect Additions (Now Documented as Invalid)
 
 ### ❌ Files That Don't Belong in Spark
+
 1. **Dockerfile** - Spark apps don't use Docker
 2. **docker-compose.yml** - No containerization in Spark
 3. **k8s/** directory - No Kubernetes deployments in Spark
@@ -24,6 +26,7 @@ Spark applications are:
 6. **.github/workflows/** - GitHub Actions for backend deployments don't apply
 
 ### ❌ Documentation That Was Misleading
+
 1. Build pipeline docs mentioning SQL migrations
 2. Docker/K8s deployment instructions
 3. Next.js references (this is a Vite + React app)
@@ -58,18 +61,23 @@ Spark applications are:
 ## What Needs Real Implementation
 
 ### Data Persistence
+
 Currently using mock implementations. To make real:
+
 - **Replace mock Supabase** with Spark KV storage API
 - **Use `useKV` hook** from `@github/spark/hooks` for persistent data
 - Store check-ins, affiliate data, user preferences in KV storage
 
 ### Live Radio
+
 Currently configured for:
+
 - `https://stream.hotmess.live/radio` (needs real stream URL)
 - Uses HTML5 audio element (correct approach)
 - Mock now-playing metadata (could use real API if available)
 
 ### External APIs
+
 - **Weather**: Uses real Open-Meteo API (working correctly ✅)
 - **Radio metadata**: Currently mocked (could integrate real API)
 - **Webhooks**: Mock implementation (would need real endpoints)
@@ -106,6 +114,7 @@ HOTMESS Enterprise (Spark App)
 ## Validation Results
 
 ### ✅ Application Health Check
+
 - TypeScript compiles without errors
 - All components properly imported
 - Mock data services work correctly
@@ -114,6 +123,7 @@ HOTMESS Enterprise (Spark App)
 - No runtime errors detected
 
 ### ✅ Architecture Compliance
+
 - No backend dependencies in package.json
 - All external services properly mocked
 - Client-side only code

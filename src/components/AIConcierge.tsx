@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 
 /**
  * AIConcierge renders a persistent chat assistant that floats over the
@@ -9,13 +9,15 @@ import React, { useState, useEffect, useRef } from 'react';
  */
 export default function AIConcierge() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<{ sender: 'user' | 'bot'; text: string }[]>([]);
-  const [input, setInput] = useState('');
+  const [messages, setMessages] = useState<
+    { sender: "user" | "bot"; text: string }[]
+  >([]);
+  const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Scroll to bottom whenever new messages are added
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   // Basic rule‑based response generator. Pattern matching keywords
@@ -24,24 +26,24 @@ export default function AIConcierge() {
   function getResponse(text: string): string {
     const lower = text.toLowerCase();
     if (/(recommend|suggest).*product/.test(lower)) {
-      return 'Check out the HIGH Harness or RAW Hoodie – they’re popular right now!';
+      return "Check out the HIGH Harness or RAW Hoodie – they’re popular right now!";
     }
     if (/(radio|show|schedule)/.test(lower)) {
-      return 'We broadcast Wake the Mess every morning, Dial‑A‑Daddy three times a week and Hand N Hand on Sundays.';
+      return "We broadcast Wake the Mess every morning, Dial‑A‑Daddy three times a week and Hand N Hand on Sundays.";
     }
     if (/(care|aftercare)/.test(lower)) {
-      return 'Aftercare is important. Hydrate, breathe and visit the Care section for resources.';
+      return "Aftercare is important. Hydrate, breathe and visit the Care section for resources.";
     }
     if (/(points|loyalty)/.test(lower)) {
-      return 'You earn points by scanning QR beacons and participating in drops. Your balance is shown in the nav bar.';
+      return "You earn points by scanning QR beacons and participating in drops. Your balance is shown in the nav bar.";
     }
     if (/(subscribe|membership|subscription)/.test(lower)) {
-      return 'Subscriptions are coming soon! For now, follow us on radio and shop our exclusive drops.';
+      return "Subscriptions are coming soon! For now, follow us on radio and shop our exclusive drops.";
     }
     if (/(hello|hi|hey)/.test(lower)) {
-      return 'Hey there! How can I help you explore HOTMESS?';
+      return "Hey there! How can I help you explore HOTMESS?";
     }
-    return 'I’m not sure how to respond to that. Try asking about products, radio, care or points.';
+    return "I’m not sure how to respond to that. Try asking about products, radio, care or points.";
   }
 
   const handleSend = (e: React.FormEvent) => {
@@ -49,10 +51,10 @@ export default function AIConcierge() {
     const trimmed = input.trim();
     if (!trimmed) return;
     // Add user message and bot response
-    const userMsg = { sender: 'user' as const, text: trimmed };
-    const botMsg = { sender: 'bot' as const, text: getResponse(trimmed) };
-    setMessages(prev => [...prev, userMsg, botMsg]);
-    setInput('');
+    const userMsg = { sender: "user" as const, text: trimmed };
+    const botMsg = { sender: "bot" as const, text: getResponse(trimmed) };
+    setMessages((prev) => [...prev, userMsg, botMsg]);
+    setInput("");
   };
 
   return (
@@ -81,20 +83,23 @@ export default function AIConcierge() {
             {messages.map((msg, idx) => (
               <div
                 key={idx}
-                className={`p-2 rounded-lg max-w-xs ${msg.sender === 'user' ? 'ml-auto bg-red-700 text-white' : 'mr-auto bg-[#2c0000] text-[#f2c122]'}`}
+                className={`p-2 rounded-lg max-w-xs ${msg.sender === "user" ? "ml-auto bg-red-700 text-white" : "mr-auto bg-[#2c0000] text-[#f2c122]"}`}
               >
                 {msg.text}
               </div>
             ))}
             <div ref={messagesEndRef} />
           </div>
-          <form onSubmit={handleSend} className="p-2 border-t border-[#2c0000] flex">
+          <form
+            onSubmit={handleSend}
+            className="p-2 border-t border-[#2c0000] flex"
+          >
             <input
               type="text"
               className="flex-1 bg-transparent border border-[#2c0000] rounded-l px-2 py-1 text-white focus:outline-none"
               placeholder="Type your question…"
               value={input}
-              onChange={e => setInput(e.target.value)}
+              onChange={(e) => setInput(e.target.value)}
             />
             <button
               type="submit"

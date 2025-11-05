@@ -1,36 +1,41 @@
-import { useState, useEffect } from 'react'
-import { Button } from '@/components/ui/button'
-import { ProductGrid } from '@/components/ProductGrid'
-import { ArrowLeft } from '@phosphor-icons/react'
-import { getProducts, type Product } from '@/lib/shopify'
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
-import { Badge } from '@/components/ui/badge'
-import { getRecommendedProducts } from '@/lib/shopify'
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { ProductGrid } from "@/components/ProductGrid";
+import { ArrowLeft } from "@phosphor-icons/react";
+import { getProducts, type Product } from "@/lib/shopify";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
+import { getRecommendedProducts } from "@/lib/shopify";
 
 interface ShopPageProps {
-  onNavigate: (route: string) => void
+  onNavigate: (route: string) => void;
 }
 
 export function ShopPage({ onNavigate }: ShopPageProps) {
-  const [products, setProducts] = useState<Product[]>([])
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
-  const [recommended, setRecommended] = useState<Product[]>([])
-  const [loading, setLoading] = useState(true)
+  const [products, setProducts] = useState<Product[]>([]);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [recommended, setRecommended] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadProducts()
-  }, [])
+    loadProducts();
+  }, []);
 
   useEffect(() => {
     if (selectedProduct) {
-      setRecommended(getRecommendedProducts(selectedProduct.id))
+      setRecommended(getRecommendedProducts(selectedProduct.id));
     }
-  }, [selectedProduct])
+  }, [selectedProduct]);
 
   async function loadProducts() {
-    const data = await getProducts()
-    setProducts(data)
-    setLoading(false)
+    const data = await getProducts();
+    setProducts(data);
+    setLoading(false);
   }
 
   return (
@@ -38,7 +43,7 @@ export function ShopPage({ onNavigate }: ShopPageProps) {
       <nav className="border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center gap-4">
           <Button
-            onClick={() => onNavigate('home')}
+            onClick={() => onNavigate("home")}
             variant="ghost"
             size="icon"
           >
@@ -61,18 +66,26 @@ export function ShopPage({ onNavigate }: ShopPageProps) {
             <p className="text-muted-foreground">Loading products...</p>
           </div>
         ) : (
-          <ProductGrid products={products} onProductClick={setSelectedProduct} />
+          <ProductGrid
+            products={products}
+            onProductClick={setSelectedProduct}
+          />
         )}
       </div>
 
-      <Dialog open={!!selectedProduct} onOpenChange={() => setSelectedProduct(null)}>
+      <Dialog
+        open={!!selectedProduct}
+        onOpenChange={() => setSelectedProduct(null)}
+      >
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           {selectedProduct && (
             <div className="space-y-6">
               <DialogHeader>
-                <DialogTitle className="text-3xl">{selectedProduct.title}</DialogTitle>
+                <DialogTitle className="text-3xl">
+                  {selectedProduct.title}
+                </DialogTitle>
               </DialogHeader>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="aspect-square bg-muted">
                   <img
@@ -81,11 +94,13 @@ export function ShopPage({ onNavigate }: ShopPageProps) {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                
+
                 <div className="space-y-6">
                   <div>
                     <div className="flex items-baseline gap-3 mb-4">
-                      <span className="text-4xl font-bold">${selectedProduct.price}</span>
+                      <span className="text-4xl font-bold">
+                        ${selectedProduct.price}
+                      </span>
                       {selectedProduct.compareAtPrice && (
                         <span className="text-xl text-muted-foreground line-through">
                           ${selectedProduct.compareAtPrice}
@@ -93,37 +108,45 @@ export function ShopPage({ onNavigate }: ShopPageProps) {
                       )}
                     </div>
                     {!selectedProduct.available && (
-                      <Badge variant="destructive" className="mb-4">SOLD OUT</Badge>
+                      <Badge variant="destructive" className="mb-4">
+                        SOLD OUT
+                      </Badge>
                     )}
                   </div>
-                  
-                  <p className="text-lg leading-relaxed">{selectedProduct.description}</p>
-                  
+
+                  <p className="text-lg leading-relaxed">
+                    {selectedProduct.description}
+                  </p>
+
                   <div className="flex flex-wrap gap-2">
-                    {selectedProduct.tags.map(tag => (
-                      <Badge key={tag} variant="outline">{tag.toUpperCase()}</Badge>
+                    {selectedProduct.tags.map((tag) => (
+                      <Badge key={tag} variant="outline">
+                        {tag.toUpperCase()}
+                      </Badge>
                     ))}
                   </div>
-                  
+
                   <Button
                     size="lg"
                     className="w-full h-14 bg-accent hover:bg-accent/90 text-accent-foreground"
                     disabled={!selectedProduct.available}
                   >
-                    {selectedProduct.available ? 'ADD TO CART' : 'OUT OF STOCK'}
+                    {selectedProduct.available ? "ADD TO CART" : "OUT OF STOCK"}
                   </Button>
-                  
+
                   <p className="text-sm text-muted-foreground text-center">
                     Free shipping on orders over $200
                   </p>
                 </div>
               </div>
-              
+
               {recommended.length > 0 && (
                 <div className="pt-8 border-t border-border">
-                  <h3 className="text-2xl font-bold mb-6">YOU MIGHT ALSO LIKE</h3>
+                  <h3 className="text-2xl font-bold mb-6">
+                    YOU MIGHT ALSO LIKE
+                  </h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {recommended.map(product => (
+                    {recommended.map((product) => (
                       <button
                         key={product.id}
                         onClick={() => setSelectedProduct(product)}
@@ -137,7 +160,9 @@ export function ShopPage({ onNavigate }: ShopPageProps) {
                           />
                         </div>
                         <div className="text-sm font-bold">{product.title}</div>
-                        <div className="text-sm text-muted-foreground">${product.price}</div>
+                        <div className="text-sm text-muted-foreground">
+                          ${product.price}
+                        </div>
                       </button>
                     ))}
                   </div>
@@ -148,5 +173,5 @@ export function ShopPage({ onNavigate }: ShopPageProps) {
         </DialogContent>
       </Dialog>
     </div>
-  )
+  );
 }

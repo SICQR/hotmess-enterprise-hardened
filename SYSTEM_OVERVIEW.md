@@ -13,7 +13,7 @@ The HOTMESS Self-Bootstrapping System is a **zero-config deployment pipeline** t
 ✅ Deploy to any platform with a single command  
 ✅ Self-heal when components are missing  
 ✅ Validate builds before deployment  
-✅ Generate all required infrastructure files  
+✅ Generate all required infrastructure files
 
 ---
 
@@ -33,15 +33,15 @@ npm run launch
 
 ### 1. **Bootstrap Scripts** (`scripts/`)
 
-| Script | Purpose | Command |
-|--------|---------|---------|
-| `launch_hotmess.ts` | Complete auto-bootstrap | `npm run launch` |
-| `setup_env.ts` | Environment configuration | `npm run setup:env` |
-| `seed_db.ts` | Mock data generation | `npm run db:mock` |
-| `verify_build.ts` | Build verification | `npm run verify` |
-| `health_check.ts` | System diagnostics | `npm run health` |
-| `build_production.ts` | Production pipeline | `npm run build:production` |
-| `deploy.ts` | Universal deployment | `npm run deploy [platform]` |
+| Script                | Purpose                   | Command                     |
+| --------------------- | ------------------------- | --------------------------- |
+| `launch_hotmess.ts`   | Complete auto-bootstrap   | `npm run launch`            |
+| `setup_env.ts`        | Environment configuration | `npm run setup:env`         |
+| `seed_db.ts`          | Mock data generation      | `npm run db:mock`           |
+| `verify_build.ts`     | Build verification        | `npm run verify`            |
+| `health_check.ts`     | System diagnostics        | `npm run health`            |
+| `build_production.ts` | Production pipeline       | `npm run build:production`  |
+| `deploy.ts`           | Universal deployment      | `npm run deploy [platform]` |
 
 ### 2. **Infrastructure Files**
 
@@ -120,26 +120,31 @@ npm run deploy [platform]
 ## Key Features
 
 ### 🚀 Zero Configuration
+
 - **One command setup**: `npm run launch`
 - **Auto-generates**: Environment variables, mock data, configs
 - **Smart defaults**: Everything works out of the box
 
 ### 🔧 Self-Healing
+
 - **Auto-detection**: Missing files, broken dependencies
 - **Nuclear option**: `rm -rf node_modules && npm run launch`
 - **Graceful degradation**: Non-critical failures are warnings
 
 ### 🌍 Universal Deployment
+
 - **Cloud**: Vercel, Netlify, Railway
 - **Containers**: Docker, Kubernetes
 - **CI/CD**: GitHub Actions pre-configured
 
 ### 📊 Built-in Diagnostics
+
 - **Health checks**: `npm run health`
 - **Verification**: `npm run verify`
 - **JSON output**: For automation and CI/CD
 
 ### 🔐 Security First
+
 - **Mock credentials**: Safe for local development
 - **Secret management**: Platform-specific configs
 - **CSP headers**: Security headers pre-configured
@@ -215,23 +220,23 @@ Browser   Spark KV
 
 ### Cloud Platforms
 
-| Platform | Command | Features |
-|----------|---------|----------|
-| **Vercel** | `npm run deploy vercel` | Edge functions, Auto SSL, Analytics |
-| **Netlify** | `npm run deploy netlify` | CDN, Forms, Split testing |
-| **Railway** | `npm run deploy railway` | Databases, Auto-deploy |
+| Platform    | Command                  | Features                            |
+| ----------- | ------------------------ | ----------------------------------- |
+| **Vercel**  | `npm run deploy vercel`  | Edge functions, Auto SSL, Analytics |
+| **Netlify** | `npm run deploy netlify` | CDN, Forms, Split testing           |
+| **Railway** | `npm run deploy railway` | Databases, Auto-deploy              |
 
 ### Container Platforms
 
-| Platform | Command | Features |
-|----------|---------|----------|
-| **Docker** | `npm run deploy docker` | Local testing, Portable |
+| Platform       | Command                     | Features                     |
+| -------------- | --------------------------- | ---------------------------- |
+| **Docker**     | `npm run deploy docker`     | Local testing, Portable      |
 | **Kubernetes** | `npm run deploy kubernetes` | Auto-scaling, Load balancing |
 
 ### CI/CD
 
-| Platform | Workflow | Triggers |
-|----------|----------|----------|
+| Platform           | Workflow                       | Triggers                  |
+| ------------------ | ------------------------------ | ------------------------- |
 | **GitHub Actions** | `.github/workflows/deploy.yml` | Push to main, PRs, Manual |
 
 ---
@@ -252,6 +257,7 @@ npm run setup:env
 ### Production Deployment
 
 **Required Variables:**
+
 - `VITE_SUPABASE_URL` - Supabase project URL
 - `VITE_SUPABASE_ANON_KEY` - Supabase anon key
 - `SHOPIFY_DOMAIN` - Shopify store
@@ -259,6 +265,7 @@ npm run setup:env
 - `LINK_SIGNING_SECRET` - HMAC secret
 
 **Platform Setup:**
+
 - **Vercel**: Project Settings → Environment Variables
 - **Netlify**: Site Settings → Environment Variables
 - **GitHub**: Repo Settings → Secrets and variables
@@ -274,6 +281,7 @@ npm run verify
 ```
 
 **Validates:**
+
 - ✓ Environment files exist
 - ✓ Package.json configured
 - ✓ Source directory complete
@@ -292,12 +300,14 @@ npm run health
 ```
 
 **Checks:**
+
 - ✓ File integrity
 - ✓ Dependency status
 - ✓ Build configuration
 - ✓ Environment setup
 
 **Output Modes:**
+
 - Human-readable (default)
 - JSON (`--json` flag)
 
@@ -366,12 +376,14 @@ npm run launch
 ## Security Considerations
 
 ### Local Development
+
 - ✓ Mock credentials (safe)
 - ✓ Generated HMAC (real crypto)
 - ✓ No real API calls
 - ✓ `.env.local` gitignored
 
 ### Production
+
 - ✓ Real credentials in platform secrets
 - ✓ CSP headers configured
 - ✓ Security headers active
@@ -379,6 +391,7 @@ npm run launch
 - ✓ No secrets in code
 
 ### Best Practices
+
 1. Never commit `.env.local`
 2. Rotate API keys quarterly
 3. Use platform secret management
@@ -389,14 +402,14 @@ npm run launch
 
 ## Troubleshooting Quick Reference
 
-| Issue | Solution |
-|-------|----------|
-| Module not found | `npm install` |
-| Port in use | `npm run kill` |
-| Build fails | `npm run verify` |
-| Env vars not working | `npm run setup:env && npm run dev` |
-| Corrupted deps | `rm -rf node_modules && npm install` |
-| Complete reset | `rm -rf node_modules .env.local && npm run launch` |
+| Issue                | Solution                                           |
+| -------------------- | -------------------------------------------------- |
+| Module not found     | `npm install`                                      |
+| Port in use          | `npm run kill`                                     |
+| Build fails          | `npm run verify`                                   |
+| Env vars not working | `npm run setup:env && npm run dev`                 |
+| Corrupted deps       | `rm -rf node_modules && npm install`               |
+| Complete reset       | `rm -rf node_modules .env.local && npm run launch` |
 
 See [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) for detailed guide.
 
@@ -405,16 +418,19 @@ See [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) for detailed guide.
 ## Documentation Map
 
 ### For New Users
+
 1. Start: [QUICKSTART.md](./QUICKSTART.md)
 2. Understand: [BOOTSTRAP.md](./BOOTSTRAP.md)
 3. Reference: [CHEATSHEET.md](./CHEATSHEET.md)
 
 ### For Developers
+
 1. Overview: [README.md](./README.md)
 2. Scripts: [scripts/README.md](./scripts/README.md)
 3. Issues: [TROUBLESHOOTING.md](./TROUBLESHOOTING.md)
 
 ### For DevOps
+
 1. Deploy: [DEPLOYMENT.md](./DEPLOYMENT.md)
 2. Scripts: [scripts/README.md](./scripts/README.md)
 3. Infrastructure: Docker, K8s files
@@ -458,16 +474,19 @@ check("My Check", () => {
 ## Future Roadmap
 
 ### v1.1 - Autonomous Regeneration
+
 - Auto-regenerate missing modules via Spark API
 - Cloud deployment automation
 - Real-time health monitoring endpoints
 
 ### v1.2 - Advanced Self-Healing
+
 - Dependency auto-update
 - Breaking change detection
 - Rollback capabilities
 
 ### v1.3 - Multi-Region Deployment
+
 - Global CDN configuration
 - Edge function deployment
 - Region-aware routing
@@ -477,14 +496,17 @@ check("My Check", () => {
 ## Support & Community
 
 ### Get Help
+
 - **Issues**: [GitHub Issues](https://github.com/your-repo/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/your-repo/discussions)
 - **Email**: support@hotmess.live
 
 ### Contribute
+
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 ### Report Security Issues
+
 Email: security@hotmess.live
 
 ---
@@ -504,7 +526,7 @@ The HOTMESS Self-Bootstrapping System provides:
 ✅ **Self-healing** - Auto-recovery from failures  
 ✅ **Built-in diagnostics** - Health & verification  
 ✅ **Production-ready** - CI/CD configured  
-✅ **Comprehensive docs** - Complete documentation  
+✅ **Comprehensive docs** - Complete documentation
 
 **Built with 🔥 for the modern developer.**
 
@@ -513,6 +535,7 @@ The HOTMESS Self-Bootstrapping System provides:
 **Start now: `npm run launch`**
 
 For detailed documentation, see:
+
 - 🚀 [QUICKSTART.md](./QUICKSTART.md) - Get started
 - 🏗️ [BOOTSTRAP.md](./BOOTSTRAP.md) - Architecture
 - ⚡ [CHEATSHEET.md](./CHEATSHEET.md) - Commands

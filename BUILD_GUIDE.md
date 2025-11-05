@@ -15,6 +15,7 @@ This single command executes the **full-stack build pipeline** with infrastructu
 The production build runs **8 orchestrated phases** with real-time progress tracking:
 
 ### 1. Environment Validation
+
 **Script:** `scripts/build_production.ts` (Step 1)
 
 Validates environment configuration:
@@ -24,6 +25,7 @@ Validates environment configuration:
 - ✅ Ensures build prerequisites are met
 
 ### 2. SQL Migrations
+
 **Script:** `scripts/build_production.ts` (Step 2)
 
 Runs database migrations and schema validation:
@@ -36,6 +38,7 @@ Runs database migrations and schema validation:
 **Note:** Migrations are validated but not auto-applied. Run manually via Supabase CLI or dashboard.
 
 ### 3. Build Verification
+
 **Script:** `scripts/verify_build.ts`
 
 Comprehensive pre-build integrity checks:
@@ -50,6 +53,7 @@ Comprehensive pre-build integrity checks:
 - ✅ **TypeScript Dry Run**: Executes type checking without emitting files
 
 ### 4. TypeScript Build
+
 **Command:** `tsc -b`
 
 Full TypeScript compilation:
@@ -59,6 +63,7 @@ Full TypeScript compilation:
 - 📦 Validates all type definitions
 
 ### 5. Vite Production Build
+
 **Command:** `vite build`
 
 Bundles React app with optimizations:
@@ -69,6 +74,7 @@ Bundles React app with optimizations:
 - 🚀 Outputs to `dist/` directory
 
 **Output Structure:**
+
 ```
 dist/
 ├── assets/
@@ -80,6 +86,7 @@ dist/
 ```
 
 ### 6. Docker Generation
+
 **Script:** `scripts/build_production.ts` (Step 6)
 
 Regenerates and validates Docker configuration:
@@ -89,6 +96,7 @@ Regenerates and validates Docker configuration:
 - 🐳 Ensures container build readiness
 
 ### 7. Kubernetes Generation
+
 **Script:** `scripts/build_production.ts` (Step 7)
 
 Regenerates and validates Kubernetes manifests:
@@ -98,16 +106,18 @@ Regenerates and validates Kubernetes manifests:
 - ☸️ Ensures deployment configuration is valid
 
 ### 8. Health Check
+
 **Script:** `scripts/health_check.ts`
 
 Post-build validation and system diagnostics:
 
 - 🏥 **Files Check**: All core files present
-- 🏥 **Dependencies Check**: All node_modules installed correctly  
+- 🏥 **Dependencies Check**: All node_modules installed correctly
 - 🏥 **Build Check**: Build scripts configured properly
 - 🏥 **Environment Check**: Environment files available
 
 **Status Levels:**
+
 - `healthy` ✅ - All checks pass (exit 0)
 - `degraded` ⚠️ - Non-critical issues (exit 0)
 - `down` ❌ - Critical failures (exit 1)
@@ -123,7 +133,7 @@ Post-build validation and system diagnostics:
 Step 1: Environment Validation
    ↓ Verify .env files and required directories
 
-Step 2: SQL Migrations  
+Step 2: SQL Migrations
    ↓ Validate database schemas in sql/
 
 Step 3: Build Verification
@@ -138,7 +148,7 @@ Step 5: Vite Production Build
 Step 6: Docker Generation
    ↓ Validate Dockerfile and compose files
 
-Step 7: Kubernetes Generation  
+Step 7: Kubernetes Generation
    ↓ Validate k8s manifests
 
 Step 8: Health Check
@@ -207,7 +217,7 @@ npm run verify
 # Build without verification
 npm run build
 
-# Health check only  
+# Health check only
 npm run health
 
 # Health check with JSON output
@@ -281,8 +291,8 @@ jobs:
       - name: 🔧 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
       - name: 📦 Install Dependencies
         run: npm ci
@@ -327,6 +337,7 @@ jobs:
 ```
 
 **See also:**
+
 - [BUILD_ORDER_ANALYSIS.md](./BUILD_ORDER_ANALYSIS.md) - Why this order matters
 - [BUILD_ORDER_CHEATSHEET.md](./BUILD_ORDER_CHEATSHEET.md) - Quick reference
 
@@ -352,20 +363,20 @@ build:
 ```groovy
 pipeline {
   agent any
-  
+
   stages {
     stage('Install') {
       steps {
         sh 'npm ci'
       }
     }
-    
+
     stage('Build') {
       steps {
         sh 'npm run build:production'
       }
     }
-    
+
     stage('Deploy') {
       steps {
         sh 'npm run deploy docker'
@@ -378,6 +389,7 @@ pipeline {
 ## Troubleshooting
 
 ### Build Fails at Environment Validation
+
 ```bash
 # Check environment files
 ls -la .env*
@@ -388,6 +400,7 @@ npm run setup:env               # Auto-generate environment
 ```
 
 ### Build Fails at SQL Migrations
+
 ```bash
 # Validate SQL files manually
 cat sql/*.sql
@@ -399,6 +412,7 @@ cat sql/*.sql
 ```
 
 ### Build Fails at Verification
+
 ```bash
 # Check what's failing
 npm run verify
@@ -409,6 +423,7 @@ npm run setup:env               # Missing environment file
 ```
 
 ### Build Fails at TypeScript
+
 ```bash
 # Type check manually
 npx tsc --noEmit
@@ -419,6 +434,7 @@ npx tsc --noEmit
 ```
 
 ### Build Fails at Vite
+
 ```bash
 # Check Vite config
 cat vite.config.ts
@@ -429,6 +445,7 @@ cat vite.config.ts
 ```
 
 ### Build Fails at Docker Generation
+
 ```bash
 # Validate Dockerfile manually
 docker build -t test .
@@ -439,6 +456,7 @@ docker build -t test .
 ```
 
 ### Build Fails at Kubernetes Generation
+
 ```bash
 # Validate k8s manifests manually
 kubectl apply --dry-run=client -f k8s/
@@ -449,6 +467,7 @@ kubectl apply --dry-run=client -f k8s/
 ```
 
 ### Health Check Fails
+
 ```bash
 # Detailed health report
 npm run health
@@ -471,6 +490,7 @@ Successful production build produces:
 ```
 
 The `dist/` directory is ready for deployment to:
+
 - Static hosting (Netlify, Vercel, Cloudflare Pages)
 - CDN distribution
 - Docker containers
@@ -490,6 +510,7 @@ The build pipeline includes automatic optimizations:
 ## Security Considerations
 
 Production builds automatically:
+
 - Remove development-only code
 - Strip source maps (configurable)
 - Apply Content Security Policy headers (via index.html)
@@ -501,7 +522,7 @@ Production builds automatically:
 After successful build:
 
 1. **Test Locally**: `npm run preview` - Preview production build
-2. **Deploy**: `npm run deploy` - Run deployment script  
+2. **Deploy**: `npm run deploy` - Run deployment script
 3. **Monitor**: Check health with `npm run health --json`
 4. **Scale**: Use Docker/K8s scripts for containerization
 

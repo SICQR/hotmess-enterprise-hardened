@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Footer displays a common bottom bar across all pages, including
@@ -10,7 +10,8 @@ export default function Footer() {
   return (
     <footer className="relative text-center bg-gradient-to-b from-transparent to-[#e11d2e]/40 py-12 mt-12">
       <p className="opacity-60 text-xs mt-6">
-        © {year} HOTMESS — 18+ only. Consent is the floor. Hydrate. Pace yourself. If it hurts, stop.
+        © {year} HOTMESS — 18+ only. Consent is the floor. Hydrate. Pace
+        yourself. If it hurts, stop.
       </p>
     </footer>
   );

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect } from "react";
 
 /**
  * Injects a third‑party analytics script (e.g. Umami or Plausible) if
@@ -8,17 +8,17 @@ import { useEffect } from 'react'
  */
 export default function Analytics() {
   useEffect(() => {
-    const id = import.meta.env.VITE_ANALYTICS_ID
-    if (!id) return
-    const script = document.createElement('script')
+    const id = import.meta.env.VITE_ANALYTICS_ID;
+    if (!id) return;
+    const script = document.createElement("script");
     // Example uses Umami; replace with your own analytics provider
-    script.src = `https://umami.example.com/script.js`
-    script.async = true
-    script.setAttribute('data-website-id', id)
-    document.head.appendChild(script)
+    script.src = `https://umami.example.com/script.js`;
+    script.async = true;
+    script.setAttribute("data-website-id", id);
+    document.head.appendChild(script);
     return () => {
-      document.head.removeChild(script)
-    }
-  }, [])
-  return null
+      document.head.removeChild(script);
+    };
+  }, []);
+  return null;
 }

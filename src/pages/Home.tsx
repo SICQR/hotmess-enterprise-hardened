@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { getCurrentWeather, Weather } from '../lib/weather';
+import React, { useState, useEffect } from "react";
+import { getCurrentWeather, Weather } from "../lib/weather";
 
 interface HomeProps {
   onNavigate: (route: any) => void;
@@ -13,28 +13,31 @@ interface HomeProps {
  * the original landing page styling.
  */
 export default function Home({ onNavigate }: HomeProps) {
-  const [weather, setWeather] = useState<Weather | null>(null)
+  const [weather, setWeather] = useState<Weather | null>(null);
 
   // Fetch weather on mount. If geolocation fails, default to London (51.5072, -0.1276)
   useEffect(() => {
-    if (typeof navigator !== 'undefined' && navigator.geolocation) {
+    if (typeof navigator !== "undefined" && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        async pos => {
-          const data = await getCurrentWeather(pos.coords.latitude, pos.coords.longitude)
-          setWeather(data)
+        async (pos) => {
+          const data = await getCurrentWeather(
+            pos.coords.latitude,
+            pos.coords.longitude,
+          );
+          setWeather(data);
         },
         async () => {
-          const data = await getCurrentWeather(51.5072, -0.1276)
-          setWeather(data)
+          const data = await getCurrentWeather(51.5072, -0.1276);
+          setWeather(data);
         },
-      )
+      );
     } else {
-      ;(async () => {
-        const data = await getCurrentWeather(51.5072, -0.1276)
-        setWeather(data)
-      })()
+      (async () => {
+        const data = await getCurrentWeather(51.5072, -0.1276);
+        setWeather(data);
+      })();
     }
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -43,9 +46,9 @@ export default function Home({ onNavigate }: HomeProps) {
         <h1
           className="font-black text-transparent bg-clip-text"
           style={{
-            backgroundImage: 'linear-gradient(#f4f4f4,#bdbdbd)',
-            fontSize: 'clamp(48px,10vw,112px)',
-            filter: 'drop-shadow(0 1px 0 rgba(0,0,0,.25))',
+            backgroundImage: "linear-gradient(#f4f4f4,#bdbdbd)",
+            fontSize: "clamp(48px,10vw,112px)",
+            filter: "drop-shadow(0 1px 0 rgba(0,0,0,.25))",
           }}
         >
           HOTMESS
@@ -54,7 +57,9 @@ export default function Home({ onNavigate }: HomeProps) {
           Live Loud. Land Soft.
         </p>
         <p className="mt-2 max-w-3xl mx-auto px-4 opacity-80 text-sm md:text-base">
-          24/7 underground radio. Trophy fashion. Heat‑map connection. Men‑only, 18+. Brutalist luxury with sweat, steel, and soft landings tucked under the noise.
+          24/7 underground radio. Trophy fashion. Heat‑map connection. Men‑only,
+          18+. Brutalist luxury with sweat, steel, and soft landings tucked
+          under the noise.
         </p>
         {/* Display current weather if available */}
         {weather && (
@@ -67,14 +72,15 @@ export default function Home({ onNavigate }: HomeProps) {
         <div className="text-center">
           <h2 className="text-3xl font-extrabold mb-4">Enter the Mess</h2>
           <p className="max-w-2xl mx-auto opacity-80">
-            Men-only, 18+. A bold queer ecosystem built on consent, care, and creative chaos.
+            Men-only, 18+. A bold queer ecosystem built on consent, care, and
+            creative chaos.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Listen Live */}
           <button
             className="bg-red-700 hover:bg-red-800 p-6 rounded-lg text-left"
-            onClick={() => onNavigate('radio')}
+            onClick={() => onNavigate("radio")}
           >
             <h3 className="text-xl font-bold">Listen Live →</h3>
             <p className="text-sm opacity-80 mt-2">
@@ -84,7 +90,7 @@ export default function Home({ onNavigate }: HomeProps) {
           {/* Shop RAW / HUNG / HIGH */}
           <button
             className="bg-red-700 hover:bg-red-800 p-6 rounded-lg text-left"
-            onClick={() => onNavigate('shop')}
+            onClick={() => onNavigate("shop")}
           >
             <h3 className="text-xl font-bold">Shop RAW / HUNG / HIGH →</h3>
             <p className="text-sm opacity-80 mt-2">
@@ -94,7 +100,7 @@ export default function Home({ onNavigate }: HomeProps) {
           {/* SUPER Limited Drops */}
           <button
             className="bg-red-700 hover:bg-red-800 p-6 rounded-lg text-left"
-            onClick={() => onNavigate('shop')}
+            onClick={() => onNavigate("shop")}
           >
             <h3 className="text-xl font-bold">SUPER Limited Drops →</h3>
             <p className="text-sm opacity-80 mt-2">
@@ -104,7 +110,7 @@ export default function Home({ onNavigate }: HomeProps) {
           {/* Scan + Earn */}
           <button
             className="bg-red-700 hover:bg-red-800 p-6 rounded-lg text-left"
-            onClick={() => onNavigate('scan')}
+            onClick={() => onNavigate("scan")}
           >
             <h3 className="text-xl font-bold">Scan + Earn →</h3>
             <p className="text-sm opacity-80 mt-2">
