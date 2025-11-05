@@ -1,0 +1,62 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>HOTMESS Earn - OG Image</title>
+  <desc>Open Graph image for HOTMESS Earn with leaderboard mockup</desc>
+  <defs>
+    <linearGradient id="og-earn-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:hsl(0, 0%, 5%);stop-opacity:1" />
+      <stop offset="50%" style="stop-color:hsl(45, 40%, 15%);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:hsl(0, 0%, 2%);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="1200" height="630" fill="url(#og-earn-bg)"/>
+  
+  <rect x="0" y="0" width="8" height="630" fill="hsl(45, 90%, 55%)"/>
+  
+  <text x="100" y="200" 
+        font-family="Arial Black, sans-serif" 
+        font-size="100" 
+        font-weight="900" 
+        letter-spacing="-2"
+        fill="hsl(0, 0%, 98%)">HOTMESS</text>
+  
+  <text x="100" y="270" 
+        font-family="Arial Black, sans-serif" 
+        font-size="80" 
+        font-weight="900" 
+        letter-spacing="2"
+        fill="hsl(45, 90%, 55%)">EARN</text>
+  
+  <line x1="100" y1="300" x2="500" y2="300" stroke="hsl(0, 85%, 55%)" stroke-width="4"/>
+  
+  <text x="100" y="380" 
+        font-family="Arial, sans-serif" 
+        font-size="26" 
+        font-weight="400" 
+        letter-spacing="1"
+        fill="hsl(0, 0%, 85%)">AFFILIATE REWARDS</text>
+  
+  <text x="100" y="420" 
+        font-family="Arial, sans-serif" 
+        font-size="26" 
+        font-weight="400" 
+        letter-spacing="1"
+        fill="hsl(0, 0%, 85%)">CREATOR PAYOUTS • RANKINGS</text>
+  
+  <g opacity="0.4">
+    <rect x="650" y="180" width="450" height="60" stroke="hsl(45, 90%, 55%)" stroke-width="3" fill="hsl(0, 0%, 10%)"/>
+    <text x="670" y="220" font-family="Arial Black, sans-serif" font-size="28" font-weight="900" fill="hsl(45, 90%, 55%)">01</text>
+    <line x1="750" y1="195" x2="750" y2="225" stroke="hsl(0, 0%, 30%)" stroke-width="2"/>
+    <rect x="760" y="200" width="200" height="20" fill="hsl(45, 90%, 55%)"/>
+    
+    <rect x="650" y="260" width="450" height="60" stroke="hsl(0, 85%, 55%)" stroke-width="2" fill="hsl(0, 0%, 8%)"/>
+    <text x="670" y="300" font-family="Arial Black, sans-serif" font-size="28" font-weight="700" fill="hsl(0, 0%, 70%)">02</text>
+    <line x1="750" y1="275" x2="750" y2="305" stroke="hsl(0, 0%, 30%)" stroke-width="2"/>
+    <rect x="760" y="280" width="160" height="20" fill="hsl(0, 85%, 55%)"/>
+    
+    <rect x="650" y="340" width="450" height="60" stroke="hsl(0, 85%, 55%)" stroke-width="2" fill="hsl(0, 0%, 8%)"/>
+    <text x="670" y="380" font-family="Arial Black, sans-serif" font-size="28" font-weight="700" fill="hsl(0, 0%, 70%)">03</text>
+    <line x1="750" y1="355" x2="750" y2="385" stroke="hsl(0, 0%, 30%)" stroke-width="2"/>
+    <rect x="760" y="360" width="140" height="20" fill="hsl(0, 85%, 55%)"/>
+  </g>
+</svg>

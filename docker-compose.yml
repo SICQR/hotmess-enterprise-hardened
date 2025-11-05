@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  hotmess:
+    build: .
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=production
+      - VITE_SUPABASE_URL=${VITE_SUPABASE_URL:-https://mock.supabase.co}
+      - VITE_SUPABASE_ANON_KEY=${VITE_SUPABASE_ANON_KEY:-mock-anon-key}
+      - SHOPIFY_DOMAIN=${SHOPIFY_DOMAIN:-mock-shop.myshopify.com}
+      - SHOPIFY_STOREFRONT_TOKEN=${SHOPIFY_STOREFRONT_TOKEN:-mock-token}
+      - RADIOKING_BASE=${RADIOKING_BASE:-https://mock.radioking.io}
+      - RADIOKING_SLUG=${RADIOKING_SLUG:-hotmess-radio}
+      - AZURACAST_API_BASE=${AZURACAST_API_BASE:-https://mock.azuracast.io}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-mock-bot-token}
+      - LINK_SIGNING_SECRET=${LINK_SIGNING_SECRET:-mock-secret}
+      - WEATHER_API_BASE=${WEATHER_API_BASE:-https://api.open-meteo.com}
+    env_file:
+      - .env.local
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:5173"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  default:
+    name: hotmess-network

@@ -1,0 +1,57 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>HOTMESS v3 - Sensory Commerce - OG Image</title>
+  <desc>Open Graph image for HOTMESS Shop with product grid overlay</desc>
+  <defs>
+    <linearGradient id="og-shop-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:hsl(0, 0%, 5%);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:hsl(0, 0%, 12%);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="1200" height="630" fill="url(#og-shop-bg)"/>
+  
+  <rect x="0" y="0" width="8" height="630" fill="hsl(45, 90%, 55%)"/>
+  
+  <text x="100" y="200" 
+        font-family="Arial Black, sans-serif" 
+        font-size="100" 
+        font-weight="900" 
+        letter-spacing="-2"
+        fill="hsl(0, 0%, 98%)">HOTMESS</text>
+  
+  <text x="100" y="270" 
+        font-family="Arial Black, sans-serif" 
+        font-size="80" 
+        font-weight="900" 
+        letter-spacing="2"
+        fill="hsl(45, 90%, 55%)">v3</text>
+  
+  <line x1="100" y1="300" x2="450" y2="300" stroke="hsl(0, 85%, 55%)" stroke-width="4"/>
+  
+  <text x="100" y="380" 
+        font-family="Arial, sans-serif" 
+        font-size="26" 
+        font-weight="400" 
+        letter-spacing="1"
+        fill="hsl(0, 0%, 85%)">SENSORY COMMERCE ENGINE</text>
+  
+  <text x="100" y="420" 
+        font-family="Arial, sans-serif" 
+        font-size="26" 
+        font-weight="400" 
+        letter-spacing="1"
+        fill="hsl(0, 0%, 85%)">LUXURY • CULTURE • CONVICTION</text>
+  
+  <g opacity="0.3">
+    <rect x="600" y="150" width="150" height="150" stroke="hsl(0, 85%, 55%)" stroke-width="3" fill="none"/>
+    <rect x="770" y="150" width="150" height="150" stroke="hsl(0, 85%, 55%)" stroke-width="3" fill="none"/>
+    <rect x="940" y="150" width="150" height="150" stroke="hsl(45, 90%, 55%)" stroke-width="3" fill="none"/>
+    <rect x="600" y="320" width="150" height="150" stroke="hsl(0, 85%, 55%)" stroke-width="3" fill="none"/>
+    <rect x="770" y="320" width="150" height="150" stroke="hsl(45, 90%, 55%)" stroke-width="3" fill="none"/>
+    <rect x="940" y="320" width="150" height="150" stroke="hsl(0, 85%, 55%)" stroke-width="3" fill="none"/>
+  </g>
+  
+  <circle cx="675" cy="225" r="40" fill="hsl(0, 85%, 55%)" opacity="0.2"/>
+  <circle cx="845" cy="225" r="40" fill="hsl(45, 90%, 55%)" opacity="0.2"/>
+  <circle cx="1015" cy="225" r="40" fill="hsl(0, 85%, 55%)" opacity="0.2"/>
+</svg>

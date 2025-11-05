@@ -1,0 +1,32 @@
+<svg width="600" height="200" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>HOTMESS Wordmark</title>
+  <desc>Primary brand wordmark with chrome gradient and gold accent</desc>
+  <defs>
+    <linearGradient id="gradient-wordmark" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:hsl(0, 0%, 15%);stop-opacity:1" />
+      <stop offset="35%" style="stop-color:hsl(0, 85%, 55%);stop-opacity:1" />
+      <stop offset="70%" style="stop-color:hsl(0, 85%, 55%);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:hsl(0, 0%, 5%);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:hsl(45, 90%, 55%);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:hsl(45, 70%, 45%);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" 
+        font-family="Arial Black, sans-serif" 
+        font-size="90" 
+        font-weight="900" 
+        letter-spacing="-2"
+        fill="url(#gradient-wordmark)">HOTMESS</text>
+  
+  <line x1="100" y1="140" x2="500" y2="140" stroke="url(#gradient-gold)" stroke-width="4"/>
+  
+  <text x="50%" y="175" dominant-baseline="middle" text-anchor="middle" 
+        font-family="Arial, sans-serif" 
+        font-size="14" 
+        font-weight="400" 
+        letter-spacing="2"
+        fill="hsl(45, 90%, 55%)">ALWAYS TOO MUCH, YET NEVER ENOUGH</text>
+</svg>

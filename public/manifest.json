@@ -1,0 +1,48 @@
+{
+  "name": "HOTMESS Enterprise",
+  "short_name": "HOTMESS",
+  "description": "Always too much, yet never enough. Brutalist luxury editorial platform combining live radio, commerce, and culture.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D0D0D",
+  "theme_color": "#E63946",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["lifestyle", "music", "shopping", "entertainment"],
+  "shortcuts": [
+    {
+      "name": "Listen Live",
+      "short_name": "Radio",
+      "description": "Open HOTMESS Radio - AI-powered live broadcast",
+      "url": "/?page=radio",
+      "icons": [{ "src": "/icons/favicon.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Browse Shop",
+      "short_name": "Shop",
+      "description": "Browse HOTMESS v3 sensory commerce",
+      "url": "/?page=shop",
+      "icons": [{ "src": "/icons/favicon.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Earn Rewards",
+      "short_name": "Earn",
+      "description": "Check affiliate rewards and rankings",
+      "url": "/?page=earn",
+      "icons": [{ "src": "/icons/favicon.svg", "sizes": "96x96" }]
+    }
+  ]
+}

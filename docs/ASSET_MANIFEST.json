@@ -1,0 +1,406 @@
+{
+  "version": "1.0.0",
+  "generated": "2024",
+  "brand": "HOTMESS Enterprise",
+  "tagline": "Always too much, yet never enough.",
+  
+  "icons": [
+    {
+      "name": "favicon",
+      "path": "/public/icons/favicon.svg",
+      "format": "svg",
+      "size": "32x32",
+      "purpose": "Browser favicon, basic icon use"
+    },
+    {
+      "name": "mask-icon",
+      "path": "/public/icons/mask-icon.svg",
+      "format": "svg",
+      "size": "32x32",
+      "purpose": "Safari pinned tab icon (monochrome)"
+    },
+    {
+      "name": "apple-touch-icon",
+      "path": "/public/icons/apple-touch-icon.png",
+      "format": "png",
+      "size": "180x180",
+      "purpose": "iOS home screen icon"
+    },
+    {
+      "name": "icon-512",
+      "path": "/public/icons/icon-512.png",
+      "format": "png",
+      "size": "512x512",
+      "purpose": "PWA app icon, Android, high-res displays"
+    },
+    {
+      "name": "logo-wordmark",
+      "path": "/public/icons/logo-wordmark.svg",
+      "format": "svg",
+      "size": "600x200",
+      "purpose": "Primary brand wordmark with gradient and tagline"
+    },
+    {
+      "name": "logo-monotone",
+      "path": "/public/icons/logo-monotone.svg",
+      "format": "svg",
+      "size": "600x200",
+      "purpose": "Single-color wordmark for print or inverted UI"
+    }
+  ],
+  
+  "og_images": [
+    {
+      "name": "og-default",
+      "path": "/public/og/og-default.jpg",
+      "format": "svg",
+      "size": "1200x630",
+      "purpose": "Default Open Graph image for social sharing"
+    },
+    {
+      "name": "og-radio",
+      "path": "/public/og/og-radio.jpg",
+      "format": "svg",
+      "size": "1200x630",
+      "purpose": "Radio page OG image with waveform overlay"
+    },
+    {
+      "name": "og-shop",
+      "path": "/public/og/og-shop.jpg",
+      "format": "svg",
+      "size": "1200x630",
+      "purpose": "Shop page OG image with product grid"
+    },
+    {
+      "name": "og-earn",
+      "path": "/public/og/og-earn.jpg",
+      "format": "svg",
+      "size": "1200x630",
+      "purpose": "Earn page OG image with leaderboard mockup"
+    }
+  ],
+  
+  "gradients": [
+    {
+      "name": "gradient-hotmess",
+      "class": ".gradient-hotmess",
+      "type": "linear",
+      "direction": "135deg",
+      "colors": ["hsl(0, 0%, 15%)", "hsl(0, 85%, 55%)", "hsl(0, 0%, 5%)"],
+      "purpose": "Primary brand gradient - hero backgrounds, CTAs"
+    },
+    {
+      "name": "gradient-gold",
+      "class": ".gradient-gold",
+      "type": "linear",
+      "direction": "90deg",
+      "colors": ["hsl(45, 90%, 55%)", "hsl(0, 0%, 5%)"],
+      "purpose": "Premium features, affiliate rewards"
+    },
+    {
+      "name": "gradient-radial",
+      "class": ".gradient-radial",
+      "type": "radial",
+      "direction": "circle at center",
+      "colors": ["hsl(0, 90%, 60%)", "hsl(0, 0%, 5%)"],
+      "purpose": "Spotlight effects, audio-reactive zones"
+    },
+    {
+      "name": "gradient-chrome",
+      "class": ".gradient-chrome",
+      "type": "linear",
+      "direction": "135deg",
+      "colors": ["hsl(0, 0%, 85%)", "hsl(0, 0%, 65%)", "hsl(0, 0%, 45%)", "hsl(0, 0%, 65%)", "hsl(0, 0%, 85%)"],
+      "purpose": "Metallic UI elements, luxury accents"
+    },
+    {
+      "name": "gradient-bone",
+      "class": ".gradient-bone",
+      "type": "linear",
+      "direction": "180deg",
+      "colors": ["hsl(40, 15%, 92%)", "hsl(30, 10%, 85%)"],
+      "purpose": "Subtle light backgrounds"
+    }
+  ],
+  
+  "patterns": [
+    {
+      "name": "brutalist-grid",
+      "class": ".pattern-brutalist-grid",
+      "type": "grid",
+      "size": "40px",
+      "purpose": "Editorial grid overlay, background texture"
+    },
+    {
+      "name": "diagonal-lines",
+      "class": ".pattern-diagonal-lines",
+      "type": "repeating-linear",
+      "size": "10px",
+      "purpose": "Texture overlay, section dividers"
+    },
+    {
+      "name": "dots",
+      "class": ".pattern-dots",
+      "type": "radial",
+      "size": "20px",
+      "purpose": "Subtle background pattern"
+    }
+  ],
+  
+  "colors": {
+    "primary": {
+      "ink": "0 0% 5%",
+      "paper": "0 0% 98%",
+      "accent": "0 85% 55%",
+      "gold": "45 90% 55%"
+    },
+    "secondary": {
+      "charcoal": "0 0% 25%",
+      "metal": "0 0% 45%",
+      "chrome": "0 0% 65%",
+      "bone": "40 15% 92%"
+    },
+    "functional": {
+      "danger": "0 75% 45%"
+    }
+  },
+  
+  "fonts": [
+    {
+      "name": "Outfit",
+      "source": "Google Fonts",
+      "weights": [400, 500, 600, 700, 800, 900],
+      "purpose": "Primary display and body font (installed)",
+      "fallback": "Monument Extended, Arial Black, sans-serif"
+    },
+    {
+      "name": "Monument Extended",
+      "source": "Commercial",
+      "weights": [400, 700, 900],
+      "purpose": "Aspirational display font (not installed)",
+      "fallback": "Outfit, Arial Black, sans-serif"
+    },
+    {
+      "name": "Neue Haas Grotesk",
+      "source": "Commercial",
+      "weights": [400, 500, 700],
+      "purpose": "Aspirational body font (not installed)",
+      "fallback": "Outfit, Helvetica Neue, sans-serif"
+    }
+  ],
+  
+  "animations": [
+    {
+      "name": "tear",
+      "class": ".motion-tear",
+      "duration": "1s",
+      "purpose": "Hero reveals, page transitions"
+    },
+    {
+      "name": "tear-horizontal",
+      "class": ".motion-tear-horizontal",
+      "duration": "1s",
+      "purpose": "Horizontal reveals"
+    },
+    {
+      "name": "pulse-glow",
+      "class": ".motion-pulse",
+      "duration": "2s infinite",
+      "purpose": "Live indicators, CTAs"
+    },
+    {
+      "name": "pulse-glow-gold",
+      "class": ".motion-pulse-gold",
+      "duration": "2s infinite",
+      "purpose": "Premium indicators"
+    },
+    {
+      "name": "slide-up",
+      "class": ".motion-slide-up",
+      "duration": "0.6s",
+      "purpose": "Modal entries, content reveals"
+    },
+    {
+      "name": "slide-down",
+      "class": ".motion-slide-down",
+      "duration": "0.6s",
+      "purpose": "Dropdown menus"
+    },
+    {
+      "name": "fade-in",
+      "class": ".motion-fade-in",
+      "duration": "0.4s",
+      "purpose": "Subtle content load"
+    },
+    {
+      "name": "scale-in",
+      "class": ".motion-scale-in",
+      "duration": "0.4s",
+      "purpose": "Modal zoom-in"
+    },
+    {
+      "name": "brutalist-shake",
+      "class": ".motion-shake",
+      "duration": "0.5s",
+      "purpose": "Error feedback"
+    },
+    {
+      "name": "glitch",
+      "class": ".motion-glitch",
+      "duration": "0.3s infinite",
+      "purpose": "Error states, disruption effects"
+    },
+    {
+      "name": "marquee",
+      "class": ".motion-marquee",
+      "duration": "20s infinite",
+      "purpose": "Scrolling text, tickers"
+    },
+    {
+      "name": "audio-pulse",
+      "class": ".motion-audio-pulse",
+      "duration": "0.6s infinite",
+      "purpose": "Audio-reactive elements"
+    }
+  ],
+  
+  "components": [
+    {
+      "name": "btn-brutalist",
+      "class": ".btn-brutalist",
+      "type": "button",
+      "purpose": "Primary action buttons"
+    },
+    {
+      "name": "btn-gold",
+      "class": ".btn-gold",
+      "type": "button",
+      "purpose": "Premium action buttons"
+    },
+    {
+      "name": "btn-ghost",
+      "class": ".btn-ghost",
+      "type": "button",
+      "purpose": "Secondary action buttons"
+    },
+    {
+      "name": "card-brutalist",
+      "class": ".card-brutalist",
+      "type": "container",
+      "purpose": "Static content cards"
+    },
+    {
+      "name": "card-brutalist-hover",
+      "class": ".card-brutalist-hover",
+      "type": "container",
+      "purpose": "Interactive content cards with hover effects"
+    },
+    {
+      "name": "divider-brutalist",
+      "class": ".divider-brutalist",
+      "type": "divider",
+      "purpose": "Section dividers (horizontal)"
+    },
+    {
+      "name": "divider-gold",
+      "class": ".divider-gold",
+      "type": "divider",
+      "purpose": "Premium section dividers"
+    },
+    {
+      "name": "divider-vertical",
+      "class": ".divider-vertical",
+      "type": "divider",
+      "purpose": "Vertical section dividers"
+    }
+  ],
+  
+  "typography": [
+    {
+      "class": ".h1",
+      "size": "clamp(3rem, 8vw, 8rem)",
+      "weight": 900,
+      "transform": "uppercase",
+      "purpose": "Page heroes"
+    },
+    {
+      "class": ".h2",
+      "size": "clamp(2rem, 4vw, 4rem)",
+      "weight": 800,
+      "transform": "uppercase",
+      "purpose": "Section headers"
+    },
+    {
+      "class": ".h3",
+      "size": "clamp(1.5rem, 3vw, 3rem)",
+      "weight": 700,
+      "transform": "uppercase",
+      "purpose": "Subsection headers"
+    },
+    {
+      "class": ".h4",
+      "size": "clamp(1.25rem, 2vw, 2rem)",
+      "weight": 700,
+      "transform": "uppercase",
+      "purpose": "Card titles"
+    },
+    {
+      "class": ".body",
+      "size": "1rem",
+      "weight": 400,
+      "transform": "none",
+      "purpose": "Body copy"
+    },
+    {
+      "class": ".body-large",
+      "size": "1.125rem",
+      "weight": 400,
+      "transform": "none",
+      "purpose": "Intro paragraphs"
+    },
+    {
+      "class": ".body-small",
+      "size": "0.875rem",
+      "weight": 400,
+      "transform": "none",
+      "purpose": "Captions"
+    },
+    {
+      "class": ".label",
+      "size": "0.75rem",
+      "weight": 600,
+      "transform": "uppercase",
+      "purpose": "Form labels, badges"
+    },
+    {
+      "class": ".caption",
+      "size": "0.6875rem",
+      "weight": 500,
+      "transform": "none",
+      "purpose": "Fine print"
+    }
+  ],
+  
+  "accessibility": {
+    "contrast_ratios": {
+      "ink_on_paper": "19.6:1 (AAA)",
+      "accent_on_ink": "6.8:1 (AA)",
+      "gold_on_ink": "9.2:1 (AAA)",
+      "charcoal_on_paper": "8.4:1 (AAA)"
+    },
+    "focus_indicator": "3px solid hsl(var(--accent)), 4px offset",
+    "reduced_motion": "All animations respect prefers-reduced-motion",
+    "screen_reader": "All decorative SVGs include title and desc tags"
+  },
+  
+  "files": {
+    "styles": [
+      "/src/styles/branding.css",
+      "/src/styles/animations.css"
+    ],
+    "documentation": [
+      "/docs/BRAND_GUIDE.md",
+      "/docs/ASSET_MANIFEST.json"
+    ]
+  }
+}

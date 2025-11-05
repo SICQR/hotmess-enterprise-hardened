@@ -1,0 +1,309 @@
+@keyframes tear {
+  0% { 
+    clip-path: inset(0 0 100% 0);
+    opacity: 0;
+  }
+  100% { 
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+@keyframes tear-horizontal {
+  0% { 
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  100% { 
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    filter: drop-shadow(0 0 1rem oklch(0.55 0.22 25));
+  }
+  50% { 
+    filter: drop-shadow(0 0 2rem oklch(0.55 0.22 25));
+  }
+}
+
+@keyframes pulse-glow-gold {
+  0%, 100% { 
+    filter: drop-shadow(0 0 1rem oklch(0.75 0.15 85));
+  }
+  50% { 
+    filter: drop-shadow(0 0 2rem oklch(0.75 0.15 85));
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scale-out {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes brutalist-shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes audio-pulse {
+  0%, 100% {
+    transform: scaleY(0.5);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flash-red {
+  0%, 100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: oklch(0.55 0.22 25 / 0.2);
+  }
+}
+
+@keyframes flash-gold {
+  0%, 100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: oklch(0.75 0.15 85 / 0.2);
+  }
+}
+
+.motion-tear {
+  animation: tear 1s ease-out;
+}
+
+.motion-tear-horizontal {
+  animation: tear-horizontal 1s ease-out;
+}
+
+.motion-tear-delay-1 {
+  animation: tear 1s ease-out 0.1s backwards;
+}
+
+.motion-tear-delay-2 {
+  animation: tear 1s ease-out 0.2s backwards;
+}
+
+.motion-tear-delay-3 {
+  animation: tear 1s ease-out 0.3s backwards;
+}
+
+.motion-pulse {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+.motion-pulse-gold {
+  animation: pulse-glow-gold 2s infinite ease-in-out;
+}
+
+.motion-slide-up {
+  animation: slide-up 0.6s ease-out;
+}
+
+.motion-slide-down {
+  animation: slide-down 0.6s ease-out;
+}
+
+.motion-slide-left {
+  animation: slide-left 0.6s ease-out;
+}
+
+.motion-slide-right {
+  animation: slide-right 0.6s ease-out;
+}
+
+.motion-fade-in {
+  animation: fade-in 0.4s ease-out;
+}
+
+.motion-fade-out {
+  animation: fade-out 0.4s ease-out;
+}
+
+.motion-scale-in {
+  animation: scale-in 0.4s ease-out;
+}
+
+.motion-scale-out {
+  animation: scale-out 0.4s ease-out;
+}
+
+.motion-shake {
+  animation: brutalist-shake 0.5s ease-in-out;
+}
+
+.motion-glitch {
+  animation: glitch 0.3s ease-in-out infinite;
+}
+
+.motion-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+.motion-audio-pulse {
+  animation: audio-pulse 0.6s ease-in-out infinite;
+}
+
+.motion-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+.motion-flash-red {
+  animation: flash-red 1s ease-in-out infinite;
+}
+
+.motion-flash-gold {
+  animation: flash-gold 1s ease-in-out infinite;
+}
+
+.transition-brutalist {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-fast {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-medium {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-slow {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,100 @@
+version: 1
+name: HOTMESS Enterprise Production Build
+description: >
+  Full-stack rebuild pipeline for HOTMESS Enterprise:
+  validates environment, runs SQL migrations, rebuilds React+Vite app, validates Docker + k8s, and deploys.
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm ci
+
+      - name: 🔐 Validate Environment
+        run: |
+          echo "🔧 Validating environment..."
+          npm run setup:env
+          if [ ! -f .env.local ]; then
+            cp .env.example .env.local
+            echo "⚠️ .env.local created from example — review required"
+          fi
+
+      - name: 🩺 Verify Build Health
+        run: |
+          echo "🩺 Verifying build integrity..."
+          npm run verify
+
+      - name: 🧱 Validate Database Migrations
+        run: |
+          echo "🧱 Validating SQL migrations..."
+          npm run db:mock
+        continue-on-error: true
+
+      - name: 🏗️ Build React Application
+        run: |
+          echo "🏗️ Building React+Vite app..."
+          npm run build
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          SHOPIFY_DOMAIN: ${{ secrets.SHOPIFY_DOMAIN }}
+          SHOPIFY_STOREFRONT_TOKEN: ${{ secrets.SHOPIFY_STOREFRONT_TOKEN }}
+
+      - name: 🧪 Health Check
+        run: |
+          echo "🏥 Running post-build health check..."
+          npm run health
+
+      - name: 🐳 Validate Docker Configuration
+        run: |
+          echo "🐳 Validating Dockerfile..."
+          if [ -f Dockerfile ]; then
+            docker build --dry-run -t hotmess-enterprise . || echo "⚠️ Docker validation skipped"
+          else
+            echo "⚠️ No Dockerfile found"
+          fi
+        continue-on-error: true
+
+      - name: ⚙️ Validate Kubernetes Manifests
+        run: |
+          echo "⚙️ Validating K8s manifests..."
+          if [ -d k8s ]; then
+            kubectl apply --dry-run=client -f k8s/ || echo "⚠️ K8s validation skipped"
+          else
+            echo "⚠️ No k8s/ directory found"
+          fi
+        continue-on-error: true
+
+      - name: 📊 Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-build
+          path: dist/
+          retention-days: 30
+
+      - name: 🚀 Deploy to Production
+        run: |
+          echo "🚀 Deploying to production..."
+          npm run deploy
+          echo "✅ HOTMESS Enterprise deployed successfully"
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}

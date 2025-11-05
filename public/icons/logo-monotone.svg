@@ -1,0 +1,20 @@
+<svg width="600" height="200" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>HOTMESS Monotone Logo</title>
+  <desc>Single-color wordmark for print or inverted UI</desc>
+  
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" 
+        font-family="Arial Black, sans-serif" 
+        font-size="90" 
+        font-weight="900" 
+        letter-spacing="-2"
+        fill="black">HOTMESS</text>
+  
+  <line x1="100" y1="140" x2="500" y2="140" stroke="black" stroke-width="4"/>
+  
+  <text x="50%" y="175" dominant-baseline="middle" text-anchor="middle" 
+        font-family="Arial, sans-serif" 
+        font-size="14" 
+        font-weight="400" 
+        letter-spacing="2"
+        fill="black">ALWAYS TOO MUCH, YET NEVER ENOUGH</text>
+</svg>

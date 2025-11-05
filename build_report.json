@@ -1,0 +1,51 @@
+{
+  "success": true,
+  "steps": [
+    {
+      "name": "Environment Validation",
+      "status": "success",
+      "durationMs": 1
+    },
+    {
+      "name": "SQL Migrations",
+      "status": "skipped",
+      "durationMs": 0
+    },
+    {
+      "name": "Build Verification",
+      "status": "success",
+      "durationMs": 7119
+    },
+    {
+      "name": "TypeScript Build",
+      "status": "success",
+      "durationMs": 7079
+    },
+    {
+      "name": "Vite Build",
+      "status": "success",
+      "durationMs": 10334
+    },
+    {
+      "name": "Docker Generation",
+      "status": "skipped",
+      "durationMs": 0
+    },
+    {
+      "name": "Kubernetes Generation",
+      "status": "skipped",
+      "durationMs": 0
+    },
+    {
+      "name": "Health Check",
+      "status": "success",
+      "durationMs": 312
+    }
+  ],
+  "totalDurationMs": 24852,
+  "timestamp": "2025-10-14T13:43:11.818Z",
+  "args": [
+    "--fast"
+  ],
+  "fast": true
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Placeholder: In production, convert to 180x180 PNG -->
+<!-- Use: convert favicon.svg -resize 180x180 apple-touch-icon.png -->
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>HOTMESS Apple Touch Icon</title>
+  <desc>Apple touch icon for iOS devices</desc>
+  <defs>
+    <linearGradient id="gradient-chrome-180" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:hsl(0, 0%, 15%);stop-opacity:1" />
+      <stop offset="35%" style="stop-color:hsl(0, 85%, 55%);stop-opacity:1" />
+      <stop offset="90%" style="stop-color:hsl(0, 0%, 5%);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="180" height="180" rx="20" fill="hsl(0, 0%, 5%)"/>
+  <circle cx="90" cy="90" r="70" stroke="url(#gradient-chrome-180)" stroke-width="8" fill="none"/>
+  <path d="M50 45 L50 135 M50 90 L130 90 M130 45 L130 135" stroke="url(#gradient-chrome-180)" stroke-width="14" stroke-linecap="square"/>
+  <line x1="62" y1="55" x2="72" y2="45" stroke="hsl(45, 90%, 55%)" stroke-width="4"/>
+  <line x1="118" y1="55" x2="128" y2="45" stroke="hsl(45, 90%, 55%)" stroke-width="4"/>
+</svg>

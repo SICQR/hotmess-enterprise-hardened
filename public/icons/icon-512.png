@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Placeholder: In production, convert favicon.svg to 512x512 PNG -->
+<!-- Use: convert favicon.svg -resize 512x512 icon-512.png -->
+<!-- This SVG serves as the source for PNG generation -->
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>HOTMESS App Icon</title>
+  <desc>High resolution app icon for PWA and mobile devices</desc>
+  <defs>
+    <linearGradient id="gradient-chrome-512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:hsl(0, 0%, 15%);stop-opacity:1" />
+      <stop offset="35%" style="stop-color:hsl(0, 85%, 55%);stop-opacity:1" />
+      <stop offset="90%" style="stop-color:hsl(0, 0%, 5%);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="hsl(0, 0%, 5%)"/>
+  <circle cx="256" cy="256" r="220" stroke="url(#gradient-chrome-512)" stroke-width="20" fill="none"/>
+  <path d="M150 140 L150 372 M150 256 L362 256 M362 140 L362 372" stroke="url(#gradient-chrome-512)" stroke-width="40" stroke-linecap="square"/>
+  <line x1="190" y1="160" x2="220" y2="130" stroke="hsl(45, 90%, 55%)" stroke-width="12"/>
+  <line x1="322" y1="160" x2="352" y2="130" stroke="hsl(45, 90%, 55%)" stroke-width="12"/>
+</svg>

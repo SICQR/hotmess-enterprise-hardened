@@ -1,0 +1,53 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>HOTMESS Enterprise - Default OG Image</title>
+  <desc>Open Graph image for social sharing - default variant</desc>
+  <defs>
+    <linearGradient id="og-gradient-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:hsl(0, 0%, 15%);stop-opacity:1" />
+      <stop offset="35%" style="stop-color:hsl(0, 85%, 55%);stop-opacity:1" />
+      <stop offset="90%" style="stop-color:hsl(0, 0%, 5%);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="og-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:hsl(45, 90%, 55%);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:hsl(45, 70%, 45%);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="1200" height="630" fill="url(#og-gradient-bg)"/>
+  
+  <rect x="0" y="0" width="8" height="630" fill="hsl(45, 90%, 55%)"/>
+  
+  <text x="100" y="250" 
+        font-family="Arial Black, sans-serif" 
+        font-size="120" 
+        font-weight="900" 
+        letter-spacing="-3"
+        fill="hsl(0, 0%, 98%)">HOTMESS</text>
+  
+  <line x1="100" y1="290" x2="700" y2="290" stroke="url(#og-gold)" stroke-width="6"/>
+  
+  <text x="100" y="350" 
+        font-family="Arial, sans-serif" 
+        font-size="32" 
+        font-weight="700" 
+        letter-spacing="3"
+        fill="hsl(45, 90%, 55%)">ENTERPRISE</text>
+  
+  <text x="100" y="450" 
+        font-family="Arial, sans-serif" 
+        font-size="28" 
+        font-weight="400" 
+        letter-spacing="1"
+        fill="hsl(0, 0%, 85%)">ALWAYS TOO MUCH,</text>
+  
+  <text x="100" y="490" 
+        font-family="Arial, sans-serif" 
+        font-size="28" 
+        font-weight="400" 
+        letter-spacing="1"
+        fill="hsl(0, 0%, 85%)">YET NEVER ENOUGH.</text>
+  
+  <circle cx="950" cy="315" r="180" stroke="hsl(45, 90%, 55%)" stroke-width="4" fill="none" opacity="0.3"/>
+  <path d="M850 215 L850 415 M850 315 L1050 315 M1050 215 L1050 415" 
+        stroke="hsl(0, 0%, 98%)" stroke-width="20" stroke-linecap="square" opacity="0.2"/>
+</svg>

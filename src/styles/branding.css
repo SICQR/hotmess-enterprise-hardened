@@ -1,0 +1,327 @@
+:root {
+  --ink: oklch(0.08 0.01 270);
+  --paper: oklch(0.98 0.005 75);
+  --accent-chrome-red: oklch(0.55 0.22 25);
+  --danger: oklch(0.45 0.18 25);
+  --gold: oklch(0.75 0.15 85);
+  --metal: oklch(0.45 0.01 270);
+  --bone: oklch(0.92 0.01 75);
+  --charcoal: oklch(0.25 0.01 270);
+  --chrome: oklch(0.65 0.005 270);
+}
+
+.h1 {
+  font-family: "Outfit", "Monument Extended", "Arial Black", sans-serif;
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 0.9;
+}
+
+.h2 {
+  font-family: "Outfit", "Monument Extended", "Arial Black", sans-serif;
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.h3 {
+  font-family: "Outfit", "Monument Extended", "Arial Black", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.h4 {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.body {
+  font-family: "Outfit", "Neue Haas Grotesk", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+.body-large {
+  font-family: "Outfit", "Neue Haas Grotesk", "Helvetica Neue", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+.body-small {
+  font-family: "Outfit", "Neue Haas Grotesk", "Helvetica Neue", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.label {
+  font-family: "Outfit", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.caption {
+  font-family: "Outfit", sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+}
+
+.text-monument {
+  font-family: "Outfit", "Monument Extended", "Arial Black", sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.gradient-hotmess {
+  background: linear-gradient(135deg,
+    oklch(0.15 0.01 270) 0%,
+    oklch(0.55 0.22 25) 35%,
+    oklch(0.08 0.01 270) 90%);
+}
+
+.gradient-gold {
+  background: linear-gradient(90deg,
+    oklch(0.75 0.15 85) 0%,
+    oklch(0.08 0.01 270) 90%);
+}
+
+.gradient-radial {
+  background: radial-gradient(circle at center,
+    oklch(0.60 0.24 25) 0%,
+    oklch(0.08 0.01 270) 80%);
+}
+
+.gradient-chrome {
+  background: linear-gradient(135deg,
+    oklch(0.85 0.005 270) 0%,
+    oklch(0.65 0.005 270) 25%,
+    oklch(0.45 0.01 270) 50%,
+    oklch(0.65 0.005 270) 75%,
+    oklch(0.85 0.005 270) 100%);
+}
+
+.gradient-bone {
+  background: linear-gradient(180deg,
+    oklch(0.92 0.01 75) 0%,
+    oklch(0.85 0.008 70) 100%);
+}
+
+.gradient-text-hotmess {
+  background: linear-gradient(135deg,
+    oklch(0.15 0.01 270) 0%,
+    oklch(0.55 0.22 25) 35%,
+    oklch(0.08 0.01 270) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(90deg,
+    oklch(0.75 0.15 85) 0%,
+    oklch(0.65 0.13 85) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pattern-brutalist-grid {
+  background-image: 
+    linear-gradient(oklch(0.25 0.01 270) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.25 0.01 270) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.pattern-diagonal-lines {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    oklch(0.15 0.01 270) 10px,
+    oklch(0.15 0.01 270) 11px
+  );
+}
+
+.pattern-dots {
+  background-image: radial-gradient(
+    circle at center,
+    oklch(0.30 0.01 270) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+}
+
+.brutalist-border {
+  border: 3px solid var(--paper);
+}
+
+.brutalist-border-thick {
+  border: 6px solid var(--paper);
+}
+
+.brutalist-shadow {
+  box-shadow: 8px 8px 0 var(--accent-chrome-red);
+}
+
+.brutalist-shadow-gold {
+  box-shadow: 8px 8px 0 var(--gold);
+}
+
+.brutalist-shadow-inset {
+  box-shadow: inset 4px 4px 0 oklch(0 0 0 / 0.3);
+}
+
+.divider-brutalist {
+  width: 100%;
+  height: 3px;
+  background: var(--accent-chrome-red);
+  margin: 2rem 0;
+}
+
+.divider-gold {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+  margin: 2rem 0;
+}
+
+.divider-vertical {
+  width: 3px;
+  height: 100%;
+  background: var(--accent-chrome-red);
+  margin: 0 2rem;
+}
+
+.btn-brutalist {
+  font-family: "Outfit", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  border: 3px solid var(--accent-chrome-red);
+  background: transparent;
+  color: var(--accent-chrome-red);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.btn-brutalist:hover {
+  background: var(--accent-chrome-red);
+  color: var(--ink);
+  box-shadow: 6px 6px 0 var(--gold);
+}
+
+.btn-brutalist:active {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0 var(--gold);
+}
+
+.btn-gold {
+  font-family: "Outfit", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  border: 3px solid var(--gold);
+  background: var(--gold);
+  color: var(--ink);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.btn-gold:hover {
+  background: transparent;
+  color: var(--gold);
+  box-shadow: 6px 6px 0 var(--accent-chrome-red);
+}
+
+.btn-gold:active {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0 var(--accent-chrome-red);
+}
+
+.btn-ghost {
+  font-family: "Outfit", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  border: 2px solid var(--metal);
+  background: transparent;
+  color: var(--paper);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.btn-ghost:hover {
+  border-color: var(--paper);
+  color: var(--paper);
+}
+
+.card-brutalist {
+  border: 3px solid var(--paper);
+  background: var(--ink);
+  padding: 2rem;
+}
+
+.card-brutalist-hover {
+  border: 3px solid var(--paper);
+  background: var(--ink);
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.card-brutalist-hover:hover {
+  box-shadow: 8px 8px 0 var(--accent-chrome-red);
+  transform: translate(-4px, -4px);
+}
+
+.text-glow-red {
+  text-shadow: 
+    0 0 10px oklch(0.55 0.22 25 / 0.5),
+    0 0 20px oklch(0.55 0.22 25 / 0.3),
+    0 0 30px oklch(0.55 0.22 25 / 0.2);
+}
+
+.text-glow-gold {
+  text-shadow: 
+    0 0 10px oklch(0.75 0.15 85 / 0.5),
+    0 0 20px oklch(0.75 0.15 85 / 0.3),
+    0 0 30px oklch(0.75 0.15 85 / 0.2);
+}
+
+.focus-brutalist:focus {
+  outline: 3px solid var(--accent-chrome-red);
+  outline-offset: 4px;
+}
+
+.focus-brutalist:focus-visible {
+  outline: 3px solid var(--accent-chrome-red);
+  outline-offset: 4px;
+}

@@ -1,0 +1,67 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>HOTMESS Radio - OG Image</title>
+  <desc>Open Graph image for HOTMESS Radio with audio waveform overlay</desc>
+  <defs>
+    <linearGradient id="og-radio-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:hsl(0, 0%, 8%);stop-opacity:1" />
+      <stop offset="50%" style="stop-color:hsl(0, 85%, 45%);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:hsl(0, 0%, 2%);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="1200" height="630" fill="url(#og-radio-bg)"/>
+  
+  <rect x="0" y="0" width="8" height="630" fill="hsl(0, 85%, 55%)"/>
+  
+  <text x="100" y="200" 
+        font-family="Arial Black, sans-serif" 
+        font-size="100" 
+        font-weight="900" 
+        letter-spacing="-2"
+        fill="hsl(0, 0%, 98%)">HOTMESS</text>
+  
+  <text x="100" y="270" 
+        font-family="Arial Black, sans-serif" 
+        font-size="80" 
+        font-weight="900" 
+        letter-spacing="2"
+        fill="hsl(0, 85%, 55%)">RADIO</text>
+  
+  <line x1="100" y1="300" x2="600" y2="300" stroke="hsl(45, 90%, 55%)" stroke-width="4"/>
+  
+  <text x="100" y="380" 
+        font-family="Arial, sans-serif" 
+        font-size="26" 
+        font-weight="400" 
+        letter-spacing="1"
+        fill="hsl(0, 0%, 85%)">AI-POWERED LIVE BROADCAST</text>
+  
+  <text x="100" y="420" 
+        font-family="Arial, sans-serif" 
+        font-size="26" 
+        font-weight="400" 
+        letter-spacing="1"
+        fill="hsl(0, 0%, 85%)">CULTURE • MUSIC • DISCOURSE</text>
+  
+  <g opacity="0.4">
+    <rect x="700" y="400" width="6" height="80" fill="hsl(0, 85%, 55%)"/>
+    <rect x="720" y="350" width="6" height="130" fill="hsl(0, 85%, 55%)"/>
+    <rect x="740" y="300" width="6" height="180" fill="hsl(0, 85%, 55%)"/>
+    <rect x="760" y="250" width="6" height="230" fill="hsl(45, 90%, 55%)"/>
+    <rect x="780" y="200" width="6" height="280" fill="hsl(45, 90%, 55%)"/>
+    <rect x="800" y="220" width="6" height="260" fill="hsl(45, 90%, 55%)"/>
+    <rect x="820" y="280" width="6" height="200" fill="hsl(0, 85%, 55%)"/>
+    <rect x="840" y="320" width="6" height="160" fill="hsl(0, 85%, 55%)"/>
+    <rect x="860" y="350" width="6" height="130" fill="hsl(0, 85%, 55%)"/>
+    <rect x="880" y="380" width="6" height="100" fill="hsl(0, 85%, 55%)"/>
+    <rect x="900" y="340" width="6" height="140" fill="hsl(0, 85%, 55%)"/>
+    <rect x="920" y="300" width="6" height="180" fill="hsl(0, 85%, 55%)"/>
+    <rect x="940" y="270" width="6" height="210" fill="hsl(45, 90%, 55%)"/>
+    <rect x="960" y="320" width="6" height="160" fill="hsl(0, 85%, 55%)"/>
+    <rect x="980" y="360" width="6" height="120" fill="hsl(0, 85%, 55%)"/>
+    <rect x="1000" y="390" width="6" height="90" fill="hsl(0, 85%, 55%)"/>
+  </g>
+  
+  <circle cx="1050" cy="380" r="60" stroke="hsl(0, 85%, 55%)" stroke-width="6" fill="none"/>
+  <polygon points="1035,360 1035,400 1070,380" fill="hsl(0, 0%, 98%)"/>
+</svg>
