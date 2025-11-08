@@ -1,11 +1,3 @@
-import React from 'react';
-
-/**
- * Earn page describes the HOTMESS affiliate program and invites users to
- * apply. Since no backend is available, clicking the Apply button
- * simply triggers an alert. Copy outlines the programme structure and
- * emphasises that it is for men only.
- */
 import React, { useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { sendTelegramMessage } from '../lib/telegram';
