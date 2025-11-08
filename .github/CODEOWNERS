@@ -1,0 +1,29 @@
+# CODEOWNERS file for hotmess-enterprise-hardened
+# This file defines who will be automatically requested for review when someone opens a pull request.
+#
+# Each line is a file pattern followed by one or more owners.
+# Order is important: the last matching pattern takes the most precedence.
+#
+# Learn more about CODEOWNERS: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for everything in the repo
+# All changes require review from organization members with write access
+* @SICQR
+
+# Core configuration files require additional scrutiny
+/.github/ @SICQR
+/package.json @SICQR
+/package-lock.json @SICQR
+/tsconfig.json @SICQR
+/vite.config.ts @SICQR
+/tailwind.config.js @SICQR
+
+# Security and deployment files
+/SECURITY.md @SICQR
+/.github/workflows/ @SICQR
+/docker-compose.yml @SICQR
+/Dockerfile @SICQR
+/k8s/ @SICQR
+
+# Documentation
+*.md @SICQR
