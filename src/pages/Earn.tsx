@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * Earn page describes the HOTMESS affiliate program and invites users to
  * apply. Since no backend is available, clicking the Apply button

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { radioSchedule } from '../data/radioSchedule';
 import { radioDailySchedule } from '../data/radioDailySchedule';
-import { getCurrentTrack } from '../lib/radio';
+import { getNowPlaying } from '../lib/radio';
 
 interface CurrentTrack {
   title: string
@@ -23,8 +23,12 @@ export default function Radio() {
 
   useEffect(() => {
     ;(async () => {
-      const now = await getCurrentTrack()
-      setTrack(now)
+      const now = await getNowPlaying()
+      setTrack({
+        title: now.title,
+        artist: now.artist,
+        cover: now.artwork
+      })
       setLoading(false)
     })()
   }, [])

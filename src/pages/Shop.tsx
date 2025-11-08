@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import products from '../lib/products';
-import { fetchShopifyProducts } from '../lib/shopify';
+import { getProducts } from '../lib/shopify';
 
 // Type for fallback products and Shopify products combined
 interface UnifiedProduct {
@@ -26,16 +26,16 @@ export default function Shop() {
   useEffect(() => {
     ;(async () => {
       try {
-        const shopify = await fetchShopifyProducts()
+        const shopify = await getProducts()
         if (shopify && shopify.length > 0) {
           // Transform Shopify data into our unified product format
           const unified = shopify.map(p => ({
             id: p.id,
             title: p.title,
             description: p.description,
-            price: parseFloat(p.variants.edges[0].node.price),
-            image: p.images.edges[0]?.node.src ?? '',
-            alt: p.images.edges[0]?.node.altText ?? p.title,
+            price: p.price,
+            image: p.image,
+            alt: p.title,
           })) as UnifiedProduct[]
           setItems(unified)
         }
