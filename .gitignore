@@ -39,3 +39,4 @@ pids
 !.env.example
 ops/*.log
 ops/*.flag
+.unused/
