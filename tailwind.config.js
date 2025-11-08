@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  theme: { extend: {} },
-  plugins: [],
-};
-=======
 import fs from "fs";
 
 /** @type {import('tailwindcss').Config} */
@@ -153,4 +145,3 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: { ...defaultTheme, ...theme },
 };
->>>>>>> e3122e8bbfecbb3f8f1d069448ddaea3bf8e66cd
